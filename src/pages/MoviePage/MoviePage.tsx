@@ -1,6 +1,7 @@
 import './MoviePage.css';
 // import pic from "../../images/123.jpg";
 // import icon from "../../images/Icon.svg";
+//
 
 function MoviePage() {
 	return (
