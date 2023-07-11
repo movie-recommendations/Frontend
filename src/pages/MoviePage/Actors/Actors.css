@@ -1,0 +1,20 @@
+.actor {
+    display: flex;
+    flex-direction: column;
+}
+
+.actor__img {
+    width: 160px;
+    height: 160px;
+}
+
+.actor__text {
+    margin: 10px 0 0 0;
+    padding: 0;
+    color: #111827;
+    font-size: 14px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+}

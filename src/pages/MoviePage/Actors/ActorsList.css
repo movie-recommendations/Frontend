@@ -1,0 +1,19 @@
+.actorslist {
+    margin: 40px 0 0 0;
+}
+
+.actorslist__container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.actorslist__title {
+    margin: 0 0 30px 0;
+    color: #111827;
+    font-size: 20px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+}

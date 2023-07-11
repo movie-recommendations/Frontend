@@ -7,6 +7,7 @@ export default function MainPage() {
 			<h1 className="main-page__title">Main</h1>
 			<Link to="/sign-in">Войти</Link>
 			<Link to="/sign-up">Зарегистрироваться</Link>
+			<Link to="/movie-page">Фильмы</Link>
 		</main>
 	);
 }

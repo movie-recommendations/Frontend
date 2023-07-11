@@ -11,6 +11,7 @@ import { store, persistor } from './services/redux/store';
 
 import './index.css';
 import MainPage from './pages/MainPage/MainPage';
+import MoviePage from './pages/MoviePage/MoviePage';
 
 const Root: FC = () => {
 	return (
@@ -31,6 +32,7 @@ const Root: FC = () => {
 						element={<Auth formName={FormTypes.recoverPassword} />}
 					/>
 					<Route path="*" element={<ErrorPage />} />
+					<Route path="/movie-page" element={<MoviePage />} />
 				</Route>
 			</Routes>
 		</div>
