@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/frontend/static/css/main.f44f3497.css",
-    "main.js": "/frontend/static/js/main.86e7f241.js",
+    "main.js": "/frontend/static/js/main.b8125f37.js",
     "static/media/Unbounded-Bold.ttf": "/frontend/static/media/Unbounded-Bold.0c54d6e100bb5ec11f3a.ttf",
     "static/media/Unbounded-SemiBold.ttf": "/frontend/static/media/Unbounded-SemiBold.cb16a9e03403a3a0a1a6.ttf",
     "static/media/Unbounded-Medium.ttf": "/frontend/static/media/Unbounded-Medium.cc4af91f728dfdfebfb5.ttf",
@@ -71,10 +71,10 @@
     "static/media/cross.svg": "/frontend/static/media/cross.7039ca773755e572e74d.svg",
     "static/media/arrow.svg": "/frontend/static/media/arrow.1d7d03b2370572aa35f2.svg",
     "main.f44f3497.css.map": "/frontend/static/css/main.f44f3497.css.map",
-    "main.86e7f241.js.map": "/frontend/static/js/main.86e7f241.js.map"
+    "main.b8125f37.js.map": "/frontend/static/js/main.b8125f37.js.map"
   },
   "entrypoints": [
     "static/css/main.f44f3497.css",
-    "static/js/main.86e7f241.js"
+    "static/js/main.b8125f37.js"
   ]
 }
