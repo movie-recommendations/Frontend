@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/frontend/static/css/main.6a98401b.css",
-    "main.js": "/frontend/static/js/main.40b6d6fc.js",
+    "main.css": "/frontend/static/css/main.f44f3497.css",
+    "main.js": "/frontend/static/js/main.86e7f241.js",
     "static/media/Unbounded-Bold.ttf": "/frontend/static/media/Unbounded-Bold.0c54d6e100bb5ec11f3a.ttf",
     "static/media/Unbounded-SemiBold.ttf": "/frontend/static/media/Unbounded-SemiBold.cb16a9e03403a3a0a1a6.ttf",
     "static/media/Unbounded-Medium.ttf": "/frontend/static/media/Unbounded-Medium.cc4af91f728dfdfebfb5.ttf",
@@ -42,33 +42,39 @@
     "static/media/logo.svg": "/frontend/static/media/logo.90d24c3857176fa858afa2a1b999e553.svg",
     "static/media/scroll.svg": "/frontend/static/media/scroll.aa44fb5a14b3948ca301f3e18af2eb1d.svg",
     "static/media/rated_kinopoisk.svg": "/frontend/static/media/rated_kinopoisk.fc6413ec424be3206cd25ae33d179944.svg",
+    "static/media/rated_kinopoisk_inversion.svg": "/frontend/static/media/rated_kinopoisk_inversion.b60ad2a802eca8b59b2427cdbd69f1d6.svg",
     "static/media/slick.svg": "/frontend/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/frontend/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/frontend/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/frontend/static/media/slick.295183786cd8a1389865.woff",
     "static/media/adjustments.svg": "/frontend/static/media/adjustments.9b6d0e416046c3e149109b72b5b9653d.svg",
+    "static/media/loader2.svg": "/frontend/static/media/loader2.b779672988ea5d93c07c.svg",
     "static/media/authError.svg": "/frontend/static/media/authError.49c48ff9c7a5564fcefe.svg",
+    "static/media/loader1.svg": "/frontend/static/media/loader1.33eb26d70904c3a8ec29.svg",
     "static/media/star_nonclick.svg": "/frontend/static/media/star_nonclick.18a62b346c4f734e89ae.svg",
     "static/media/star_click.svg": "/frontend/static/media/star_click.6929eb510655e62acd10.svg",
     "index.html": "/frontend/index.html",
     "static/media/btn_watch_pressed.svg": "/frontend/static/media/btn_watch_pressed.3cc40565bdce173d0c8eff0084dfc44c.svg",
+    "static/media/black_eye.svg": "/frontend/static/media/black_eye.dfdc918f99bfd7b9e1a5c9f7d55f5912.svg",
+    "static/media/eye_clicked.svg": "/frontend/static/media/eye_clicked.a07c3abb92a9df7cef95f40a5cbc173a.svg",
     "static/media/Play.svg": "/frontend/static/media/Play.5ebdb171a5740cc42bd6efe278db2a73.svg",
-    "static/media/black_eye.svg": "/frontend/static/media/black_eye.08bb68e7c44a7bc9c288.svg",
     "static/media/eye.svg": "/frontend/static/media/eye.23bcfaac63810f53673f.svg",
     "static/media/btn_watch_default.svg": "/frontend/static/media/btn_watch_default.15706d2bb028235aa1f9eee83888917f.svg",
     "static/media/deleteRedIcon.svg": "/frontend/static/media/deleteRedIcon.437b16853d7dbcafb102.svg",
     "static/media/search.svg": "/frontend/static/media/search.4ef214cfc1e67f522d38caec7a3ce6e4.svg",
-    "static/media/Bookmark.svg": "/frontend/static/media/Bookmark.0af56b1c35321278418c.svg",
     "static/media/btn_bookmark_pressed.svg": "/frontend/static/media/btn_bookmark_pressed.d84c0ae42e44acf93a9dda840ba391f8.svg",
     "static/media/btn_bookmark_default.svg": "/frontend/static/media/btn_bookmark_default.d3f4e60815bafe1fbd8855fb3667d154.svg",
+    "static/media/bookmark_clicked.svg": "/frontend/static/media/bookmark_clicked.694c274ff6a6341b055cb8288821fdd1.svg",
+    "static/media/Bookmark.svg": "/frontend/static/media/Bookmark.2e293944cce9bf49898fcb356e50dff2.svg",
     "static/media/ArrowPrev.svg": "/frontend/static/media/ArrowPrev.933a9b0b528628ee0788.svg",
     "static/media/ArrowNext.svg": "/frontend/static/media/ArrowNext.85d199e527603eaae6b2.svg",
+    "static/media/cross.svg": "/frontend/static/media/cross.7039ca773755e572e74d.svg",
     "static/media/arrow.svg": "/frontend/static/media/arrow.1d7d03b2370572aa35f2.svg",
-    "main.6a98401b.css.map": "/frontend/static/css/main.6a98401b.css.map",
-    "main.40b6d6fc.js.map": "/frontend/static/js/main.40b6d6fc.js.map"
+    "main.f44f3497.css.map": "/frontend/static/css/main.f44f3497.css.map",
+    "main.86e7f241.js.map": "/frontend/static/js/main.86e7f241.js.map"
   },
   "entrypoints": [
-    "static/css/main.6a98401b.css",
-    "static/js/main.40b6d6fc.js"
+    "static/css/main.f44f3497.css",
+    "static/js/main.86e7f241.js"
   ]
 }
