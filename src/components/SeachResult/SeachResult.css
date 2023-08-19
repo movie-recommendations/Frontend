@@ -1,0 +1,42 @@
+.search {
+	display: inline-flex;
+	max-height: 213px;
+}
+
+.search_img-container {
+	margin-right: 30px;
+}
+
+.search_img {
+	width: 160px;
+	height: 213px;
+	object-fit: cover;
+	border-radius: 6px;
+}
+
+.search_profile {
+	width: 350px;
+	height: 213px;
+	color: white;
+	position: relative;
+}
+
+.search_title {
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 25px;
+	margin: 0;
+	margin-bottom: 15px;
+}
+
+.search_h3 {
+	color: #9ca3af;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 18px;
+	margin: 0;
+	margin-bottom: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}

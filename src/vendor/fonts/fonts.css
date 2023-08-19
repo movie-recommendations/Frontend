@@ -1,0 +1,251 @@
+@font-face {
+	font-family: 'Mullish';
+	src: url('./Mulish/Mulish-Regular.ttf') format('ttf');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Mullish';
+	src: url('./Mulish/Mulish-Regular.woff') format('woff');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Mullish';
+	src: url('./Mulish/Mulish-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Mullish';
+	src: url('./Mulish/Mulish-Medium.ttf') format('ttf');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Mullish';
+	src: url('./Mulish/Mulish-Medium.woff') format('woff');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Mullish';
+	src: url('./Mulish/Mulish-Medium.woff2') format('woff2');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Mullish';
+	src: url('./Mulish/Mulish-SemiBold.ttf') format('ttf');
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Mullish';
+	src: url('./Mulish/Mulish-SemiBold.woff') format('woff');
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Mullish';
+	src: url('./Mulish/Mulish-SemiBold.woff2') format('woff2');
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Mullish';
+	src: url('./Mulish/Mulish-Bold.ttf') format('ttf');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Mullish';
+	src: url('./Mulish/Mulish-Bold.woff') format('woff');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Mullish';
+	src: url('./Mulish/Mulish-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Unbounded';
+	src: url('./Unbounded/Unbounded-Regular.ttf') format('ttf');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Unbounded';
+	src: url('./Unbounded/Unbounded-Regular.woff') format('woff');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Unbounded';
+	src: url('./Unbounded/Unbounded-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Unbounded';
+	src: url('./Unbounded/Unbounded-Medium.ttf') format('ttf');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Unbounded';
+	src: url('./Unbounded/Unbounded-Medium.woff') format('woff');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Unbounded';
+	src: url('./Unbounded/Unbounded-Medium.woff2') format('woff2');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Unbounded';
+	src: url('./Unbounded/Unbounded-SemiBold.ttf') format('ttf');
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Unbounded';
+	src: url('./Unbounded/Unbounded-SemiBold.woff') format('woff');
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Unbounded';
+	src: url('./Unbounded/Unbounded-SemiBold.woff2') format('woff2');
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Unbounded';
+	src: url('./Unbounded/Unbounded-Bold.ttf') format('ttf');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Unbounded';
+	src: url('./Unbounded/Unbounded-Bold.woff') format('woff');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Unbounded';
+	src: url('./Unbounded/Unbounded-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('./Oswald/Oswald-Regular.ttf') format('ttf');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('./Oswald/Oswald-Regular.woff') format('woff');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('./Oswald/Oswald-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('./Oswald/Oswald-Medium.ttf') format('ttf');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('./Oswald/Oswald-Medium.woff') format('woff');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('./Oswald/Oswald-Medium.woff2') format('woff2');
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('./Oswald/Oswald-SemiBold.ttf') format('ttf');
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('./Oswald/Oswald-SemiBold.woff') format('woff');
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('./Oswald/Oswald-SemiBold.woff2') format('woff2');
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('./Oswald/Oswald-Bold.ttf') format('ttf');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('./Oswald/Oswald-Bold.woff') format('woff');
+	font-weight: 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Oswald';
+	src: url('./Oswald/Oswald-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-display: swap;
+}

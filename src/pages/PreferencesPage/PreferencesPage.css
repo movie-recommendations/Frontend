@@ -1,0 +1,95 @@
+.preferencespage {
+	max-width: 1440px;
+	height: auto;
+	margin: 0 auto;
+	position: relative;
+}
+
+.preferencespage__container {
+	padding: 0;
+	max-width: 1110px;
+	gap: 30px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	grid-template-rows: repeat(auto-fill, minmax(160px, 1fr));
+	margin: 0 auto;
+}
+
+.preferencespage__list {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: white;
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	line-height: 23px;
+	font-size: 18px;
+}
+
+.preferencespage-checkbox__appearance {
+	width: 160px;
+	height: 160px;
+	border: 1px solid #2b2f33;
+	border-radius: 80px;
+	display: flex;
+	cursor: pointer;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	line-height: 26px;
+	font-size: 17px;
+	text-align: center;
+	transition: color 0.3s, border 0.3s;
+}
+
+.preferencespage-checkbox__input[type='checkbox'] {
+	position: absolute;
+	width: 160px;
+	height: 160px;
+	overflow: hidden;
+	outline: none;
+	clip-path: inset(0 0 0 0);
+	appearance: none;
+	border-radius: 50%;
+}
+
+.preferencespage-checkbox__input[type='checkbox']:checked
+	+ .preferencespage-checkbox__appearance {
+	background-color: #ffcc33;
+	transition: background-color 0.3s;
+}
+
+.preferencespage-checkbox__input[type='checkbox']:hover
+	+ .preferencespage-checkbox__appearance {
+	color: #d1d5db;
+	border: #233958 solid 1px 50%;
+	cursor: pointer;
+}
+
+.preferencespage__overlay {
+	background: #d1d5db;
+	width: 100%;
+	height: 100%;
+	opacity: 0.7;
+}
+
+.title {
+	max-width: 1110px;
+	color: white;
+	margin: 68px auto 85px auto;
+	line-height: 50px;
+	font-size: 40px;
+	font-weight: 700;
+}
+
+.subtitle {
+	line-height: 31px;
+	font-size: 25px;
+	font-weight: 500;
+	max-width: 1110px;
+	color: white;
+	margin: 0 auto 50px auto;
+}

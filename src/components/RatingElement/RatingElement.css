@@ -1,0 +1,25 @@
+.rating-element__text {
+	color: var(--white, #fff);
+	font-family: Unbounded;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+
+.rating-element__container {
+	display: flex;
+	align-items: center;
+}
+
+.star__button {
+	width: 25px;
+	height: 25px;
+	background-image: url(../../images/star_nonclick.svg);
+	background-size: cover;
+	cursor: pointer;
+}
+
+.star__button__filled {
+	background-image: url(../../images/star_click.svg);
+}

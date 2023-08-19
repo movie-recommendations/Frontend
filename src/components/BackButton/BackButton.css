@@ -1,0 +1,35 @@
+.backbutton {
+	width: 70px;
+	height: 30px;
+	font-size: 18px;
+	line-height: 30px;
+	font-weight: 300;
+	margin: 50px 0px 0px 165px;
+	cursor: pointer;
+	color: #ffcc33;
+	transition: background-color 0.2s;
+	background-color: #0c0c0c;
+	outline: none;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background-color 0.2s;
+	display: flex;
+}
+
+.arrow {
+	align-self: center;
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+}
+
+.button:disabled {
+	color: #fff;
+	background-color: #9ca3af;
+	cursor: not-allowed;
+}
+
+.backbutton:hover {
+	opacity: 0.3;
+}

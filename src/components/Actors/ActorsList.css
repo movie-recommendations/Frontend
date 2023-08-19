@@ -1,0 +1,28 @@
+.actorslist {
+	max-width: 469px;
+}
+
+.actorslist__container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.actorslist__title {
+	color: var(--white, #fff);
+	font-family: Unbounded;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	margin: 0 0 20px 0;
+}
+
+.actorslist__text {
+	color: var(--white, #fff);
+	font-family: Mullish;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	margin: 0;
+}

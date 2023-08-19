@@ -1,0 +1,30 @@
+.flank {
+	background-color: #0c0c0c;
+	max-width: 1440px;
+	height: auto;
+	margin: 0 auto;
+}
+
+.flank_title {
+	color: white;
+	font-size: 35px;
+	font-weight: 700;
+	line-height: 43.4px;
+	margin: 0 165px;
+	padding-top: 20px;
+}
+
+.flank_container {
+	max-width: 1110px;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 50px 165px 0;
+	padding-bottom: 83px;
+	gap: 53px 28px;
+}
+
+.flank_btn {
+	display: flex;
+	justify-content: center;
+	margin: 0 auto 100px;
+}

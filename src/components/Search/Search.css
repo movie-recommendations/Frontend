@@ -1,0 +1,125 @@
+.searchGeneral {
+	width: 525px;
+	height: auto;
+	border-radius: 5px;
+	background-color: #fff;
+	position: absolute;
+	top: 55px;
+	display: none;
+	z-index: 5;
+	cursor: pointer;
+}
+
+.searchGeneral_open {
+	display: block;
+}
+
+.searchGeneral__films {
+	display: flex;
+	flex-direction: column;
+	margin: 15px;
+	height: auto;
+	max-height: 310px;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+.searchGeneral__films::-webkit-scrollbar {
+	display: none;
+}
+
+.searchGeneral__film {
+	width: 470px;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 10px;
+	text-decoration: none;
+}
+
+/* .searchGeneral__film:hover {
+	opacity: 0.6;
+	cursor: pointer;
+} */
+
+.searchGeneral__film:last-child {
+	margin-bottom: 0;
+}
+
+.searchGeneral__film-poster {
+	width: 37px;
+	height: 46px;
+	object-fit: cover;
+}
+
+.searchGeneral__film-desc {
+	display: flex;
+	flex-direction: column;
+	margin: 0 0 0 20px;
+}
+
+.searchGeneral__film-info {
+	display: flex;
+	flex-direction: row;
+}
+
+.searchGeneral__film-name {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 18px;
+	color: #2b2f33;
+	width: 400px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.searchGeneral__film-rating {
+	margin: 0;
+	position: relative;
+	top: -5px;
+}
+
+.searchGeneral__film-genres {
+	margin: 9px 0 0 0;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 18px;
+	color: #2b2f33;
+	max-width: 210px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.searchGeneral__film-year {
+	margin: 9px 0 0 8px;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 18px;
+	color: #2b2f33;
+}
+
+.searchGeneral__film-none {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 18px;
+	color: #2b2f33;
+	text-align: center;
+	overflow: hidden;
+}
+
+/* ::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background: #000;
+	box-shadow: 0 0 1px 1px #000, inset 0 0 4px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background: linear-gradient(left, #3e3e3e, #111, #000);
+	box-shadow: inset 0 0 1px 1px #646464;
+} */

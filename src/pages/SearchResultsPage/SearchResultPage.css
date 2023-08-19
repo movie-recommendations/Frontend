@@ -1,0 +1,24 @@
+.search-page_container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 40px 30px;
+}
+
+.search-result {
+	margin: 0 auto 0;
+	color: white;
+	max-width: 1440px;
+}
+
+.search-result_title {
+	margin: 80px 165px 0;
+}
+
+.search-result_subtitle {
+	margin: 20px 165px 0;
+}
+
+.search-page_container {
+	max-width: 1110px;
+	margin: 20px 165px 80px;
+}

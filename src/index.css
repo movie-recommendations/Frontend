@@ -1,0 +1,19 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts/fonts.css);
+
+:root {
+	margin: 0;
+	font-family: 'Mullish', 'Arial', 'Oswald', 'Unbounded', 'DM Sans', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: #0c0c0c;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}
+
+.page {
+	margin: 0 auto;
+}

@@ -1,0 +1,111 @@
+.account {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0 165px 0 230px;
+	position: relative;
+}
+
+.account__login {
+	text-decoration: none;
+}
+
+.account__login-text {
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 40px;
+	color: #e5e7eb;
+}
+
+.account__profile-link {
+	text-decoration: none;
+}
+
+.account__profile-word {
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	background-color: #9ca3af;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 40px;
+	color: #0c0c0c;
+	margin: 0;
+	text-align: center;
+}
+
+.account__profile-icon {
+	z-index: 6;
+	margin: 0;
+}
+
+.account__login-text:hover {
+	opacity: 0.6;
+}
+
+.account__profile-icon:hover {
+	opacity: 0.6;
+}
+
+.account__content {
+	position: absolute;
+	display: none;
+	z-index: 5;
+	width: 270px;
+	height: 340px;
+	background-color: #141414;
+	border-radius: 0 0 25px 25px;
+	margin-top: 45px;
+	top: -85px;
+	left: -200px;
+}
+
+.account__content_open {
+	display: block;
+}
+
+.account__list {
+	display: flex;
+	flex-direction: column;
+	padding: 20px 0 0 25px;
+	width: 170px;
+}
+
+.account__content-nik {
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 25px;
+	color: #fff;
+	margin: 0;
+	width: 155px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.account__content-email {
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 12px;
+	color: #6b7280;
+	margin: 5px 0 55px 0;
+	width: 155px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.account__content-link {
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 25px;
+	color: #fff;
+	text-decoration: none;
+	margin-bottom: 10px;
+}
+
+.account__content-link:last-child {
+	margin-top: 25px;
+}
+
+.account__content-link:hover {
+	opacity: 0.6;
+}

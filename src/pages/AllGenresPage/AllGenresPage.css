@@ -1,0 +1,53 @@
+.allgenrespage {
+	max-width: 1440px;
+	height: auto;
+	margin: auto;
+	position: relative;
+}
+
+.allgenrespage__container {
+	padding: 0;
+	max-width: 1110px;
+	max-height: 1110px;
+	gap: 30px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(198px, 1fr));
+	grid-template-rows: repeat(auto-fill, minmax(198px, 1fr));
+	margin: 0 auto 100px;
+}
+
+.allgenrespage__link {
+	display: flex;
+	border-radius: 50%;
+	text-align: center;
+}
+
+.allgenrespage__link:hover {
+	opacity: 0.7;
+	border: 3px solid gray;
+	cursor: pointer;
+}
+
+.allgenrespage__link {
+	display: flex;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	line-height: 23px;
+	font-size: 18px;
+	border: 3px solid white;
+	border-radius: 100px;
+	width: 198px;
+	height: 198px;
+	box-sizing: border-box;
+	flex-direction: column;
+	text-decoration: none;
+	background-color: #0c0c0c;
+}
+
+.allgenrespage__title {
+	font-size: 20px;
+	line-height: 25px;
+	width: 500;
+	color: white;
+}

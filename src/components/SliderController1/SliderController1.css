@@ -1,0 +1,23 @@
+.slider-controller {
+	background-image: url(../../images/arrow.svg);
+	background-position: center;
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	border: none;
+	background-color: inherit;
+	cursor: pointer;
+	transition: opacity 0.2s;
+}
+
+.slider-controller:hover {
+	opacity: 0.5;
+}
+
+.slider-controller:disabled {
+	opacity: 0;
+}
+
+.slider-controller_direction_left {
+	transform: rotate(180deg);
+}

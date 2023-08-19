@@ -1,0 +1,23 @@
+.slick-slider-genres_container {
+	max-width: 1110px;
+	margin: 0 165px 45px;
+}
+
+.slick-next:before {
+	content: url('../../images/ArrowNext.svg');
+}
+
+.slick-prev:before {
+	content: url('../../images/ArrowPrev.svg');
+}
+
+.main-page_color-white {
+	color: white;
+}
+
+.slick-next {
+}
+
+.slick-prev {
+	margin-right: 25px;
+}

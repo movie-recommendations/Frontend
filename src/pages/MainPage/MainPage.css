@@ -1,0 +1,27 @@
+.main-page {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 20px;
+	text-align: center;
+	/* height: 70vh; */
+	margin-top: -118px;
+}
+
+.main-page_slick-slider {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 50px;
+	max-width: 1440px;
+	margin: 0 auto;
+}
+
+.main-page_slick-slider_specialforyou {
+	justify-self: center;
+	background-color: #141414;
+	max-width: 1440px;
+	margin: 0 45px 50px 45px;
+	padding: 100px 0 100px 0;
+	border-radius: 100px;
+	box-shadow: 0px 0px 25px 0px rgba(255, 255, 255, 0.15);
+}

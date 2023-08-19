@@ -1,0 +1,96 @@
+.input__container {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.input__hints {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.input__label {
+	font-size: 16px;
+	line-height: 18px;
+}
+
+.input__label_color_white {
+	color: #ffffff;
+}
+
+.input__error {
+	color: #ea4335;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 12px;
+}
+
+.input__field {
+	box-sizing: border-box;
+	font-size: 16px;
+	line-height: 18px;
+	padding: 10px 15px;
+	border-radius: 10px;
+	border: 0.5px solid #9ca3af;
+}
+
+.input__field:focus {
+	outline: none;
+	border: 0.5px solid #0c0c0c;
+}
+
+.input__field:read-only:focus {
+	outline: none;
+}
+
+.input__field_invalid {
+	color: #ea4335;
+	border: 0.5px solid #ea4335;
+}
+
+/* .input__field:invalid {
+	color: #ea4335;
+	border: 0.5px solid #ea4335;
+} */
+
+.input__field_color_black {
+	background-color: #0c0c0c;
+	color: #9ca3af;
+	border: 0.5px solid #9ca3af;
+}
+
+.input__field_color_black:focus {
+	outline: none;
+	border: 0.5px solid #9ca3af;
+}
+
+.input__field_color_black:invalid {
+	color: #9ca3af;
+	border: 0.5px solid #9ca3af;
+}
+
+.input__span {
+	color: #9ca3af;
+	font-size: 14px;
+	line-height: 18px;
+}
+
+.input__button {
+	background-image: url(../../images/eye.svg);
+	position: absolute;
+	top: 27px;
+	right: 15px;
+	width: 20px;
+	height: 20px;
+	border: none;
+	background-color: #fff;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	transition: opacity 0.2s;
+}
+
+.input__button:hover {
+	opacity: 0.6;
+}

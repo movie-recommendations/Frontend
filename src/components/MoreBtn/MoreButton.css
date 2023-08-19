@@ -1,0 +1,10 @@
+.cards__button {
+	border: none;
+	color: #ffcc33;
+	background-color: transparent;
+	padding: 0;
+	font-size: 18px;
+	font-weight: 300;
+	line-height: 30px;
+	cursor: pointer;
+}

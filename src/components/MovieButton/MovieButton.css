@@ -1,0 +1,89 @@
+.moviepage-button__container {
+	border: none;
+	cursor: pointer;
+	min-width: 45px;
+	height: 45px;
+	background-position: center;
+	background-repeat: no-repeat;
+	box-sizing: border-box;
+	border-radius: 6px;
+	position: relative;
+}
+
+.moviepage-button__container::after {
+	content: var(--tooltip-content, '');
+	position: absolute;
+	top: -55px;
+	left: 70px;
+	transform: translateX(-50%);
+	background-color: black;
+	color: var(--tooltip-text-color, var(--white, #fff));
+	font-size: 16px;
+	font-family: Mullish;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	padding: 10px 20px;
+	border-radius: 5px;
+	white-space: nowrap;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.moviepage-button__container:hover::after {
+	opacity: 1;
+	visibility: visible;
+}
+
+.moviepage-button__container::before {
+	content: '';
+	position: absolute;
+	top: -10px;
+	left: 50%;
+	transform: translateX(-50%);
+	border-width: 5px;
+	border-style: solid;
+	border-color: transparent transparent black transparent;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.moviepage-button__container:hover::before {
+	opacity: 1;
+	visibility: visible;
+}
+
+.moviepage__button_favourite {
+	--tooltip-content: 'В избранное';
+	--tooltip-text-color: var(--white, #fff);
+}
+
+.moviepage__button_seen {
+	--tooltip-content: 'Буду смотреть';
+	--tooltip-text-color: var(--white, #fff);
+}
+
+.moviepage-button__container {
+	margin-bottom: 5px;
+	position: relative;
+}
+
+.moviepage-button {
+	width: 45px;
+	height: 45px;
+	border-radius: 5px;
+	background-color: #e5e7eb;
+	cursor: pointer;
+}
+
+.moviepage-button:hover {
+	background-color: #d1d5db;
+}
+
+.moviepage-button__img {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

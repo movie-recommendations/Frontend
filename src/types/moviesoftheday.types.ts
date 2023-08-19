@@ -1,0 +1,15 @@
+export interface IMoviesOfDay {
+	id: number;
+	title: string;
+	short_description: string;
+	h_picture?: string;
+	rate_imdb: number;
+	rate_kinopoisk: number;
+	is_favorite: boolean;
+}
+
+export interface IMoviesOfDayState {
+	status: 'idle' | 'success' | 'loading' | 'failed';
+	error: string | undefined;
+	daymovies: Array<IMoviesOfDay>;
+}

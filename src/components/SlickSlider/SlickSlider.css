@@ -1,0 +1,20 @@
+.slick-slider_container {
+	margin: 0 165px 100px;
+}
+
+.slick-slider_title {
+	margin: 0 0 45px;
+	text-align: left;
+	color: white;
+	font-family: 'Unbounded';
+	font-size: 35px;
+	font-weight: 700;
+	line-height: 43.5px;
+}
+
+.slick-slider {
+	max-width: 1110px;
+	display: flex;
+	justify-content: center;
+	text-align: left;
+}

@@ -1,0 +1,40 @@
+.moviepage-description {
+	display: flex;
+	flex-direction: row;
+	margin: 65px 0 0 0;
+}
+
+.moviepage-description__about {
+	margin: 0 0 0 97px;
+}
+
+.moviepage-description__about__container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 255px;
+}
+
+.moviepage-description__about__text_add {
+	margin: 0;
+	padding: 0;
+	color: var(--neutral-500, #9ca3af);
+	font-size: 16px;
+	font-family: Mullish;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.moviepage-description__about__text {
+	margin: 0;
+	padding: 0;
+	color: var(--white, #fff);
+	font-size: 16px;
+	font-family: Mullish;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	white-space: pre-line;
+	text-align: end;
+}

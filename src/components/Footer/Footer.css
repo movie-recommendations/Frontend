@@ -1,0 +1,33 @@
+.footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 118px;
+	background-color: #4b556333;
+	max-width: 1440px;
+	margin: 0 auto;
+}
+
+.footer__desc {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 22.59px;
+	text-align: center;
+	color: #fff;
+	margin-left: 120px;
+}
+
+.footer__scroll {
+	margin-right: 120px;
+	background: transparent;
+	border: 0;
+}
+
+.footer__scroll:hover {
+	opacity: 0.6;
+	cursor: pointer;
+}
+
+.footer__scroll-button {
+	width: 125px;
+}

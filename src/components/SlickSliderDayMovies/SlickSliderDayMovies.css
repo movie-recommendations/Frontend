@@ -1,0 +1,60 @@
+.slick-slider-main {
+	max-width: 1440px;
+	display: flex;
+	justify-content: center;
+	text-align: left;
+}
+
+.slick-numbers {
+	display: inline-block;
+	position: absolute;
+	width: 45px;
+	height: 118px;
+	top: 592px;
+	left: 1230px;
+	margin: auto;
+	padding: 0;
+	list-style: none;
+}
+
+.slick-numbers li {
+	position: relative;
+	width: 37px;
+	line-height: 14px;
+	padding: 0;
+	margin-bottom: 8px;
+	margin-top: 6px;
+	cursor: pointer;
+	color: #9ca3af;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+li button {
+	font-size: 12px;
+	font-family: DM Sans;
+	font-weight: bold;
+	line-height: 14px;
+	width: 10px;
+	height: 14px;
+	padding: 0;
+	cursor: pointer;
+	color: #9ca3af;
+	border: 0;
+	outline: none;
+	background-color: transparent;
+}
+
+.slick-active button {
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	width: 10px;
+}
+
+.slick-numbers .slick-active {
+	background-image: url('/src/images/Rectangle1.png');
+	background-repeat: no-repeat;
+	background-position: left;
+}
