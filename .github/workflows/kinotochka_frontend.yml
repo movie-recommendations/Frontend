@@ -42,5 +42,6 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE }}
         script: |
           cd morec_project/devops/
+          docker rm frontend
           docker rmi movrec/kinotochka_frontend:v1
-          docker run --name frontend movrec/kinotochka_frontend:v1
+          docker run -v /root/morec_project/frontend/:/app/result_build/ --name frontend movrec/kinotochka_frontend:v1
