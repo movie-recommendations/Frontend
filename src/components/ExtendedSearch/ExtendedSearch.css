@@ -24,7 +24,7 @@
 }
 
 .searchExtended__form {
-	width: 100%;
+	width: 495px;
 	border: 1px solid #9ca3af;
 	border-radius: 10px;
 	height: 40px;
@@ -35,13 +35,22 @@
 	margin: 0 0 15px 0;
 }
 
-.searchExtended__form-select {
+.searchExtended__form_input {
+	width: 480px;
+}
+
+.searchExtended__form:hover {
+	cursor: pointer;
+	opacity: 0.6;
+}
+
+/* .searchExtended__form-select {
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 20px;
 	letter-spacing: 0em;
 	color: #141414;
-}
+} */
 
 .searchExtended__form-option {
 	font-size: 16px;

@@ -48,9 +48,9 @@ const Header: FC = () => {
 		}
 	}, [values]);
 
-	const setSearchClose = () => {
-		setIsOpenSearch(false);
-	};
+	// const setSearchClose = () => {
+	// 	setIsOpenSearch(false);
+	// };
 
 	return (
 		<header className="header" id="header">
@@ -86,7 +86,7 @@ const Header: FC = () => {
 						type="text"
 						placeholder="Какой фильм вы хотите найти?"
 						onChange={handleChange}
-						onBlur={setSearchClose}
+						// onBlur={setSearchClose}
 						autoComplete="off"
 					/>
 					<button className="header__search-button">
