@@ -2,12 +2,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getMovies } from './moviesApi';
 import { IMovieCardState } from 'src/types/MovieCard.types';
 
-export const getMoviesApi = createAsyncThunk(
-	'@@movies/movies',
-	async () => {
-		return getMovies();
-	}
-);
+export const getMoviesApi = createAsyncThunk('@@movies/movies', async () => {
+	return getMovies();
+});
 
 const initialState: IMovieCardState = {
 	status: 'idle',

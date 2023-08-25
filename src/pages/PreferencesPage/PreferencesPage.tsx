@@ -5,7 +5,7 @@ import CheckboxMain from '../../components/CheckboxMain/CheckboxMain';
 import SaveButton from '../../components/SaveButton/SaveButton';
 import PopupSaveButton from 'src/components/PopupSaveButton/PopupSaveButton';
 import { selectGenres } from 'src/services/redux/slices/genres/genres';
-import  BackButton  from 'src/components/BackButton/BackButton';
+import BackButton from 'src/components/BackButton/BackButton';
 import { useNavigate } from 'react-router-dom';
 
 const PreferencesPage: FC = () => {
@@ -29,7 +29,10 @@ const PreferencesPage: FC = () => {
 
 	return (
 		<section className="preferencespage">
-			<BackButton  type={'button'} buttonText={'Назад'} handleButtonClick={handButtonBackClick}
+			<BackButton
+				type={'button'}
+				buttonText={'Назад'}
+				handleButtonClick={handButtonBackClick}
 			/>
 			<h2 className="title">Мои предпочтения</h2>
 			<h3 className="subtitle">Избранные жанры</h3>

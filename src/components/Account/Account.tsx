@@ -1,13 +1,14 @@
 import { FC } from 'react';
 import { useState } from 'react';
 import './Account.css';
-import { Link } from 'react-router-dom';
-import { 
-	// useAppDispatch,
-	 useAppSelector } from '../../services/typeHooks';
-import { selectUser } from 'src/services/redux/slices/user/user';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
+import { selectUser, signOut } from 'src/services/redux/slices/user/user';
 
-const Account: FC = (isLoggedIn) => {
+const Account: FC = () => {
+	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
+	const user = useAppSelector(selectUser);
 	const [isOpen, setIsOpen] = useState(false);
 
 	const setProfileOpen = () => {
@@ -18,35 +19,32 @@ const Account: FC = (isLoggedIn) => {
 		setIsOpen(false);
 	};
 
-	const { email } = useAppSelector(selectUser);
+	const { email, nickname } = useAppSelector(selectUser);
 
 	return (
 		<section className="account">
-			{!isLoggedIn ? (
+			{!user.email[0] ? (
 				<Link to="/sign-in" className="account__login">
 					<p className="account__login-text">Войти</p>
 				</Link>
 			) : (
 				<>
-					<p className="account__profile-icon" onMouseOver={setProfileOpen}>
+					<div className="account__profile-icon" onMouseOver={setProfileOpen}>
 						<Link to="/profile" className="account__profile-link">
-							<p className="account__profile-word">W{email[0]}</p>
+							<p className="account__profile-word">{email[0]}</p>
 						</Link>
-					</p>
+					</div>
 					<nav
 						className={`account__content ${isOpen && 'account__content_open'}`}
 						onMouseOver={setProfileOpen}
 						onMouseOut={setProfileClose}
 					>
 						<ul className="account__list" onMouseOver={setProfileOpen}>
-							<p className="account__content-nik">Nickname{email}</p>
-							<p className="account__content-email">email{email}</p>
-							{/* <Link to="/sign-in" className="account__content-link">
-								Авторизация
-							</Link>
+							<p className="account__content-nik">{nickname}</p>
+							<p className="account__content-email">{email}</p>
 							<Link to="/movie-page" className="account__content-link">
 								Страница фильма
-							</Link> */}
+							</Link>
 							<Link to="/favorites" className="account__content-link">
 								Избранное
 							</Link>
@@ -56,12 +54,15 @@ const Account: FC = (isLoggedIn) => {
 							<Link to="/rated-films" className="account__content-link">
 								Оцененное
 							</Link>
-							<Link to="/collections" className="account__content-link">
-								Подборки
-							</Link>
-							<Link to="/" className="account__content-link">
+							<button
+								className="account__content-button"
+								onClick={() => {
+									dispatch(signOut());
+									navigate('/');
+								}}
+							>
 								Выйти
-							</Link>
+							</button>
 						</ul>
 					</nav>
 				</>

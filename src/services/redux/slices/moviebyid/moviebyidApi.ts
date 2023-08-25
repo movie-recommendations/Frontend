@@ -1,7 +1,6 @@
 import { IMoviebyid } from 'src/types/Moviebyid.types';
 import { API_BASE_URL } from 'src/utils/constants';
 
-
 const checkRes = (res: Response) => {
 	if (res.ok) {
 		return res.json();

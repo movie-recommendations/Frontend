@@ -6,23 +6,19 @@ const Footer: FC = () => {
 	const buttonUp = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
 		console.log('click');
-		window.scrollTo( { 
-			top: 0, 
+		window.scrollTo({
+			top: 0,
 			behavior: 'smooth',
-		})
+		});
 	};
 
-	
-	
 	window.addEventListener('scroll', () => {
-
 		const ScrollBtn = document.querySelector('.footer__scroll');
 		if (window.scrollY < 900) {
 			ScrollBtn?.classList.add('scroll-hidden');
 		} else {
 			ScrollBtn?.classList.remove('scroll-hidden');
 		}
-		
 	});
 
 	return (

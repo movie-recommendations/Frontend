@@ -7,7 +7,6 @@ import { ICompilationsTwo } from 'src/types/Compilations.types';
 import { FilmCardSmall } from '../FilmCardWidth180/FilmCardSmall';
 
 export const SlickSliderMini: FC<ICompilationsTwo> = ({ title, movies }) => {
-
 	const settings = {
 		dots: false,
 		infinite: true,
@@ -15,13 +14,15 @@ export const SlickSliderMini: FC<ICompilationsTwo> = ({ title, movies }) => {
 		slidesToShow: 5,
 		slidesToScroll: 4,
 		arrows: true,
-	}
+	};
 
 	return (
 		<div className="slick-slider_container">
 			<h1 className="slick-slider_title">{title}</h1>
 			<Slider {...settings} className="slick-slider">
-				{movies.map((item) => <FilmCardSmall film={item} />)}
+				{movies.map((item) => (
+					<FilmCardSmall key={item.id} film={item} />
+				))}
 			</Slider>
 		</div>
 	);

@@ -1,13 +1,27 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import React, { useState } from 'react';
 import './RatingElement.css';
+import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
+import { getMoviesRating } from 'src/services/redux/slices/rating/rating';
+import { IRating } from 'src/types/Rating.types';
 
-const RatingElement: FC = () => {
+const RatingElement: FC<IRating> = ({ id,rate })=>  {
 	const [rating, setRating] = useState(0);
-
+	const dispatch = useAppDispatch();
+	//const movierating = useAppSelector((state) => state.movie_rating);
 	const handleRatingClick = (value: React.SetStateAction<number>) => {
 		setRating(value);
+		
+		dispatch(getMoviesRating({
+			id,
+			rate: value,
+		}))
+		
 	};
+	
+	useEffect(() => {
+		//dispatch(getMoviesRating());
+	}, []);
 
 	return (
 		<div className="rating-element">

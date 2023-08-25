@@ -1,5 +1,5 @@
 import './FlanksPage.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { IFlanks } from 'src/types/Flanks.types';
 import { FC } from 'react';
 import { getFilmsApi } from '../../services/redux/slices/films/films';
@@ -7,20 +7,19 @@ import { getSelectionsApi } from '../../services/redux/slices/selections/selecti
 import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
 import { FilmCard } from 'src/components/FilmCardWidth255/FilmCard';
 import { SelectionCard } from 'src/components/SelectionCard/SelectionCard';
-import { IFilms } from 'src/types/Film.types';
 import { MoreButton } from 'src/components/MoreBtn/MoreButton';
 import { IMovieCard } from 'src/types/MovieCard.types';
+import { getCompilationsApi } from 'src/services/redux/slices/compilations/compilations';
 
 const FlanksPage: FC<IFlanks> = ({ formName }) => {
 	const dispatch = useAppDispatch();
-	const page = useAppSelector((state) => state.windowResize.page);
-	const selected = useAppSelector((state) => state.selection.selections);
 	const favorites = useAppSelector((state) => state.newmoviecards.movies);
-	// const willSee = useAppSelector((state) => state.films.mustSeeFilms);
-	// const ratedFilms = useAppSelector((state) => state.films.viewedFilms);
+	const compilations = useAppSelector((state) => state.compilations.data);
+
 	const [toggleFavorites, setToggleFavorites] = useState<IMovieCard[]>([]);
 	const [isMoreButton, setIsMoreButton] = useState(false);
-	const [pageMore, setPageMore] = useState(page);
+	const [screenSize, setScreenSize] = useState<number>(0);
+	const [pageMore, setPageMore] = useState(screenSize);
 
 	const title =
 		formName === 'ratedFilms'
@@ -29,13 +28,9 @@ const FlanksPage: FC<IFlanks> = ({ formName }) => {
 			? 'Буду смотреть'
 			: formName === 'favorites'
 			? 'Избранное'
-			: 'Подборки';
+			: 'Все подборки';
 
-	useEffect(() => {
-		dispatch(getFilmsApi());
-		dispatch(getSelectionsApi());
-	}, []);
-
+	// Отвечает за определение какой масив показывать
 	useEffect(() => {
 		if (formName === 'ratedFilms') {
 			setToggleFavorites(favorites);
@@ -46,19 +41,50 @@ const FlanksPage: FC<IFlanks> = ({ formName }) => {
 		} else {
 			setToggleFavorites([]);
 		}
-		// }, [ratedFilms, willSee, favorites, formName]);
 	}, [favorites, formName]);
 
 	useEffect(() => {
-		if (toggleFavorites.length > page) {
+		dispatch(getFilmsApi());
+		dispatch(getSelectionsApi());
+		dispatch(getCompilationsApi());
+	}, []);
+
+	const handleResize = useCallback(() => {
+		const windowWidth = window.innerWidth;
+		setScreenSize(windowWidth);
+	}, []);
+
+	useEffect(() => {
+		window.addEventListener('resize', handleResize);
+		handleResize();
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
+
+	useEffect(() => {
+		if (screenSize >= 1280) {
+			const page = 12;
+			setPageMore(page);
+		} else if (screenSize <= 1280 && screenSize > 800) {
+			const page = 9;
+			setPageMore(page);
+		} else if (screenSize < 800) {
+			const page = 8;
+			setPageMore(page);
+		}
+	}, [screenSize]);
+
+	useEffect(() => {
+		if (toggleFavorites.length > pageMore) {
 			setIsMoreButton(true);
 		} else {
 			setIsMoreButton(false);
 		}
-	}, [toggleFavorites, page]);
+	}, [toggleFavorites, pageMore]);
 
 	const handleMoreButtonClick = () => {
-		setPageMore((prev) => prev + page);
+		setPageMore((prev) => prev + pageMore);
 	};
 
 	return (
@@ -66,7 +92,7 @@ const FlanksPage: FC<IFlanks> = ({ formName }) => {
 			<h1 className="flank_title">{title}</h1>
 			<div className="flank_container">
 				{formName === 'collections' ? (
-					<SelectionCard selected={selected} />
+					<SelectionCard compilations={compilations} />
 				) : (
 					toggleFavorites
 						.slice(0, pageMore)

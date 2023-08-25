@@ -2,7 +2,6 @@
 	max-width: 1440px;
 	height: auto;
 	margin: 0 auto;
-	position: relative;
 	display: flex;
 	justify-content: center;
 }
@@ -67,15 +66,15 @@
 }
 
 .background-image {
-	margin: 0 0 0 -165px;
 	top: 0;
 	position: absolute;
 	display: flex;
 	justify-content: center;
 	z-index: -2;
+	object-position: top;
 	object-fit: cover;
 	width: 1440px;
-	height: 500px;
+	height: 400px;
 	opacity: 0.6000000238418579;
 	margin: 0;
 }

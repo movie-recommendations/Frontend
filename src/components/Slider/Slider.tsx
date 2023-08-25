@@ -55,25 +55,27 @@ const Slider: FC<ISlider> = ({ contentType, content, onGenreSelection }) => {
 
 		setSelectedGenres(newSelectedGenres);
 
-		// Вызываем коллбэк onGenreSelection с актуальным массивом
 		onGenreSelection(newSelectedGenres);
 	};
 
+	console.log(content);
 	return (
 		<div className="slider slider_type_block">
 			<ul
 				className="slider__items-list slider__items-list_type_block"
 				ref={containerRef}
 			>
-				{content.map((genre) => (
-					<li key={genre.id}>
-						<GenreCheckbox
-							text={genre.title}
-							id={genre.id}
-							onChange={handleCheckboxChange}
-						/>
-					</li>
-				))}
+				{content
+					.map((genre) => (
+						<li key={genre.id}>
+							<GenreCheckbox
+								text={genre.title}
+								id={genre.id}
+								onChange={handleCheckboxChange}
+							/>
+						</li>
+					))
+					.reverse()}
 			</ul>
 			<div className="slider__controllers">
 				<SliderController

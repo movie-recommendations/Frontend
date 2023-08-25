@@ -87,7 +87,7 @@ const Header: FC = () => {
 						placeholder="Какой фильм вы хотите найти?"
 						onChange={handleChange}
 						onBlur={setSearchClose}
-						autoComplete='off'
+						autoComplete="off"
 					/>
 					<button className="header__search-button">
 						<img

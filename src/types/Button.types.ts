@@ -3,4 +3,5 @@ export interface IButton {
 	handleButtonClick?: any;
 	type: 'button' | 'submit' | 'reset';
 	disabled?: boolean;
+	className?: string;
 }

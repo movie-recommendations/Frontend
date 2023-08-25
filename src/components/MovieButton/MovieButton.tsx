@@ -6,7 +6,10 @@ import eye from '../../images/black_eye.svg';
 import eye_clicked from '../../images/eye_clicked.svg';
 import bookmark from '../../images/Bookmark.svg';
 import bookmark_clicked from '../../images/bookmark_clicked.svg';
-import { addFavorites, addToFavoritesApi } from 'src/services/redux/slices/favorites/favorites';
+import {
+	addFavorites,
+	addToFavoritesApi,
+} from 'src/services/redux/slices/favorites/favorites';
 import { addToWatchApi, addWatch } from 'src/services/redux/slices/watch/watch';
 
 const MovieButton: FC<IButton> = ({ buttonName, id }) => {
@@ -17,23 +20,23 @@ const MovieButton: FC<IButton> = ({ buttonName, id }) => {
 	const filmWatch = useAppSelector(
 		(state) => state.movies.movies.find((film) => film.id === id)?.is_need_see
 	);
-	
-	const film = useAppSelector(
-		(state) => state.movies.movies.find((item) => item.id === id)
+
+	const film = useAppSelector((state) =>
+		state.movies.movies.find((item) => item.id === id)
 	);
 
 	const handleClickFavorite = () => {
 		dispatch(addToFavoritesApi(id))
-		.unwrap()
-		.then(() => dispatch(addFavorites(film)))
-		.catch(() => console.log('mistake'))
+			.unwrap()
+			.then(() => dispatch(addFavorites(film)))
+			.catch(() => console.log('mistake'));
 	};
 
 	const handleClickWatch = () => {
 		dispatch(addToWatchApi(id))
-		.unwrap()
-		.then(() => dispatch(addWatch(film)))
-		.catch(() => console.log('mistake'))
+			.unwrap()
+			.then(() => dispatch(addWatch(film)))
+			.catch(() => console.log('mistake'));
 	};
 
 	const typesImg =
@@ -54,7 +57,9 @@ const MovieButton: FC<IButton> = ({ buttonName, id }) => {
 		<section
 			className={`moviepage-button__container ${addCss}`}
 			onClick={
-				buttonName === 'favorites' ? () => handleClickFavorite() : handleClickWatch
+				buttonName === 'favorites'
+					? () => handleClickFavorite()
+					: handleClickWatch
 			}
 		>
 			<div className="moviepage-button" />

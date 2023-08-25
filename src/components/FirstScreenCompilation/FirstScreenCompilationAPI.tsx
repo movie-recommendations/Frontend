@@ -23,16 +23,18 @@ export default function FirstScreenCompilation({
 	return (
 		<section className="first-screen-compilation">
 			<img className="movie__img" src={film.h_picture} alt={film.title} />
+			<div className="movie__overlay"></div>
 			<div className="movie">
 				<p className="movie__name">{film.title}</p>
 				<RatedElement
-					imdb={film.rate_imdb}
-					kinopoisk={film.rate_kinopoisk}
+					imdb={film.rating.rate_imdb}
+					kinopoisk={film.rating.rate_kinopoisk}
 					isSearch={false}
 				/>
 				<p className="movie__description">{film.short_description}</p>
 				<div className="button-wraper">
-					<div className="movie__more-detailed"
+					<div
+						className="movie__more-detailed"
 						onClick={() => handleImgClick(film.id)}
 					>
 						Подробнее

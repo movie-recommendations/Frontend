@@ -11,6 +11,7 @@
 }
 
 .account__login-text {
+	font-family: Unbounded;
 	font-weight: 700;
 	font-size: 20px;
 	line-height: 40px;
@@ -102,10 +103,24 @@
 	margin-bottom: 10px;
 }
 
-.account__content-link:last-child {
-	margin-top: 25px;
+.account__content-link:hover {
+	opacity: 0.6;
 }
 
-.account__content-link:hover {
+.account__content-button {
+	border: none;
+	background-color: inherit;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 25px;
+	color: #fff;
+	width: max-content;
+	padding: 0;
+	margin: 25px 0 0;
+	cursor: pointer;
+}
+
+.account__content-button:hover {
 	opacity: 0.6;
 }

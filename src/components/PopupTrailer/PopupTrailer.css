@@ -18,16 +18,21 @@
 	visibility: visible;
 }
 
+.popupTrailer__content {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
 .popupTrailer__close {
 	position: absolute;
 	width: 25px;
 	height: 25px;
-	top: 165px;
-	left: 1190px;
+	top: -50px;
+	right: -50px;
 	background-image: url(../../images/cross.svg);
 	background-color: transparent;
 	background-size: cover;
-	align-self: flex-start;
 	padding: 0;
 	margin: 0;
 	border: none;

@@ -1,6 +1,6 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import ReactDOM from 'react-dom/client';
-import { Routes, Route, HashRouter } from 'react-router-dom';
+import { Routes, Route, HashRouter, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './services/redux/store';
@@ -22,44 +22,128 @@ import SignInPage from './pages/auth/SignInPage';
 import SignUpPage from './pages/auth/SignUpPage';
 import { SearchResultPage } from './pages/SearchResultsPage/SearchResultPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
-import { WindowResize } from './components/WindowResize/WindowResize';
-import { useAppDispatch } from './services/typeHooks';
+import ProtectedRoute from './components/ProtectedRoute';
+import { selectUser } from './services/redux/slices/user/user';
+import { Loader } from './components/Loader/Loader';
+import { useAppDispatch, useAppSelector } from './services/typeHooks';
 import { getGenres } from './services/redux/slices/genres/genres';
-import  AllGenresPage  from './pages/AllGenresPage/AllGenresPage';
-import  OneGenrePage  from './pages/OneGenrePage/OneGenrePage';
+import AllGenresPage from './pages/AllGenresPage/AllGenresPage';
+import OneGenrePage from './pages/OneGenrePage/OneGenrePage';
 
 const Root: FC = () => {
-	const dispatch = useAppDispatch();
-
-	useEffect(() => {
-		dispatch(getGenres());
-	}, []);
+	const user = useAppSelector(selectUser);
 
 	return (
 		<div className="page">
 			<Routes>
 				<Route path="/" element={<Layout />}>
 					<Route index element={<MainPage />} />
-					<Route path="/sign-up" element={<SignUpPage />} />
-					<Route path="/sign-in" element={<SignInPage />} />
-					<Route path="/recover-password" element={<RecoverPasswordPage />} />
-					<Route path="/reset-password" element={<ResetPasswordPage />} />
-					<Route path="/confirm-email" element={<ConfirmEmailPage />} />
-					<Route path="/profile" element={<ProfilePage />} />
+					<Route
+						path="/sign-up"
+						element={
+							user.token ? (
+								<>
+									<Loader />
+									<Navigate to="/" />
+								</>
+							) : (
+								<SignUpPage />
+							)
+						}
+					/>
+					<Route
+						path="/sign-in"
+						element={
+							user.token ? (
+								<>
+									<Loader />
+									<Navigate to="/" />
+								</>
+							) : (
+								<SignInPage />
+							)
+						}
+					/>
+					<Route
+						path="/recover-password"
+						element={
+							user.token ? (
+								<>
+									<Loader />
+									<Navigate to="/" />
+								</>
+							) : (
+								<RecoverPasswordPage />
+							)
+						}
+					/>
+					<Route
+						path="/password-recovery/:code"
+						element={
+							user.token ? (
+								<>
+									<Loader />
+									<Navigate to="/" />
+								</>
+							) : (
+								<ResetPasswordPage />
+							)
+						}
+					/>
+					<Route
+						path="/confirm-email"
+						element={
+							user.token ? (
+								<>
+									<Loader />
+									<Navigate to="/" />
+								</>
+							) : (
+								<ConfirmEmailPage />
+							)
+						}
+					/>
+					<Route
+						path="/profile"
+						element={
+							<ProtectedRoute>
+								<ProfilePage />
+							</ProtectedRoute>
+						}
+					/>
 					<Route
 						path="/rated-films"
-						element={<FlanksPage formName={FlanksTypes.ratedFilms} />}
+						element={
+							<ProtectedRoute>
+								<FlanksPage formName={FlanksTypes.ratedFilms} />
+							</ProtectedRoute>
+						}
 					/>
-					<Route path="/preferences" element={<PreferencesPage />} />
+					<Route
+						path="/preferences"
+						element={
+							<ProtectedRoute>
+								<PreferencesPage />
+							</ProtectedRoute>
+						}
+					/>
 					<Route path="/allgenres" element={<AllGenresPage />} />
 					<Route path="/onegenre" element={<OneGenrePage />} />
 					<Route
 						path="/will-see"
-						element={<FlanksPage formName={FlanksTypes.willSee} />}
+						element={
+							<ProtectedRoute>
+								<FlanksPage formName={FlanksTypes.willSee} />
+							</ProtectedRoute>
+						}
 					/>
 					<Route
 						path="/favorites"
-						element={<FlanksPage formName={FlanksTypes.favorites} />}
+						element={
+							<ProtectedRoute>
+								<FlanksPage formName={FlanksTypes.favorites} />
+							</ProtectedRoute>
+						}
 					/>
 					<Route
 						path="/collections"
@@ -70,7 +154,6 @@ const Root: FC = () => {
 					<Route path="*" element={<ErrorPage />} />
 				</Route>
 			</Routes>
-			<WindowResize />
 		</div>
 	);
 };

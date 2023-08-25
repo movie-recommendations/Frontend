@@ -1,7 +1,6 @@
 import { IMovieCard } from 'src/types/MovieCard.types';
 import { API_BASE_URL } from 'src/utils/constants';
 
-
 const checkRes = (res: Response) => {
 	if (res.ok) {
 		return res.json();

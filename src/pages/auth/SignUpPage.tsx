@@ -100,9 +100,9 @@ const SignUpPage = () => {
 			.unwrap()
 			.then(() => {
 				// console.log(' dispatch(signUpUser(userData)) res', res);
-				dispatch(
-					setUser({ email: userData.email, fav_genres: userData.fav_genres })
-				);
+				// dispatch(
+				// 	setUser({ email: userData.email, fav_genres: userData.fav_genres })
+				// );
 				setStep(step + 1);
 			})
 			.catch((err) => {

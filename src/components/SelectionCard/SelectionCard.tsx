@@ -1,17 +1,21 @@
 import './SelectionCard.css';
-import { ISelect } from 'src/types/Film.types';
+import { ICompilationsTwo } from 'src/types/Compilations.types';
 
-export const SelectionCard = ({ selected }: { selected: ISelect[] }) => {
+export const SelectionCard = ({
+	compilations,
+}: {
+	compilations: ICompilationsTwo[];
+}) => {
 	return (
 		<section className="selections">
-			{selected.map((item) => (
+			{compilations.map((item) => (
 				<div key={item.id} className="selections_cards">
 					<div className="selections_card">
-						{item.movie.slice(0, 3).map((film) => (
+						{item.movies.slice(0, 3).map((film) => (
 							<img
 								className="selections_img"
 								key={film.id}
-								src={film.imageUrl}
+								src={film.v_picture}
 								alt={film.title}
 							/>
 						))}

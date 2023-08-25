@@ -40,7 +40,7 @@ export const SlickSliderDayMovies = ({}) => {
 		<div className="main-page_slick-slider">
 			<Slider {...settings} className="slick-slider-main">
 				{data.map((item) => (
-					<FirstScreenCompilationAPI film={item} />
+					<FirstScreenCompilationAPI key={item.id} film={item} />
 				))}
 			</Slider>
 		</div>

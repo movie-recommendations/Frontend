@@ -60,3 +60,5 @@ export const genresReducer = genresSlice.reducer;
 
 export const selectGenres = (state: { genres: IGenresState }) =>
 	state.genres.genres;
+
+	

@@ -8,10 +8,11 @@ const Button: FC<IButton> = ({
 	handleButtonClick,
 	type,
 	disabled,
+	className,
 }) => {
 	return (
 		<button
-			className="button"
+			className={className ? className : 'button'}
 			disabled={disabled}
 			type={type}
 			onClick={handleButtonClick}

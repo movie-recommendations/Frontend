@@ -2,16 +2,15 @@ import { useEffect, useState } from 'react';
 import './MainPage.css';
 import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
 import { SlickSlider } from 'src/components/SlickSlider/SlickSlider';
-import { SlickSliderTypes } from 'src/types/Rating.types';
 import { SpecialForYou } from 'src/components/SpecialForYou/SpecialForYou';
 import { SlickSliderDayMovies } from 'src/components/SlickSliderDayMovies/SlickSliderDayMovies';
-import { SlickSliderGenresAPI } from 'src/components/SlickSliderGenres/SlickSliderGenresAPI';
+import { SlickSliderGenres } from 'src/components/SlickSliderGenres/SlickSliderGenres';
 import { getNewMovieCardsApi } from 'src/services/redux/slices/newmoviecards/newmoviecards';
 import { getMoviesApi } from 'src/services/redux/slices/movies/movies';
 import { getCompilationsApi } from 'src/services/redux/slices/compilations/compilations';
-import { getFavoritesApi } from 'src/services/redux/slices/favorites/favorites';
 import { Loader } from 'src/components/Loader/Loader';
 import { SlickSliderMini } from 'src/components/SlickSliderMini/SlickSliderMini';
+import { getGenres } from 'src/services/redux/slices/genres/genres';
 
 export default function MainPage() {
 	const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -24,7 +23,7 @@ export default function MainPage() {
 			dispatch(getNewMovieCardsApi()),
 			dispatch(getMoviesApi()),
 			dispatch(getCompilationsApi()),
-			dispatch(getFavoritesApi())
+			dispatch(getGenres()),
 		])
 			.then(() => {
 				setIsLoading(false);
@@ -37,10 +36,9 @@ export default function MainPage() {
 
 	const films = useAppSelector((state) => state.movies.movies);
 	const compilations = useAppSelector((state) => state.compilations.data);
-	const redactionOne = useAppSelector((state) => state.compilations.data[0])
-	const redactionTwo = useAppSelector((state) => state.compilations.data[1])
-	const redactionThree = useAppSelector((state) => state.compilations.data[2])
-
+	const redactionOne = useAppSelector((state) => state.compilations.data[0]);
+	const redactionTwo = useAppSelector((state) => state.compilations.data[1]);
+	const redactionThree = useAppSelector((state) => state.compilations.data[2]);
 	return (
 		<>
 			{isLoading ? (
@@ -62,21 +60,30 @@ export default function MainPage() {
 					</div>
 					<div className="main-page_slick-slider">
 						{redactionOne && (
-							<SlickSlider title={redactionOne.title} movies={redactionOne.movies} />
+							<SlickSlider
+								title={redactionOne.title}
+								movies={redactionOne.movies}
+							/>
 						)}
 					</div>
 					<div className="main-page_slick-slider">
 						{redactionTwo && (
-							<SlickSlider title={redactionTwo.title} movies={redactionTwo.movies} />
+							<SlickSlider
+								title={redactionTwo.title}
+								movies={redactionTwo.movies}
+							/>
 						)}
 					</div>
 					<div className="main-page_slick-slider">
 						{redactionThree && (
-							<SlickSlider title={redactionThree.title} movies={redactionThree.movies} />
+							<SlickSlider
+								title={redactionThree.title}
+								movies={redactionThree.movies}
+							/>
 						)}
 					</div>
 					<div className="main-page_slick-slider">
-						<SlickSliderGenresAPI />
+						<SlickSliderGenres />
 					</div>
 				</main>
 			)}

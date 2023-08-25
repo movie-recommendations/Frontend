@@ -1,13 +1,10 @@
 import { FC } from 'react';
-import { onegenre
-} from 'src/services/redux/slices/movieByGenre/moviesByGenre';
+import { onegenre } from 'src/services/redux/slices/movieByGenre/moviesByGenre';
 
 import './BackButton.css';
 import { IButton } from 'src/types/Button.types';
 import left from '../../images/left.svg';
-import { useNavigate} from 'react-router-dom';
-
-
+import { useNavigate } from 'react-router-dom';
 
 const BackButton: FC<IButton> = ({
 	buttonText,
@@ -15,15 +12,11 @@ const BackButton: FC<IButton> = ({
 	type,
 	disabled,
 }) => {
-    const navigate = useNavigate();
-    const handButtonBackClick = () => {
-		
+	const navigate = useNavigate();
+	const handButtonBackClick = () => {
 		navigate('/onegenre');
-		
-
 	};
-    
-    
+
 	return (
 		<button
 			className="backbutton"
@@ -31,8 +24,8 @@ const BackButton: FC<IButton> = ({
 			type={type}
 			onClick={handleButtonClick}
 		>
-			<img className='arrow' src={left} alt="Стрелка назад"/>
-            {buttonText}
+			<img className="arrow" src={left} alt="Стрелка назад" />
+			{buttonText}
 		</button>
 	);
 };

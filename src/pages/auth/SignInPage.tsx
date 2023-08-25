@@ -7,7 +7,11 @@ import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch } from 'src/services/typeHooks';
 import { ISignInData, ISignInFields } from 'src/types/Auth.types';
-import { setUser, signInUser } from 'src/services/redux/slices/user/user';
+import {
+	getUserInfo,
+	setUser,
+	signInUser,
+} from 'src/services/redux/slices/user/user';
 import {
 	EMAIL_VALIDATION_CONFIG,
 	PASSWORD_VALIDATION_CONFIG,
@@ -27,20 +31,25 @@ const SignInPage = () => {
 	} = useForm<ISignInFields>({ mode: 'onChange' });
 
 	const onSubmit: SubmitHandler<ISignInFields> = (data) => {
-		console.log('data onSubmit:', data.email, data.password);
+		console.log('data signInUser onSubmit:', data.email, data.password);
 
 		const formValues = getValues();
 		console.log(formValues);
-		dispatch(signInUser(getValues() as ISignInData))
+		dispatch(signInUser(formValues as ISignInData))
 			.unwrap()
-			.then((res) => console.log('dispatch success', res))
-			.then(() => {
-				setUser(formValues.email);
+			.then((res) => {
+				console.log('dispatch signInUser success', res);
+				console.log('formValues.email', formValues.email);
+				dispatch(setUser({ email: formValues.email, token: res }));
+
 				navigate('/');
 				reset();
+				return res;
 			})
+			.then((res) => dispatch(getUserInfo(res)))
+			// dispatch(getUserInfo(user.token)))
 			.catch((err) => {
-				if (err.status === 404) {
+				if (err.status === 404 || err.status === 400) {
 					setAuthError(true);
 				}
 				console.log('dispatch signInUser err:', err);
@@ -65,8 +74,11 @@ const SignInPage = () => {
 					<Input
 						inputType={InputTypes.email}
 						labelText="Электронная почта"
-						validation={{ ...register('email', EMAIL_VALIDATION_CONFIG) }}
+						validation={{
+							...register('email', EMAIL_VALIDATION_CONFIG),
+						}}
 						error={errors?.email?.message}
+						// maxLength={VALIDATION_SETTINGS.email.maxLength}
 					/>
 					<Input
 						inputType={InputTypes.password}

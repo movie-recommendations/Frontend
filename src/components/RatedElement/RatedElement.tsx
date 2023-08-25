@@ -13,7 +13,7 @@ export const RatedElement = ({
 	isSearch: boolean;
 }) => {
 	return (
-		<section className={`rated ${isSearch && 'rated_search'}`}>
+		<div className={`rated ${isSearch && 'rated_search'}`}>
 			<div className="rated_row">
 				<img
 					className="rated_img"
@@ -26,6 +26,6 @@ export const RatedElement = ({
 				<img className="rated_img" src={img_imdb} alt="rated_imdb" />
 				<div>{imdb}</div>
 			</div>
-		</section>
+		</div>
 	);
 };

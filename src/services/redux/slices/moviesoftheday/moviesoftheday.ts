@@ -18,8 +18,10 @@ const initialState: IMoviesOfDayState = {
 			title: '',
 			short_description: '',
 			h_picture: '',
-			rate_imdb: 0,
-			rate_kinopoisk: 0,
+			rating: {
+				rate_imdb: 0,
+				rate_kinopoisk: 0,
+			},
 			is_favorite: false,
 		},
 	],

@@ -9,14 +9,15 @@ export interface ICompilations {
 	rating: IRating;
 	year: number;
 	genres: string[];
-    is_favorite?: boolean;
+	is_favorite?: boolean;
 	is_need_see?: boolean;
 }
 
 export interface ICompilationsTwo {
-	id?: number,
-    title: string;
-    movies: IMovieCard[]
+	id?: number;
+	title: string;
+	description?: string;
+	movies: IMovieCard[];
 }
 
 export interface ICompilationsState {

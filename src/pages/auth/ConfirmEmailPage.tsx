@@ -10,7 +10,9 @@ const ConfirmEmailPage = () => {
 		<main className="auth" id="confirm-email-page">
 			<div className="auth__container">
 				<h1 className="auth__title">Создать учетную запись</h1>
-				<p className="auth__hint">Ваша почта успешно подтверждена</p>
+				<p className="auth__hint" style={{ paddingBottom: 30 }}>
+					Ваша почта успешно подтверждена
+				</p>
 
 				<Button
 					buttonText={'Войти'}

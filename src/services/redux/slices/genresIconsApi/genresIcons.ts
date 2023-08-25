@@ -35,3 +35,11 @@ export const genresiconscardsSlice = createSlice({
 });
 
 export const genresiconscardsReducer = genresiconscardsSlice.reducer;
+
+export const genreTitle = createAsyncThunk(
+	'@@genre/title',
+	async (title) => {
+		return title;
+	}
+);
+

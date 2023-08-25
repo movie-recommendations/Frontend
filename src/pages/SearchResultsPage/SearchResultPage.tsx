@@ -1,4 +1,5 @@
 import './SearchResultPage.css';
+import React, { useCallback } from 'react';
 import { useAppSelector } from 'src/services/typeHooks';
 import { SeachResult } from 'src/components/SeachResult/SeachResult';
 import { MoreButton } from 'src/components/MoreBtn/MoreButton';
@@ -6,20 +7,46 @@ import { useState, useEffect } from 'react';
 
 export const SearchResultPage = () => {
 	const films = useAppSelector((state) => state.films.films);
-	const page = useAppSelector((state) => state.windowResize.page);
 	const [isMoreButton, setIsMoreButton] = useState(false);
-	const [pageMore, setPageMore] = useState(page);
+	const [screenSize, setScreenSize] = useState<number>(0);
+	const [pageMore, setPageMore] = useState(screenSize);
+
+	const handleResize = useCallback(() => {
+		const windowWidth = window.innerWidth;
+		setScreenSize(windowWidth);
+	}, []);
 
 	useEffect(() => {
-		if (films.length > page) {
+		window.addEventListener('resize', handleResize);
+		handleResize();
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
+
+	useEffect(() => {
+		if (screenSize >= 1280) {
+			const page = 12;
+			setPageMore(page);
+		} else if (screenSize <= 1280 && screenSize > 800) {
+			const page = 9;
+			setPageMore(page);
+		} else if (screenSize < 800) {
+			const page = 8;
+			setPageMore(page);
+		}
+	}, [screenSize]);
+
+	useEffect(() => {
+		if (films.length > pageMore) {
 			setIsMoreButton(true);
 		} else {
 			setIsMoreButton(false);
 		}
-	}, [films, page]);
+	}, [films, pageMore]);
 
 	const handleMoreButtonClick = () => {
-		setPageMore((prev) => prev + page);
+		setPageMore((prev) => prev + pageMore);
 	};
 
 	return (

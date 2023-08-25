@@ -1,5 +1,5 @@
 import './SlickSliderGenres.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -7,16 +7,34 @@ import { FilmCard } from '../FilmCardWidth255/FilmCard';
 import { IFilms } from 'src/types/Film.types';
 import { FC } from 'react';
 import { ISlider } from 'src/types/Rating.types';
+import CheckboxMainAPI from '../CheckboxMain/CheckboxMainAPI';
 import CheckboxMain from '../CheckboxMain/CheckboxMain';
 import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
 import { MoreButton } from '../MoreBtn/MoreButton';
+import { IGenresIcons } from 'src/types/GenresIcons.types';
+import { getGenresIconsAPI } from 'src/services/redux/slices/genresIconsApi/genresIcons';
+import { FilmCardSmall } from '../FilmCardWidth180/FilmCardSmall';
 
-export const SlickSliderGenres = ({ content }: { content: string[] }) => {
-	const films = useAppSelector((state) => state.newmoviecards.movies);
-	const page = useAppSelector((state) => state.windowResize.page);
+export const SlickSliderGenres = ({}) => {
+	const films = useAppSelector((state) => state.movies.movies);
 	const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
-	const [pageMore, setPageMore] = useState(page);
 	const [isMoreButton, setIsMoreButton] = useState(false);
+	const [screenSize, setScreenSize] = useState<number>(0);
+	const [pageMore, setPageMore] = useState(screenSize);
+
+	const dispatch = useAppDispatch();
+	const genresicons = useAppSelector(
+		(state) => state.genresiconscards.genresicons
+	);
+	const [data, setData] = useState<IGenresIcons[]>(genresicons);
+
+	useEffect(() => {
+		dispatch(getGenresIconsAPI());
+	}, []);
+
+	useEffect(() => {
+		setData(genresicons);
+	}, []);
 
 	const settings = {
 		dots: false,
@@ -42,16 +60,42 @@ export const SlickSliderGenres = ({ content }: { content: string[] }) => {
 			  })
 			: films;
 
+	const handleResize = useCallback(() => {
+		const windowWidth = window.innerWidth;
+		setScreenSize(windowWidth);
+	}, []);
+
 	useEffect(() => {
-		if (filteredFilms.length > page) {
+		window.addEventListener('resize', handleResize);
+		handleResize();
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
+
+	useEffect(() => {
+		if (screenSize >= 1280) {
+			const page = 10;
+			setPageMore(page);
+		} else if (screenSize <= 1280 && screenSize > 800) {
+			const page = 10;
+			setPageMore(page);
+		} else if (screenSize < 800) {
+			const page = 5;
+			setPageMore(page);
+		}
+	}, [screenSize]);
+
+	useEffect(() => {
+		if (filteredFilms.length > pageMore) {
 			setIsMoreButton(true);
 		} else {
 			setIsMoreButton(false);
 		}
-	}, [filteredFilms, page]);
+	}, [filteredFilms, pageMore]);
 
 	const handleMoreButtonClick = () => {
-		setPageMore((prev) => prev + page);
+		setPageMore((prev) => prev + pageMore);
 	};
 
 	return (
@@ -59,16 +103,20 @@ export const SlickSliderGenres = ({ content }: { content: string[] }) => {
 			<div className="slick-slider-genres_container">
 				<h1 className="slick-slider_title">Фильмы по жанрам</h1>
 				<Slider {...settings} className="slick-slider">
-					{content.map((item) => (
-						<li key={content.indexOf(item)} className="main-page_color-white">
-							<CheckboxMain text={item} onChange={handleCheckboxChange} />
+					{data.map((item) => (
+						<li key={data.indexOf(item)} className="main-page_color-white">
+							<CheckboxMainAPI
+								genreapi={item}
+								checked={false}
+								onChange={handleCheckboxChange}
+							/>
 						</li>
 					))}
 				</Slider>
 			</div>
 			<div className="flank_container">
 				{filteredFilms.slice(0, pageMore).map((film) => (
-					<FilmCard key={film.id} film={film} />
+					<FilmCardSmall key={film.id} film={film} />
 				))}
 			</div>
 			<div className="flank_btn">

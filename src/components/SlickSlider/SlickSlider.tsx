@@ -7,7 +7,6 @@ import { FC } from 'react';
 import { ICompilationsTwo } from 'src/types/Compilations.types';
 
 export const SlickSlider: FC<ICompilationsTwo> = ({ title, movies }) => {
-
 	const settings = {
 		dots: false,
 		infinite: true,
@@ -15,13 +14,15 @@ export const SlickSlider: FC<ICompilationsTwo> = ({ title, movies }) => {
 		slidesToShow: 4,
 		slidesToScroll: 4,
 		arrows: true,
-	}
+	};
 
 	return (
 		<div className="slick-slider_container">
 			<h1 className="slick-slider_title">{title}</h1>
 			<Slider {...settings} className="slick-slider">
-				{movies.map((item) => <FilmCard film={item} />)}
+				{movies.map((item) => (
+					<FilmCard key={item.id} film={item} />
+				))}
 			</Slider>
 		</div>
 	);

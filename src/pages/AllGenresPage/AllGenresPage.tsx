@@ -20,12 +20,9 @@ const AllGenresPage = () => {
 	}, []);
 
 	const handleGenreClick = (itemslug: string, itemtitle: string) => {
-		
 		dispatch(getMoviesByGenreApi({ genres: itemslug }));
 		localStorage.setItem('genre', itemtitle);
 		navigate('/onegenre');
-		
-
 	};
 
 	return (
