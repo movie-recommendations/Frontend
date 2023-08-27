@@ -1,5 +1,6 @@
 import { API_BASE_URL } from 'src/utils/constants';
 import {
+	IEditProfileData,
 	IResetPasswordData,
 	ISignInData,
 	ISignUpData,
@@ -8,6 +9,8 @@ import {
 const API_AUTH_URL = `${API_BASE_URL}/auth`;
 
 const API_USERS_ME_URL = `${API_BASE_URL}/users-me/`;
+
+const API_USERS_URL = `${API_BASE_URL}/users`;
 
 const checkRes = (res: Response) => {
 	if (res.ok) {
@@ -20,7 +23,13 @@ const checkRes = (res: Response) => {
 export const fetchData = (
 	url: string,
 	method: string,
-	data?: ISignInData | ISignUpData | { email: string } | IResetPasswordData,
+	data?:
+		| ISignInData
+		| ISignUpData
+		| { email: string }
+		| IResetPasswordData
+		| { fav_genres: number[] }
+		| IEditProfileData,
 	token?: string
 ) => {
 	return fetch(url, {
@@ -60,9 +69,11 @@ export const fetchPasswordRecovery = (data: string): Promise<Response> => {
 export const fetchResetPassword = (
 	data: IResetPasswordData
 ): Promise<Response> => {
-	return fetchData(`${API_AUTH_URL}/reset-password/`, 'PUT', data).then((res) =>
-		checkRes(res)
-	);
+	return fetchData(
+		`http://kinotochka.acceleratorpracticum.ru/reset-password/`,
+		'PUT',
+		data
+	).then((res) => checkRes(res));
 };
 
 export const fetchGetUserInfo = (token: string): Promise<Response> => {
@@ -72,12 +83,24 @@ export const fetchGetUserInfo = (token: string): Promise<Response> => {
 };
 
 export const fetchEditUserInfo = (
-	data: any,
+	data: IEditProfileData,
 	token: string
 ): Promise<Response> => {
 	return fetchData(API_USERS_ME_URL, 'PUT', data, token).then((res) =>
 		checkRes(res)
 	);
+};
+
+export const fetchEditFavGenres = (
+	data: { fav_genres: number[] },
+	token: string
+): Promise<Response> => {
+	return fetchData(
+		`${API_USERS_URL}/favorite-genres/`,
+		'PUT',
+		data,
+		token
+	).then((res) => checkRes(res));
 };
 
 export const fetchDeleteUser = (token: string): Promise<Response> => {

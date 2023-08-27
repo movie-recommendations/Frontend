@@ -57,5 +57,9 @@
 .genre-checkbox__input_color_yellow[type='checkbox']:hover:checked
 	+ .genre-checkbox__appearance {
 	background-color: #ffcc33;
-	cursor: auto;
+	cursor: default;
+}
+
+.genre-checkbox__input_disabled[type='checkbox']:hover {
+	cursor: default;
 }

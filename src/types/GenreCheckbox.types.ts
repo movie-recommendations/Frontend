@@ -5,4 +5,5 @@ export interface IGenreCheckbox {
 	readOnly?: boolean;
 	color?: 'black' | 'white' | 'yellow';
 	onChange?: (id: number, newChecked: boolean) => void;
+	defaultChecked?: boolean;
 }

@@ -3,7 +3,7 @@ import './Auth.css';
 import Input from 'src/components/Input/Input';
 import { InputTypes } from 'src/types/Input.types';
 import Button from 'src/components/Button/Button';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch } from 'src/services/typeHooks';
 import { ISignInData, ISignInFields } from 'src/types/Auth.types';
@@ -30,16 +30,12 @@ const SignInPage = () => {
 		getValues,
 	} = useForm<ISignInFields>({ mode: 'onChange' });
 
-	const onSubmit: SubmitHandler<ISignInFields> = (data) => {
-		console.log('data signInUser onSubmit:', data.email, data.password);
-
+	const onSubmit: SubmitHandler<ISignInFields> = () => {
 		const formValues = getValues();
-		console.log(formValues);
+
 		dispatch(signInUser(formValues as ISignInData))
 			.unwrap()
 			.then((res) => {
-				console.log('dispatch signInUser success', res);
-				console.log('formValues.email', formValues.email);
 				dispatch(setUser({ email: formValues.email, token: res }));
 
 				navigate('/');
@@ -47,7 +43,6 @@ const SignInPage = () => {
 				return res;
 			})
 			.then((res) => dispatch(getUserInfo(res)))
-			// dispatch(getUserInfo(user.token)))
 			.catch((err) => {
 				if (err.status === 404 || err.status === 400) {
 					setAuthError(true);
@@ -55,6 +50,11 @@ const SignInPage = () => {
 				console.log('dispatch signInUser err:', err);
 			});
 	};
+
+	useEffect(() => {
+		reset();
+		setAuthError(false);
+	}, []);
 
 	return (
 		<main className="auth" id="sign-in-page">

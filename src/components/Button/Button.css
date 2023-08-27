@@ -1,9 +1,11 @@
 .button {
 	width: 100%;
+	max-width: 540px;
 	font-size: 20px;
 	line-height: 26px;
 	font-weight: 700;
 	padding: 15px 0;
+	align-self: center;
 	background-color: #fc3;
 	color: #2b2f33;
 	outline: none;

@@ -29,6 +29,7 @@
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	text-align: left;
 }
 
 .moviepage_card-subtitle {
@@ -40,4 +41,5 @@
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	text-align: left;
 }

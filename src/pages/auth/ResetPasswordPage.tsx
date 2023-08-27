@@ -16,13 +16,14 @@ import {
 	resetPassword,
 	selectUser,
 	setUser,
-	signOut,
 } from 'src/services/redux/slices/user/user';
 
 const ResetPasswordPage = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
+	const user = useAppSelector(selectUser);
 	const [step, setStep] = useState(1);
+	const [authError, setAuthError] = useState(false);
 
 	const {
 		register,
@@ -53,37 +54,59 @@ const ResetPasswordPage = () => {
 			data.repeatPassword
 		);
 
-		const token = getTokenFromURL();
+		const tokenFromURL = getTokenFromURL();
+		const newPassword = getValues('password');
 
-		if (token) {
+		if (tokenFromURL) {
 			try {
-				const newPassword = getValues('password');
 				dispatch(
 					resetPassword({
-						token: token,
+						token: tokenFromURL,
 						new_password: newPassword,
 					})
 				)
 					.unwrap()
 					.then(() => {
 						const decodedToken: { exp: number; email: string } =
-							jwtDecode(token);
-						console.log('decodedToken', decodedToken);
+							jwtDecode(tokenFromURL);
 						setStep(step + 1);
 						reset();
-						dispatch(setUser({ email: decodedToken.email, token: token }));
+						dispatch(
+							setUser({ email: decodedToken.email, token: tokenFromURL })
+						);
 					})
 					.catch((err) => {
-						console.log('dispatch resetPassword err:', err);
+						console.log('dispatch resetPassword with tokenFromURL err:', err);
+						setAuthError(true);
 					});
-			} catch (error: any) {
-				console.error('Ошибка расшифровки токена:', error.message);
+			} catch (error: unknown) {
+				console.error('Ошибка расшифровки токена:', error);
 			}
+		}
+		if (user.token) {
+			dispatch(
+				resetPassword({
+					token: user.token,
+					new_password: newPassword,
+				})
+			)
+				.then(() => {
+					setStep(step + 1);
+					reset();
+				})
+				.catch((err) => {
+					console.log('dispatch resetPassword wirh user.token err:', err);
+					setAuthError(true);
+				});
+		} else {
+			setAuthError(true);
 		}
 	};
 
 	useEffect(() => {
 		setStep(1);
+		reset();
+		setAuthError(false);
 	}, []);
 
 	return (
@@ -115,6 +138,11 @@ const ResetPasswordPage = () => {
 								}}
 								error={errors?.repeatPassword?.message}
 							/>
+							{authError ? (
+								<p className="auth__form-error auth__form-error_type_login">
+									Ссылка не действительна.
+								</p>
+							) : null}
 							<Button
 								buttonText={'Продолжить'}
 								type="submit"

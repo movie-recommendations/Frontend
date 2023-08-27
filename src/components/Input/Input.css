@@ -44,15 +44,6 @@
 	outline: none;
 }
 
-.input__field_invalid {
-	color: #ea4335;
-	border: 0.5px solid #ea4335;
-}
-
-.input__field_invalid:focus {
-	border: 0.5px solid #ea4335;
-}
-
 .input__field_color_black {
 	background-color: #0c0c0c;
 	color: #9ca3af;
@@ -60,13 +51,23 @@
 }
 
 .input__field_color_black:focus {
+	color: #fff;
 	outline: none;
 	border: 0.5px solid #9ca3af;
 }
 
 .input__field_color_black:invalid {
-	color: #9ca3af;
-	border: 0.5px solid #9ca3af;
+	color: #ea4335;
+	border: 0.5px solid #ea4335;
+}
+
+.input__field_invalid {
+	color: #ea4335;
+	border: 0.5px solid #ea4335;
+}
+
+.input__field_invalid:focus {
+	border: 0.5px solid #ea4335;
 }
 
 .input__span {
@@ -92,4 +93,8 @@
 
 .input__button:hover {
 	opacity: 0.6;
+}
+
+.input__field_type_date {
+	text-transform: uppercase;
 }

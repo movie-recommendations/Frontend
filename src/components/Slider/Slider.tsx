@@ -58,7 +58,6 @@ const Slider: FC<ISlider> = ({ contentType, content, onGenreSelection }) => {
 		onGenreSelection(newSelectedGenres);
 	};
 
-	console.log(content);
 	return (
 		<div className="slider slider_type_block">
 			<ul

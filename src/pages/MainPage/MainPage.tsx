@@ -11,10 +11,12 @@ import { getCompilationsApi } from 'src/services/redux/slices/compilations/compi
 import { Loader } from 'src/components/Loader/Loader';
 import { SlickSliderMini } from 'src/components/SlickSliderMini/SlickSliderMini';
 import { getGenres } from 'src/services/redux/slices/genres/genres';
+import { selectUser } from 'src/services/redux/slices/user/user';
+import { getFavoritesApi, getWatchListApi } from 'src/services/redux/slices/favorites/favorites';
 
 export default function MainPage() {
-	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	const [isLoading, setIsLoading] = useState(true);
+	const user = useAppSelector(selectUser);
 
 	const dispatch = useAppDispatch();
 
@@ -34,8 +36,17 @@ export default function MainPage() {
 			});
 	}, []);
 
+	useEffect(() => {
+		if (user.token) {
+			dispatch(getFavoritesApi(user.token));
+			dispatch(getWatchListApi(user.token));
+		}
+	}, []);
+
 	const films = useAppSelector((state) => state.movies.movies);
-	const compilations = useAppSelector((state) => state.compilations.data);
+	const newmovies = useAppSelector((state) => state.newmoviecards.movies);
+
+	// const compilations = useAppSelector((state) => state.compilations.data);
 	const redactionOne = useAppSelector((state) => state.compilations.data[0]);
 	const redactionTwo = useAppSelector((state) => state.compilations.data[1]);
 	const redactionThree = useAppSelector((state) => state.compilations.data[2]);
@@ -47,11 +58,11 @@ export default function MainPage() {
 				<main className="main-page" id="main-page">
 					<SlickSliderDayMovies />
 					<div className="main-page_slick-slider">
-						<SlickSliderMini title={`Новинки`} movies={films} />
+						<SlickSliderMini title={`Новинки`} movies={newmovies} />
 					</div>
 					<div className="main-page_slick-slider">
 						<div className="main-page_slick-slider_specialforyou">
-							{isLoggedIn === true ? (
+							{user.token ? (
 								<SlickSliderMini title={`Специально для вас`} movies={films} />
 							) : (
 								<SpecialForYou />

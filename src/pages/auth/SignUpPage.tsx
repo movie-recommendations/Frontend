@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import './Auth.css';
@@ -14,11 +14,7 @@ import {
 	PASSWORD_VALIDATION_CONFIG,
 	VALIDATION_SETTINGS,
 } from 'src/utils/constants';
-import {
-	checkEmail,
-	setUser,
-	signUpUser,
-} from 'src/services/redux/slices/user/user';
+import { checkEmail, signUpUser } from 'src/services/redux/slices/user/user';
 import { selectGenres } from 'src/services/redux/slices/genres/genres';
 
 const SignUpPage = () => {
@@ -31,6 +27,7 @@ const SignUpPage = () => {
 		password: '',
 		fav_genres: [],
 	});
+	const [authError, setAuthError] = useState(false);
 
 	const {
 		register,
@@ -82,7 +79,6 @@ const SignUpPage = () => {
 		dispatch(checkEmail(userEmail))
 			.unwrap()
 			.then(() => {
-				// console.log(' dispatch(checkEmail(userEmail)) res', res);
 				setUserData({
 					email: userEmail,
 					password: userPassword,
@@ -92,6 +88,7 @@ const SignUpPage = () => {
 			})
 			.catch((err) => {
 				console.log(' dispatch(checkEmail(userEmail)) res', err);
+				setAuthError(true);
 			});
 	};
 
@@ -99,10 +96,6 @@ const SignUpPage = () => {
 		dispatch(signUpUser(userData))
 			.unwrap()
 			.then(() => {
-				// console.log(' dispatch(signUpUser(userData)) res', res);
-				// dispatch(
-				// 	setUser({ email: userData.email, fav_genres: userData.fav_genres })
-				// );
 				setStep(step + 1);
 			})
 			.catch((err) => {
@@ -114,6 +107,11 @@ const SignUpPage = () => {
 		navigate('/');
 		reset();
 	};
+
+	useEffect(() => {
+		reset();
+		setAuthError(false);
+	}, []);
 
 	return (
 		<main className="auth" id="sign-up-page">
@@ -166,6 +164,11 @@ const SignUpPage = () => {
 								}}
 								error={errors?.repeatPassword?.message}
 							/>
+							{authError ? (
+								<p className="auth__form-error auth__form-error_type_login">
+									Почта уже зарегистрирована.
+								</p>
+							) : null}
 							<Button
 								buttonText={'Продолжить'}
 								type="submit"

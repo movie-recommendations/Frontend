@@ -58,7 +58,7 @@ const Input: FC<IInput> = ({
 								validation.onChange(e);
 						  }
 				}
-				className={`input__field input__field_color_${color} ${
+				className={`input__field input__field_type_${inputType} input__field_color_${color} ${
 					error ? 'input__field_invalid' : ''
 				}`}
 				type={inputTextType}

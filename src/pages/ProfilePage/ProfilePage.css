@@ -160,6 +160,12 @@
 	background-image: url(../../images/deleteRedIcon.svg);
 	background-repeat: no-repeat;
 	background-position: left;
+	transition: 0.3s ease;
+}
+
+.profile__delete-button:hover {
+	color: #ff8577;
+	background-image: url(../../images/deletePinkIcon.svg);
 }
 
 .profile__preferences-button {
@@ -213,7 +219,7 @@
 	font-weight: 400;
 	line-height: 23px;
 	letter-spacing: -0.54px;
-	text-decoration-line: underline;
+	text-decoration: underline;
 	cursor: pointer;
 	transition: color 0.3s;
 }

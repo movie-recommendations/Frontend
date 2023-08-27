@@ -34,7 +34,7 @@ export interface ISignUpData extends ISignInData {
 
 export interface IUser {
 	email: string;
-	fav_genres: (number | string)[];
+	fav_genres: number[];
 	token: string;
 	nickname?: string;
 	dateOfBirth?: string;
@@ -44,4 +44,10 @@ export interface IUser {
 export interface IResetPasswordData {
 	token: string;
 	new_password: string;
+}
+
+export interface IEditProfileData {
+	username: string | undefined;
+	date_of_birth: string | undefined;
+	sex: number | null;
 }

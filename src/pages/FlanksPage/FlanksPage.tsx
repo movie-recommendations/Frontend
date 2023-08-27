@@ -5,16 +5,20 @@ import { FC } from 'react';
 import { getFilmsApi } from '../../services/redux/slices/films/films';
 import { getSelectionsApi } from '../../services/redux/slices/selections/selections';
 import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
-import { FilmCard } from 'src/components/FilmCardWidth255/FilmCard';
 import { SelectionCard } from 'src/components/SelectionCard/SelectionCard';
 import { MoreButton } from 'src/components/MoreBtn/MoreButton';
 import { IMovieCard } from 'src/types/MovieCard.types';
 import { getCompilationsApi } from 'src/services/redux/slices/compilations/compilations';
+import { FilmCard } from 'src/components/FilmCardWidth255/FilmCard';
+import { getFavoritesApi, getWatchListApi, resetFavorites } from 'src/services/redux/slices/favorites/favorites';
+import { selectUser } from 'src/services/redux/slices/user/user';
 
 const FlanksPage: FC<IFlanks> = ({ formName }) => {
 	const dispatch = useAppDispatch();
-	const favorites = useAppSelector((state) => state.newmoviecards.movies);
+	const favorites = useAppSelector((state) => state.favoritemovies.favorites);
+	const watchList = useAppSelector((state) => state.favoritemovies.watchlist);
 	const compilations = useAppSelector((state) => state.compilations.data);
+	const user = useAppSelector(selectUser);
 
 	const [toggleFavorites, setToggleFavorites] = useState<IMovieCard[]>([]);
 	const [isMoreButton, setIsMoreButton] = useState(false);
@@ -25,17 +29,17 @@ const FlanksPage: FC<IFlanks> = ({ formName }) => {
 		formName === 'ratedFilms'
 			? 'Оцененное'
 			: formName === 'willSee'
-			? 'Буду смотреть'
-			: formName === 'favorites'
-			? 'Избранное'
-			: 'Все подборки';
+				? 'Буду смотреть'
+				: formName === 'favorites'
+					? 'Избранное'
+					: 'Все подборки';
 
 	// Отвечает за определение какой масив показывать
 	useEffect(() => {
 		if (formName === 'ratedFilms') {
 			setToggleFavorites(favorites);
 		} else if (formName === 'willSee') {
-			setToggleFavorites(favorites);
+			setToggleFavorites(watchList);
 		} else if (formName === 'favorites') {
 			setToggleFavorites(favorites);
 		} else {
@@ -49,9 +53,22 @@ const FlanksPage: FC<IFlanks> = ({ formName }) => {
 		dispatch(getCompilationsApi());
 	}, []);
 
+	useEffect(() => {
+		if (user.token) {
+			dispatch(getFavoritesApi(user.token));
+			dispatch(getWatchListApi(user.token));
+		}
+	}, []);
+
 	const handleResize = useCallback(() => {
 		const windowWidth = window.innerWidth;
 		setScreenSize(windowWidth);
+	}, []);
+
+	useEffect(() => {
+		return () => {
+			dispatch(resetFavorites());
+		};
 	}, []);
 
 	useEffect(() => {
@@ -96,7 +113,7 @@ const FlanksPage: FC<IFlanks> = ({ formName }) => {
 				) : (
 					toggleFavorites
 						.slice(0, pageMore)
-						.map((film) => <FilmCard film={film} />)
+						.map((film) => <FilmCard key={film.id} film={film} />)
 				)}
 			</div>
 			<div className="flank_btn">

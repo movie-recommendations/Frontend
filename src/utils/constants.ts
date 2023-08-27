@@ -18,12 +18,10 @@ export const VALIDATION_SETTINGS = {
 	email: {
 		pattern:
 			/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-		// minLength: 7,
 		maxLength: 64,
 		messages: {
 			noEmail: 'Необходимо ввести email',
 			invalid: 'Необходимо ввести email в правильном формате',
-			// tooShort: 'Слишком короткий email',
 			tooLong: 'Слишком длинный email',
 		},
 	},
@@ -52,7 +50,7 @@ export const VALIDATION_SETTINGS = {
 		min: '1923-01-01',
 		max: '2018-01-01',
 		messages: {
-			invalid: 'Введите корректную дату',
+			invalid: 'Неверный формат значения «Дата рождения»',
 		},
 	},
 };
@@ -66,11 +64,6 @@ export const EMAIL_VALIDATION_CONFIG = {
 		value: VALIDATION_SETTINGS.email.pattern,
 		message: VALIDATION_SETTINGS.email.messages.invalid,
 	},
-
-	// minLength: {
-	// 	value: VALIDATION_SETTINGS.email.minLength,
-	// 	message: VALIDATION_SETTINGS.email.messages.tooShort,
-	// },
 	maxLength: {
 		value: VALIDATION_SETTINGS.email.maxLength,
 		message: VALIDATION_SETTINGS.email.messages.tooLong,

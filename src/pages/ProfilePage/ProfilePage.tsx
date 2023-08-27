@@ -86,8 +86,7 @@ const ProfilePage = () => {
 		if (user.token) {
 			dispatch(getUserInfo(user.token))
 				.unwrap()
-				.then((res: Response) => {
-					console.log('getUserInfo res', res);
+				.then(() => {
 					if (user.nickname) {
 						setValue('nickname', user.nickname);
 					}
@@ -169,11 +168,11 @@ const ProfilePage = () => {
 									},
 									min: {
 										value: '1923-01-01',
-										message: 'Дата не входит в допустимый диапазон',
+										message: 'Неверный формат значения «Дата рождения»',
 									},
 									max: {
 										value: '2018-01-01',
-										message: 'Дата не входит в допустимый диапазон',
+										message: 'Неверный формат значения «Дата рождения»',
 									},
 									validate: validateDate,
 								}}
@@ -194,7 +193,7 @@ const ProfilePage = () => {
 												shouldDirty: true,
 											});
 										}}
-										max={'2018-01-01'}
+										max={'2018-08-03'}
 										error={
 											errors.dateOfBirth &&
 											errors.dateOfBirth.message?.toString()
@@ -216,8 +215,6 @@ const ProfilePage = () => {
 											checked={
 												dirtyFields.sex ? watch('sex') === 0 : user.sex === 0
 											}
-											// checked={watch('sex') === 0}
-											// defaultChecked={user.sex === 0}
 										/>
 										<span className="profile__radio-pseudo-item"></span>
 										<span className="profile__radio-text">Мужской</span>
@@ -233,8 +230,6 @@ const ProfilePage = () => {
 											checked={
 												dirtyFields.sex ? watch('sex') === 1 : user.sex === 1
 											}
-											// checked={watch('sex') === 1}
-											// defaultChecked={user.sex === 1}
 										/>
 										<span className="profile__radio-pseudo-item"></span>
 										<span className="profile__radio-text">Женский</span>

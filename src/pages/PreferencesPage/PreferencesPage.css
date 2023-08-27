@@ -1,11 +1,14 @@
-.preferencespage {
-	max-width: 1440px;
+.preferences-page {
+	/* max-width: 1440px; */
+	max-width: 1110px;
 	height: auto;
 	margin: 0 auto;
-	position: relative;
+	padding: 50px 0 100px;
+	display: flex;
+	flex-direction: column;
 }
 
-.preferencespage__container {
+.preferences-page__container {
 	padding: 0;
 	max-width: 1110px;
 	gap: 30px;
@@ -13,9 +16,10 @@
 	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
 	grid-template-rows: repeat(auto-fill, minmax(160px, 1fr));
 	margin: 0 auto;
+	padding: 0 0 80px;
 }
 
-.preferencespage__list {
+.preferences-page__list {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -27,7 +31,7 @@
 	font-size: 18px;
 }
 
-.preferencespage-checkbox__appearance {
+.preferences-page-checkbox__appearance {
 	width: 160px;
 	height: 160px;
 	border: 1px solid #2b2f33;
@@ -45,7 +49,7 @@
 	transition: color 0.3s, border 0.3s;
 }
 
-.preferencespage-checkbox__input[type='checkbox'] {
+.preferences-page-checkbox__input[type='checkbox'] {
 	position: absolute;
 	width: 160px;
 	height: 160px;
@@ -56,40 +60,41 @@
 	border-radius: 50%;
 }
 
-.preferencespage-checkbox__input[type='checkbox']:checked
-	+ .preferencespage-checkbox__appearance {
+.preferences-page-checkbox__input[type='checkbox']:checked
+	+ .preferences-page-checkbox__appearance {
 	background-color: #ffcc33;
 	transition: background-color 0.3s;
 }
 
-.preferencespage-checkbox__input[type='checkbox']:hover
-	+ .preferencespage-checkbox__appearance {
+.preferences-page-checkbox__input[type='checkbox']:hover
+	+ .preferences-page-checkbox__appearance {
 	color: #d1d5db;
 	border: #233958 solid 1px 50%;
 	cursor: pointer;
 }
 
-.preferencespage__overlay {
+.preferences-page__overlay {
 	background: #d1d5db;
 	width: 100%;
 	height: 100%;
 	opacity: 0.7;
 }
 
-.title {
-	max-width: 1110px;
+.preferences-page__title {
 	color: white;
-	margin: 68px auto 85px auto;
+	margin: 0;
+	padding: 68px 0 0;
 	line-height: 50px;
 	font-size: 40px;
 	font-weight: 700;
+	text-align: start;
 }
 
-.subtitle {
+.preferences-page__subtitle {
 	line-height: 31px;
 	font-size: 25px;
 	font-weight: 500;
-	max-width: 1110px;
 	color: white;
-	margin: 0 auto 50px auto;
+	padding: 85px 0 50px;
+	text-align: start;
 }

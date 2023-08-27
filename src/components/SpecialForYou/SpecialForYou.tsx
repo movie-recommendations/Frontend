@@ -10,8 +10,8 @@ export const SpecialForYou: FC = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 
-	const films = useAppSelector((state) => state.films.films[5]);
-	const films2 = useAppSelector((state) => state.films.films[0]);
+	const films = useAppSelector((state) => state.movies.movies[5]);
+	const films2 = useAppSelector((state) => state.movies.movies[0]);
 
 	useEffect(() => {
 		dispatch(getFilmsApi());
@@ -38,8 +38,8 @@ export const SpecialForYou: FC = () => {
 				</div>
 			</div>
 			<div className="specialforyou__container-img">
-				<img className="specialforyou__image" alt="" src={films.imageUrl} />
-				<img className="specialforyou__image" alt="" src={films2.imageUrl} />
+				<img className="specialforyou__image" alt="" src={films.h_picture} />
+				<img className="specialforyou__image" alt="" src={films2.h_picture} />
 			</div>
 		</section>
 	);

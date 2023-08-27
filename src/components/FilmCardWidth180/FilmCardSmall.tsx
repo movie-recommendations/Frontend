@@ -17,7 +17,7 @@ export const FilmCardSmall = ({ film }: { film: IMovieCard }) => {
 	};
 
 	return (
-		<section key={film.id} className="moviepage_card">
+		<article key={film.id} className="moviepage_card">
 			<img
 				className="moviepage_card-img"
 				src={film.v_picture}
@@ -34,6 +34,6 @@ export const FilmCardSmall = ({ film }: { film: IMovieCard }) => {
 				kinopoisk={film.rating.rate_kinopoisk}
 				isSearch={false}
 			/>
-		</section>
+		</article>
 	);
 };

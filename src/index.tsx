@@ -1,6 +1,12 @@
 import React, { FC } from 'react';
 import ReactDOM from 'react-dom/client';
-import { Routes, Route, HashRouter, Navigate } from 'react-router-dom';
+import {
+	Routes,
+	Route,
+	HashRouter,
+	Navigate,
+	BrowserRouter,
+} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './services/redux/store';
@@ -25,10 +31,10 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 import ProtectedRoute from './components/ProtectedRoute';
 import { selectUser } from './services/redux/slices/user/user';
 import { Loader } from './components/Loader/Loader';
-import { useAppDispatch, useAppSelector } from './services/typeHooks';
-import { getGenres } from './services/redux/slices/genres/genres';
+import { useAppSelector } from './services/typeHooks';
 import AllGenresPage from './pages/AllGenresPage/AllGenresPage';
 import OneGenrePage from './pages/OneGenrePage/OneGenrePage';
+import { Selections } from './pages/Selections/Selections';
 
 const Root: FC = () => {
 	const user = useAppSelector(selectUser);
@@ -78,7 +84,7 @@ const Root: FC = () => {
 						}
 					/>
 					<Route
-						path="/password-recovery/:code"
+						path="/reset-password/:code"
 						element={
 							user.token ? (
 								<>
@@ -90,6 +96,7 @@ const Root: FC = () => {
 							)
 						}
 					/>
+					<Route path="/reset-password" element={<ResetPasswordPage />} />
 					<Route
 						path="/confirm-email"
 						element={
@@ -129,6 +136,7 @@ const Root: FC = () => {
 					/>
 					<Route path="/allgenres" element={<AllGenresPage />} />
 					<Route path="/onegenre" element={<OneGenrePage />} />
+					<Route path="/selections" element={<Selections />} />
 					<Route
 						path="/will-see"
 						element={
@@ -166,9 +174,9 @@ root.render(
 	<React.StrictMode>
 		<Provider store={store}>
 			<PersistGate loading={<div>Loading...</div>} persistor={persistor}>
-				<HashRouter>
+				<BrowserRouter>
 					<Root />
-				</HashRouter>
+				</BrowserRouter>
 			</PersistGate>
 		</Provider>
 	</React.StrictMode>

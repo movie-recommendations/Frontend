@@ -7,36 +7,50 @@ import eye_clicked from '../../images/eye_clicked.svg';
 import bookmark from '../../images/Bookmark.svg';
 import bookmark_clicked from '../../images/bookmark_clicked.svg';
 import {
-	addFavorites,
 	addToFavoritesApi,
+	deleteFromFavoritesApi,
+	addToWatchApi,
+	deleteFromWatchApi,
+	getFavoritesApi,
+	getWatchListApi,
 } from 'src/services/redux/slices/favorites/favorites';
-import { addToWatchApi, addWatch } from 'src/services/redux/slices/watch/watch';
+import { selectUser } from '../../services/redux/slices/user/user';
 
 const MovieButton: FC<IButton> = ({ buttonName, id }) => {
 	const dispatch = useAppDispatch();
+	const user = useAppSelector(selectUser);
+
 	const filmFav = useAppSelector(
-		(state) => state.movies.movies.find((film) => film.id === id)?.is_favorite
+		(state) =>
+			state.favoritemovies.favorites?.find((film) => film.id === id)
+				?.is_favorite
 	);
 	const filmWatch = useAppSelector(
-		(state) => state.movies.movies.find((film) => film.id === id)?.is_need_see
+		(state) =>
+			state.favoritemovies.watchlist?.find((film) => film.id === id)
+				?.is_need_see
 	);
+	const favorites = useAppSelector((state) => state.favoritemovies.favorites);
+	const watchList = useAppSelector((state) => state.favoritemovies.watchlist);
 
-	const film = useAppSelector((state) =>
-		state.movies.movies.find((item) => item.id === id)
-	);
-
-	const handleClickFavorite = () => {
-		dispatch(addToFavoritesApi(id))
-			.unwrap()
-			.then(() => dispatch(addFavorites(film)))
-			.catch(() => console.log('mistake'));
+	const handleClickFavorite = async () => {
+		const favoriteIds = favorites.map((film) => film.id);
+		if (favoriteIds.includes(id)) {
+			await dispatch(deleteFromFavoritesApi({ id, token: user.token }));
+		} else {
+			await dispatch(addToFavoritesApi({ id, token: user.token }));
+		}
+		await dispatch(getFavoritesApi(user.token));
 	};
 
-	const handleClickWatch = () => {
-		dispatch(addToWatchApi(id))
-			.unwrap()
-			.then(() => dispatch(addWatch(film)))
-			.catch(() => console.log('mistake'));
+	const handleClickWatch = async () => {
+		const watchIds = watchList.map((film) => film.id);
+		if (watchIds.includes(id)) {
+			await dispatch(deleteFromWatchApi({ id, token: user.token }));
+		} else {
+			await dispatch(addToWatchApi({ id, token: user.token }));
+		}
+		await dispatch(getWatchListApi(user.token));
 	};
 
 	const typesImg =
@@ -54,17 +68,21 @@ const MovieButton: FC<IButton> = ({ buttonName, id }) => {
 			: 'moviepage__button_seen';
 
 	return (
-		<section
-			className={`moviepage-button__container ${addCss}`}
-			onClick={
-				buttonName === 'favorites'
-					? () => handleClickFavorite()
-					: handleClickWatch
-			}
-		>
-			<div className="moviepage-button" />
-			<img className="moviepage-button__img" src={typesImg} alt="icon" />
-		</section>
+		<>
+			{user.token ? (
+				<section
+					className={`moviepage-button__container ${addCss}`}
+					onClick={
+						buttonName === 'favorites'
+							? () => handleClickFavorite()
+							: () => handleClickWatch()
+					}
+				>
+					<div className="moviepage-button" />
+					<img className="moviepage-button__img" src={typesImg} alt="icon" />
+				</section>
+			) : null}
+		</>
 	);
 };
 

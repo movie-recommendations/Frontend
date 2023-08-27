@@ -89,12 +89,15 @@ const Header: FC = () => {
 						// onBlur={setSearchClose}
 						autoComplete="off"
 					/>
-					<button className="header__search-button">
+					<button
+						className="header__search-button"
+						type="button"
+						onClick={handleOpenExtended}
+					>
 						<img
 							className="header__search-button_search"
 							src={adjustments}
 							alt="Кнопка расширенного поиска"
-							onClick={handleOpenExtended}
 						/>
 					</button>
 					<Link to="/search-result" className="header__search-button">

@@ -4,6 +4,7 @@ import './Account.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
 import { selectUser, signOut } from 'src/services/redux/slices/user/user';
+import { resetFavorites } from 'src/services/redux/slices/favorites/favorites';
 
 const Account: FC = () => {
 	const navigate = useNavigate();
@@ -31,7 +32,9 @@ const Account: FC = () => {
 				<>
 					<div className="account__profile-icon" onMouseOver={setProfileOpen}>
 						<Link to="/profile" className="account__profile-link">
-							<p className="account__profile-word">{email[0]}</p>
+							<p className="account__profile-word">
+								{nickname ? nickname[0] : email[0]}
+							</p>
 						</Link>
 					</div>
 					<nav
@@ -59,6 +62,7 @@ const Account: FC = () => {
 								onClick={() => {
 									dispatch(signOut());
 									navigate('/');
+									dispatch(resetFavorites());
 								}}
 							>
 								Выйти

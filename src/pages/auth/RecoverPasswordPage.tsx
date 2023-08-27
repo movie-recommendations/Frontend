@@ -24,10 +24,9 @@ const RecoverPasswordPage = () => {
 		getValues,
 	} = useForm({ mode: 'onChange' });
 
-	const onSubmit: SubmitHandler<FieldValues> = (data) => {
-		console.log('data onSubmit RecoverPassword:', data.email);
-
+	const onSubmit: SubmitHandler<FieldValues> = () => {
 		const userEmail = getValues('email');
+
 		dispatch(recoverPassword(userEmail))
 			.unwrap()
 			.then((res) => {

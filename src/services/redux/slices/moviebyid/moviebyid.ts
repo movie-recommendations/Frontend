@@ -57,7 +57,9 @@ const initialState: IMoviebyidState = {
 export const moviebyidSlice = createSlice({
 	name: '@@movie',
 	initialState,
-	reducers: {},
+	reducers: {
+		resetMoviebyid: () => initialState
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(getMoviebyidApi.pending, (state) => {
@@ -69,5 +71,7 @@ export const moviebyidSlice = createSlice({
 			});
 	},
 });
+
+export const { resetMoviebyid } = moviebyidSlice.actions;
 
 export const moviebyidReducer = moviebyidSlice.reducer;

@@ -21,4 +21,5 @@ export interface IFavoritesState {
 	status: 'idle' | 'success' | 'loading' | 'failed';
 	error: string | undefined;
 	favorites: IMovieCard[];
+	watchlist: IMovieCard[];
 }

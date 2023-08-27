@@ -9,6 +9,7 @@ const GenreCheckbox: FC<IGenreCheckbox> = ({
 	checked,
 	onChange,
 	readOnly = false,
+	defaultChecked,
 }) => {
 	const [isChecked, setIsChecked] = useState(checked || false);
 
@@ -23,17 +24,26 @@ const GenreCheckbox: FC<IGenreCheckbox> = ({
 	};
 
 	return (
-		<label className={`genre-checkbox genre-checkbox_color_${color}`}>
+		<label
+			className={`genre-checkbox genre-checkbox_color_${color} ${
+				readOnly ? 'genre-checkbox__input_disabled' : ''
+			}`}
+		>
 			<input
-				className={`genre-checkbox__input genre-checkbox__input_color_${color}`}
+				className={`genre-checkbox__input genre-checkbox__input_color_${color} ${
+					readOnly ? 'genre-checkbox__input_disabled' : ''
+				}`}
 				type="checkbox"
 				checked={checked || isChecked}
 				onChange={handleChange}
 				value={id}
 				readOnly={readOnly}
+				// defaultChecked={defaultChecked}
 			/>
 			<span
-				className={`genre-checkbox__appearance genre-checkbox__appearance_color_${color}`}
+				className={`genre-checkbox__appearance genre-checkbox__appearance_color_${color} ${
+					readOnly ? 'genre-checkbox__input_disabled' : ''
+				}`}
 			>
 				{text}
 			</span>
