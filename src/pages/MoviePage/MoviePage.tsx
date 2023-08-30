@@ -19,8 +19,8 @@ const MoviePage: FC = () => {
 	const loading = useAppSelector((state) => state.moviebyid.status)
 	const films = useAppSelector((state) => state.movies.movies);
 	const dispatch = useAppDispatch();
-	
-console.log(movie)
+	const ratea = movie.user_rate
+	console.log(ratea, "moviepage")
 	return (
 		<>
 			{loading === 'loading' ? (

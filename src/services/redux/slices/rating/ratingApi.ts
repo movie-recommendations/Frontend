@@ -18,7 +18,7 @@ const postData = (url: string, rate: any, token: string, method: string) => {
 			'Content-Type': 'application/json',
 			...(!!token && { Authorization: `Token ${token}` }),
 		},
-		...(!!rate && { body: JSON.stringify({ rate }) }),
+		...(!!rate && { body: JSON.stringify(rate) }),
 	});
 };
 

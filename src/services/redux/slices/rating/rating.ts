@@ -12,12 +12,12 @@ export interface IRatingState {
 export const getMoviesRating = createAsyncThunk(
 	'@@movie_rating/getMoviesRating',
 async ({ id, rate, token, method }: {id: number; rate: any; token: any; method: string;}, { fulfillWithValue, rejectWithValue }) => {
+	console.log(rate);
 		try {
 
 			const response = await postRating(id, rate, token, method);
-			
-			//const json = await response.json();
-			return fulfillWithValue(response);
+			const responseData = { status: response.status, ok: response.ok };
+			return fulfillWithValue(responseData);
 			
 		} catch (error: unknown) {
 			return rejectWithValue(error);
