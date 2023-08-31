@@ -27,8 +27,12 @@ import { compilationsReducer } from './slices/compilations/compilations';
 import { moviesbygenreReducer} from './slices/movieByGenre/moviesByGenre';
 import { actorsReducer} from './slices/actors/actors';
 import { directorsReducer} from './slices/director/directors';
+import { countriesReducer } from './slices/countries/countries';
+import { movieByAdvancedSearcReducer } from './slices/movieByAdvancedSearch/movieByAdvancedSearch';
 
 const rootReducer = combineReducers({
+	movieByAdvancedSearc: movieByAdvancedSearcReducer,
+	countries: countriesReducer,
 	user: userReducer,
 	films: filmsReducer,
 	moviebyid: moviebyidReducer,

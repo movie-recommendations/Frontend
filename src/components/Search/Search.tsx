@@ -12,9 +12,11 @@ import { selectUser } from 'src/services/redux/slices/user/user';
 const Search = ({
 	isOpenSearch,
 	values,
+	isClose
 }: {
 	isOpenSearch: boolean;
 	values: string;
+	isClose: () => void
 }) => {
 	const films = useAppSelector((state) => state.movies.movies);
 	const [isFilteredFilms, setIsFilteredFilms] = useState(false);
@@ -47,6 +49,7 @@ const Search = ({
 			dispatch(getMoviebyidApi(filmId));
 		}
 		navigate('/movie-page');
+		isClose();
 		window.scrollTo(0, 0);
 	};
 

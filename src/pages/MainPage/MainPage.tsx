@@ -18,6 +18,8 @@ import {
 } from 'src/services/redux/slices/favorites/favorites';
 
 import { getActorsApi } from 'src/services/redux/slices/actors/actors';
+import { getCountriesApi } from 'src/services/redux/slices/countries/countries';
+import { getDirectorsApi } from 'src/services/redux/slices/director/directors';
 
 export default function MainPage() {
 	const [isLoading, setIsLoading] = useState(true);
@@ -43,10 +45,12 @@ export default function MainPage() {
 
 	useEffect(() => {
 		if (user.token) {
-			dispatch(getActorsApi());
 			dispatch(getFavoritesApi(user.token));
 			dispatch(getWatchListApi(user.token));
 		}
+		dispatch(getCountriesApi());
+		dispatch(getActorsApi());
+		dispatch(getDirectorsApi());
 	}, []);
 
 	const films = useAppSelector((state) => state.movies.movies);

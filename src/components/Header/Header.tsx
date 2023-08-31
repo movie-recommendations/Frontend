@@ -60,6 +60,7 @@ const Header: FC = () => {
 
 	const setSearchClose = () => {
 		setIsOpenSearch(false);
+		setIsOpenExtended(false);
 	};
 
 	return (
@@ -107,7 +108,6 @@ const Header: FC = () => {
 						type="text"
 						placeholder="Какой фильм вы хотите найти?"
 						onChange={handleChange}
-						// onBlur={setSearchClose}
 						autoComplete="off"
 					/>
 					<button
@@ -130,8 +130,8 @@ const Header: FC = () => {
 						/>
 					</button>
 				</form>
-				<Search isOpenSearch={isOpenSearch} values={values} />
-				<ExtendedSearch isOpenExtended={isOpenExtended} />
+				<Search isOpenSearch={isOpenSearch} isClose={setSearchClose} values={values} />
+				<ExtendedSearch isOpenExtended={isOpenExtended} isClose={setSearchClose} />
 			</div>
 			<Account
 			// isLoggedIn={true}

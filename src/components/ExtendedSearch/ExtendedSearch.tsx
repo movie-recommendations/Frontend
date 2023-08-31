@@ -1,25 +1,36 @@
 import { useAppDispatch, useAppSelector } from 'src/services/typeHooks';
 import './ExtendedSearch.css';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
-	getActorsApi,
 	selectActor,
 } from 'src/services/redux/slices/actors/actors';
+import { selectGenres } from 'src/services/redux/slices/genres/genres';
 import {
-	getDirectorsApi,
 	selectDirector,
 } from 'src/services/redux/slices/director/directors';
 import { IActors } from 'src/types/Actors.types';
 import { IDirectors } from 'src/types/Directors.types';
+import { selectCountries } from 'src/services/redux/slices/countries/countries';
+import { getMovieByAdvancedSearchApi } from 'src/services/redux/slices/movieByAdvancedSearch/movieByAdvancedSearch';
+import { selectUser } from 'src/services/redux/slices/user/user';
 
-const ExtendedSearch = ({ isOpenExtended }: { isOpenExtended: boolean }) => {
+const ExtendedSearch = ({ isOpenExtended, isClose }: { isOpenExtended: boolean, isClose: () => void }) => {
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 	const actors = useAppSelector(selectActor);
+	const genres = useAppSelector(selectGenres);
+	const countries = useAppSelector(selectCountries);
+	const directors = useAppSelector(selectDirector);
+	const user = useAppSelector(selectUser);
 	const [inputValueActors, setInputValueActors] = useState('');
 	const [inputValueDirectors, setInputValueDirectors] = useState('');
 	const [filteredActors, setFilteredActors] = useState<IActors[]>([]);
-	const directors = useAppSelector(selectDirector);
 	const [filteredDirectors, setFilteredDirectors] = useState<IDirectors[]>([]);
+	const [selectedActorId, setSelectedActorId] = useState<any>('');
+	const [selectedDirectorId, setSelectedDirectorId] = useState<any>('');
+	const [selectedGenreSlug, setSelectedGenreSlug] = useState('');
+	const [selectedCountrySlug, setSelectedCountrySlug] = useState('');
 
 	const handleChangeActors = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;
@@ -67,9 +78,11 @@ const ExtendedSearch = ({ isOpenExtended }: { isOpenExtended: boolean }) => {
 		setFilteredDirectors([]);
 	};
 
-	useEffect(() => {
-		dispatch(getDirectorsApi());
-	}, []);
+	const Click = () => {
+		dispatch(getMovieByAdvancedSearchApi({data: {actor: selectedActorId, director: selectedDirectorId, genre: selectedGenreSlug, country: selectedCountrySlug}, token: user.token}))
+		navigate('/search-result');
+		isClose();
+	}
 
 	return (
 		<section
@@ -81,56 +94,33 @@ const ExtendedSearch = ({ isOpenExtended }: { isOpenExtended: boolean }) => {
 				name="genre"
 				className="searchExtended__form"
 				defaultValue={''}
+				onChange={(e) => setSelectedGenreSlug(e.target.value)}
 			>
 				<option value="" disabled>
 					Жанр
 				</option>
-				<option className="searchExtended__form-option">Вестерн</option>
-				<option className="searchExtended__form-option">История</option>
-				<option className="searchExtended__form-option">Аниме</option>
-				<option className="searchExtended__form-option">Биография</option>
-				<option className="searchExtended__form-option">Криминал</option>
-				<option className="searchExtended__form-option">Детектив</option>
-				<option className="searchExtended__form-option">Триллер</option>
-				<option className="searchExtended__form-option">Ужасы</option>
-				<option className="searchExtended__form-option">Драма</option>
-				<option className="searchExtended__form-option">Семейный</option>
-				<option className="searchExtended__form-option">Приключения</option>
-				<option className="searchExtended__form-option">Боевик</option>
-				<option className="searchExtended__form-option">Фэнтези</option>
-				<option className="searchExtended__form-option">Фантастика</option>
-				<option className="searchExtended__form-option">Мультфильм</option>
-				<option className="searchExtended__form-option">Мелодрама</option>
-				<option className="searchExtended__form-option">Комедия</option>
+				{genres.map((genre) => (
+					<option key={genre.slug} value={genre.slug}>
+						{genre.title}
+					</option>
+				))}
 			</select>
 			<select
 				id="country"
 				name="country"
 				className="searchExtended__form"
 				defaultValue={''}
+				onChange={(e) => setSelectedCountrySlug(e.target.value)}
 			>
 				<option value="" disabled>
 					Страна
 				</option>
-				<option className="searchExtended__form-option">Россия</option>
-				<option className="searchExtended__form-option">США</option>
-				<option className="searchExtended__form-option">Китай</option>
-				<option className="searchExtended__form-option">Франция</option>
-				<option className="searchExtended__form-option">Великобритания</option>
-				<option className="searchExtended__form-option">Индия</option>
-				<option className="searchExtended__form-option">Германия</option>
-				<option className="searchExtended__form-option">Австралия</option>
-				<option className="searchExtended__form-option">Южная Корея</option>
-				<option className="searchExtended__form-option">Япония</option>
+				{countries.map((country) => (
+					<option key={country.slug} value={country.slug}>
+						{country.title}
+					</option>
+				))}
 			</select>
-			{/* <select id="actor" name="actor" className="searchExtended__form">
-				<option value="" disabled selected>
-					Актер
-				</option>
-				<option>Бильбо Бэггинс</option>
-				<option>США</option>
-			</select> */}
-
 			<input
 				className="searchExtended__form searchExtended__form_input"
 				id="actorName"
@@ -149,8 +139,10 @@ const ExtendedSearch = ({ isOpenExtended }: { isOpenExtended: boolean }) => {
 						<button
 							className="searchExtended__form-actor"
 							key={actor.id}
-							onClick={() =>
+							onClick={() => {
 								handleActorClick(`${actor.name} ${actor.last_name}`)
+								setSelectedActorId(actor.id)
+							}
 							}
 						>
 							{actor.name} {actor.last_name}
@@ -176,8 +168,10 @@ const ExtendedSearch = ({ isOpenExtended }: { isOpenExtended: boolean }) => {
 						<button
 							className="searchExtended__form-director"
 							key={director.id}
-							onClick={() =>
+							onClick={() =>{
 								handleDirectorClick(`${director.name} ${director.last_name}`)
+								setSelectedDirectorId(director.id)
+							}
 							}
 						>
 							{director.name} {director.last_name}
@@ -185,7 +179,7 @@ const ExtendedSearch = ({ isOpenExtended }: { isOpenExtended: boolean }) => {
 					))}
 				</ul>
 			)}
-			<div className="searchExtended__row">
+			{/* <div className="searchExtended__row">
 				<p className="searchExtended__row-title">Год</p>
 				<select id="yearFrom" name="yearFrom" className="searchExtended__form">
 					<option value="" disabled>
@@ -266,8 +260,11 @@ const ExtendedSearch = ({ isOpenExtended }: { isOpenExtended: boolean }) => {
 					<option>9.0</option>
 					<option>10.0</option>
 				</select>
-			</div>
-			<button className="searchExtended__submit">Найти</button>
+			</div> */}
+			<button 
+			className="searchExtended__submit"
+			onClick={Click}
+			>Найти</button>
 		</section>
 	);
 };

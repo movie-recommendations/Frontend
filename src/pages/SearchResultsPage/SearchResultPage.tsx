@@ -6,10 +6,11 @@ import { MoreButton } from 'src/components/MoreBtn/MoreButton';
 import { useState, useEffect } from 'react';
 import { IMovieCard } from 'src/types/MovieCard.types';
 import { useLocation } from 'react-router-dom';
+// import { moviesAdvancedSearc } from 'src/services/redux/slices/movieByAdvancedSearch/movieByAdvancedSearch';
 
 export const SearchResultPage = () => {
 	const [values] = useState('');
-	const films = useAppSelector((state) => state.movies.movies);
+	const films = useAppSelector((state) => state.movieByAdvancedSearc.movies);
 	const [isFilteredFilms, setIsFilteredFilms] = useState(false);
 	const [isMoreButton, setIsMoreButton] = useState(false);
 	const [screenSize, setScreenSize] = useState<number>(0);
