@@ -56,7 +56,7 @@ const initialState: IRatingState = {
 		id: 0,
 	},
 	ratedMovies: [],
-}
+};
 
 export const ratingSlice = createSlice({
 	name: '@@rate',
@@ -66,16 +66,14 @@ export const ratingSlice = createSlice({
 		builder
 			.addCase(getRatedMoviesApi.fulfilled, (state, action) => {
 				state.status = 'success';
-				state.ratedMovies = action.payload
-			}
-			)
+				state.ratedMovies = action.payload;
+			})
 			.addCase(setRatingApi.fulfilled, (state) => {
 				state.status = 'success';
-			}
-			)
+			})
 			.addCase(updateRatingApi.fulfilled, (state) => {
 				state.status = 'success';
-			})
+			});
 	},
 });
 

@@ -48,4 +48,4 @@ export const countriesSlice = createSlice({
 export const countriesReducer = countriesSlice.reducer;
 
 export const selectCountries = (state: { countries: ICountriesState }) =>
-	state.countries.countries
+	state.countries.countries;

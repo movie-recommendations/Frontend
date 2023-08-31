@@ -3,7 +3,10 @@ import { RatedElement } from 'src/components/RatedElement/RatedElement';
 import { BookmarkSmall } from 'src/components/Bookmark_small/Bookmark_small';
 import { IMovieCard } from 'src/types/MovieCard.types';
 import { useNavigate } from 'react-router-dom';
-import { getMoviebyidApi, getMoviebyidTokenApi } from 'src/services/redux/slices/moviebyid/moviebyid';
+import {
+	getMoviebyidApi,
+	getMoviebyidTokenApi,
+} from 'src/services/redux/slices/moviebyid/moviebyid';
 import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
 import { selectUser } from 'src/services/redux/slices/user/user';
 

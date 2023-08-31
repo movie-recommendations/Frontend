@@ -69,19 +69,19 @@ export const BtnBookmark = ({
 
 	return (
 		<>
-			{user.token ? (<section
-				className="bookmark_favorite"
-				onClick={
-					nameTypes === 'willSee'
-						? () => handleClickWatch()
-						: () => handleClickFavorite()
-				}
-			>
-				<div className="bookmark_fon" />
-				<img className="bookmark_img" src={typesImg} alt="icon" />
-			</section>) : (
-				null
-			)}
+			{user.token ? (
+				<section
+					className="bookmark_favorite"
+					onClick={
+						nameTypes === 'willSee'
+							? () => handleClickWatch()
+							: () => handleClickFavorite()
+					}
+				>
+					<div className="bookmark_fon" />
+					<img className="bookmark_img" src={typesImg} alt="icon" />
+				</section>
+			) : null}
 		</>
 	);
 };

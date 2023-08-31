@@ -1,21 +1,23 @@
 import { useAppDispatch, useAppSelector } from 'src/services/typeHooks';
 import './ExtendedSearch.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-	selectActor,
-} from 'src/services/redux/slices/actors/actors';
+import { selectActor } from 'src/services/redux/slices/actors/actors';
 import { selectGenres } from 'src/services/redux/slices/genres/genres';
-import {
-	selectDirector,
-} from 'src/services/redux/slices/director/directors';
+import { selectDirector } from 'src/services/redux/slices/director/directors';
 import { IActors } from 'src/types/Actors.types';
 import { IDirectors } from 'src/types/Directors.types';
 import { selectCountries } from 'src/services/redux/slices/countries/countries';
 import { getMovieByAdvancedSearchApi } from 'src/services/redux/slices/movieByAdvancedSearch/movieByAdvancedSearch';
 import { selectUser } from 'src/services/redux/slices/user/user';
 
-const ExtendedSearch = ({ isOpenExtended, isClose }: { isOpenExtended: boolean, isClose: () => void }) => {
+const ExtendedSearch = ({
+	isOpenExtended,
+	isClose,
+}: {
+	isOpenExtended: boolean;
+	isClose: () => void;
+}) => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const actors = useAppSelector(selectActor);
@@ -23,6 +25,9 @@ const ExtendedSearch = ({ isOpenExtended, isClose }: { isOpenExtended: boolean, 
 	const countries = useAppSelector(selectCountries);
 	const directors = useAppSelector(selectDirector);
 	const user = useAppSelector(selectUser);
+	const films = useAppSelector(
+		(state) => state.movieByAdvancedSearc.moviesAdvanced
+	);
 	const [inputValueActors, setInputValueActors] = useState('');
 	const [inputValueDirectors, setInputValueDirectors] = useState('');
 	const [filteredActors, setFilteredActors] = useState<IActors[]>([]);
@@ -78,11 +83,29 @@ const ExtendedSearch = ({ isOpenExtended, isClose }: { isOpenExtended: boolean, 
 		setFilteredDirectors([]);
 	};
 
-	const Click = () => {
-		dispatch(getMovieByAdvancedSearchApi({data: {actor: selectedActorId, director: selectedDirectorId, genre: selectedGenreSlug, country: selectedCountrySlug}, token: user.token}))
-		navigate('/search-result');
+	const resetState = () => {
 		isClose();
+		setSelectedActorId('');
+		setSelectedDirectorId('');
+		setSelectedGenreSlug('');
+		setSelectedCountrySlug('');
 	}
+
+	const Click = async () => {
+		dispatch(
+		  getMovieByAdvancedSearchApi({
+			data: {
+			  actor: selectedActorId,
+			  director: selectedDirectorId,
+			  genre: selectedGenreSlug,
+			  country: selectedCountrySlug,
+			},
+			token: user.token,
+		  })
+		);
+		navigate('/search-result', { state: films });
+		resetState();
+	  };
 
 	return (
 		<section
@@ -140,10 +163,9 @@ const ExtendedSearch = ({ isOpenExtended, isClose }: { isOpenExtended: boolean, 
 							className="searchExtended__form-actor"
 							key={actor.id}
 							onClick={() => {
-								handleActorClick(`${actor.name} ${actor.last_name}`)
-								setSelectedActorId(actor.id)
-							}
-							}
+								handleActorClick(`${actor.name} ${actor.last_name}`);
+								setSelectedActorId(actor.id);
+							}}
 						>
 							{actor.name} {actor.last_name}
 						</button>
@@ -168,11 +190,10 @@ const ExtendedSearch = ({ isOpenExtended, isClose }: { isOpenExtended: boolean, 
 						<button
 							className="searchExtended__form-director"
 							key={director.id}
-							onClick={() =>{
-								handleDirectorClick(`${director.name} ${director.last_name}`)
-								setSelectedDirectorId(director.id)
-							}
-							}
+							onClick={() => {
+								handleDirectorClick(`${director.name} ${director.last_name}`);
+								setSelectedDirectorId(director.id);
+							}}
 						>
 							{director.name} {director.last_name}
 						</button>
@@ -261,10 +282,9 @@ const ExtendedSearch = ({ isOpenExtended, isClose }: { isOpenExtended: boolean, 
 					<option>10.0</option>
 				</select>
 			</div> */}
-			<button 
-			className="searchExtended__submit"
-			onClick={Click}
-			>Найти</button>
+			<button className="searchExtended__submit" onClick={Click}>
+				Найти
+			</button>
 		</section>
 	);
 };

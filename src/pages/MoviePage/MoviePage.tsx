@@ -11,6 +11,11 @@ import RatingElement from 'src/components/RatingElement/RatingElement';
 import FilmAbout from 'src/components/FilmAbout/FilmAbout';
 import FilmDescription from 'src/components/FilmDescription/FilmDescription';
 import { Loader } from 'src/components/Loader/Loader';
+import { SlickSliderMini } from 'src/components/SlickSliderMini/SlickSliderMini';
+import {
+	getMoviebyidApi,
+	getMoviebyidTokenApi,
+} from 'src/services/redux/slices/moviebyid/moviebyid';
 import { SlickSlider } from 'src/components/SlickSlider/SlickSlider';
 import { getMoviesByGenreApi } from 'src/services/redux/slices/movieByGenre/moviesByGenre';
 

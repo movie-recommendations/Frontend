@@ -22,7 +22,6 @@ const useMousePosition = () => {
 export default function ErrorPage() {
 	const { x, y } = useMousePosition();
 
-	console.log(x, y);
 	return (
 		<main className="error-page" id="error-page">
 			<div className="error-page__status">

@@ -11,7 +11,7 @@ export const getMoviebyidTokenApi = createAsyncThunk(
 		const { filmId, token } = arg;
 		try {
 			const response = await getMoviebyidToken(filmId, token);
-			const json = await response
+			const json = await response;
 			return fulfillWithValue(json);
 		} catch (error: unknown) {
 			return rejectWithValue(error);
@@ -88,26 +88,31 @@ export const moviebyidSlice = createSlice({
 			.addCase(getMoviebyidApi.fulfilled, (state, action) => {
 				state.status = 'success';
 				state.movie = action.payload;
-				console.log(state.movie)
+			})
+			.addCase(getMoviebyidApi.pending, (state) => {
+				state.status = 'loading';
 			})
 			.addCase(getMoviebyidTokenApi.fulfilled, (state, action) => {
 				state.status = 'success';
 				state.movie = action.payload;
 			})
-			.addMatcher(
-				(action) => action.type.endsWith('/pending'),
-				(state) => {
-					state.status = 'loading';
-					state.error = '';
-				}
-			)
-			.addMatcher(
-				(action) => action.type.endsWith('/rejected'),
-				(state, action) => {
-					state.status = 'failed';
-					state.error = action.payload.statusText;
-				}
-			);
+			.addCase(getMoviebyidTokenApi.pending, (state) => {
+				state.status = 'loading';
+			});
+		// .addMatcher(
+		// 	(action) => action.type.endsWith('/pending'),
+		// 	(state) => {
+		// 		state.status = 'loading';
+		// 		state.error = '';
+		// 	}
+		// )
+		// .addMatcher(
+		// 	(action) => action.type.endsWith('/rejected'),
+		// 	(state, action) => {
+		// 		state.status = 'failed';
+		// 		state.error = action.payload.statusText;
+		// 	}
+		// );
 	},
 });
 

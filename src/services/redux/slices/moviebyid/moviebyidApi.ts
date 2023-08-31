@@ -9,11 +9,7 @@ const checkRes = (res: Response) => {
 	}
 };
 
-export const fetchData = (
-	url: string,
-	method: string,
-	token?: string
-) => {
+export const fetchData = (url: string, method: string, token?: string) => {
 	return fetch(url, {
 		method,
 		headers: {
@@ -23,7 +19,10 @@ export const fetchData = (
 	}).then((res) => checkRes(res));
 };
 
-export const getMoviebyidToken = (filmId: number, token: string): Promise<IMoviebyid> => {
+export const getMoviebyidToken = (
+	filmId: number,
+	token: string
+): Promise<IMoviebyid> => {
 	return fetchData(`${API_BASE_URL}/movies/${filmId}`, 'GET', token);
 };
 

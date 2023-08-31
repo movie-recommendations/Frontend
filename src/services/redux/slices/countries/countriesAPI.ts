@@ -1,4 +1,4 @@
-import { ICountries } from "src/types/Countries.type";
+import { ICountries } from 'src/types/Countries.type';
 import { API_BASE_URL } from 'src/utils/constants';
 
 const checkRes = (res: Response) => {

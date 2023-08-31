@@ -5,7 +5,6 @@ import scroll from '../../images/scroll.svg';
 const Footer: FC = () => {
 	const buttonUp = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
-		console.log('click');
 		window.scrollTo({
 			top: 0,
 			behavior: 'smooth',
@@ -23,7 +22,9 @@ const Footer: FC = () => {
 
 	return (
 		<footer className="footer">
-			<h4 className="footer__desc">© 2023 КиноТочка. Платформа рекомендаций фильмов. Все права защищены.</h4>
+			<h4 className="footer__desc">
+				© 2023 КиноТочка. Платформа рекомендаций фильмов. Все права защищены.
+			</h4>
 			<button onClick={buttonUp} className="footer__scroll scroll-hidden">
 				<img
 					className="footer__scroll-button"

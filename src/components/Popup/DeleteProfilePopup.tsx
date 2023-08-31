@@ -20,7 +20,6 @@ const DeleteProfilePopup: FC<IDeleteProfilePopup> = ({
 	const [step, setStep] = useState(0);
 
 	const onDeleteClick = () => {
-		console.log('user deleted');
 		dispatch(deleteUser(user.token))
 			.unwrap()
 			.then((res) => {

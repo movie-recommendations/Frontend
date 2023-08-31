@@ -1,4 +1,4 @@
-import { IMovieCard } from "./MovieCard.types";
+import { IMovieCard } from './MovieCard.types';
 
 export interface IRating {
 	id: number;

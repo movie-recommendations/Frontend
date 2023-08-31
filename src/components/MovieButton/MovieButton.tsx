@@ -53,6 +53,15 @@ const MovieButton: FC<IButton> = ({ buttonName, id }) => {
 		await dispatch(getWatchListApi(user.token));
 	};
 
+	const typesCss =
+		buttonName === 'favorites'
+			? filmFav
+				? ''
+				: ''
+			: filmWatch
+			? 'black__fon'
+			: '';
+
 	const typesImg =
 		buttonName === 'favorites'
 			? filmFav
@@ -78,7 +87,7 @@ const MovieButton: FC<IButton> = ({ buttonName, id }) => {
 							: () => handleClickWatch()
 					}
 				>
-					<div className="moviepage-button" />
+					<div className={`moviepage-button ${typesCss}`} />
 					<img className="moviepage-button__img" src={typesImg} alt="icon" />
 				</section>
 			) : null}

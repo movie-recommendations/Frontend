@@ -13,7 +13,7 @@ import { FilmCard } from 'src/components/FilmCardWidth255/FilmCard';
 import {
 	getFavoritesApi,
 	getWatchListApi,
-	resetFavorites,
+	// resetFavorites,
 } from 'src/services/redux/slices/favorites/favorites';
 import { selectUser } from 'src/services/redux/slices/user/user';
 import { getRatedMoviesApi } from 'src/services/redux/slices/rating/rating';
@@ -21,7 +21,7 @@ import { getRatedMoviesApi } from 'src/services/redux/slices/rating/rating';
 const FlanksPage: FC<IFlanks> = ({ formName }) => {
 	const dispatch = useAppDispatch();
 	const favorites = useAppSelector((state) => state.favoritemovies.favorites);
-	const rated = useAppSelector((state) => state.rating.ratedMovies)
+	const rated = useAppSelector((state) => state.rating.ratedMovies);
 	const watchList = useAppSelector((state) => state.favoritemovies.watchlist);
 	const compilations = useAppSelector((state) => state.compilations.data);
 	const user = useAppSelector(selectUser);
@@ -72,11 +72,11 @@ const FlanksPage: FC<IFlanks> = ({ formName }) => {
 		setScreenSize(windowWidth);
 	}, []);
 
-	useEffect(() => {
-		return () => {
-			dispatch(resetFavorites());
-		};
-	}, []);
+	// useEffect(() => {
+	// 	return () => {
+	// 		dispatch(resetFavorites());
+	// 	};
+	// }, []);
 
 	useEffect(() => {
 		window.addEventListener('resize', handleResize);

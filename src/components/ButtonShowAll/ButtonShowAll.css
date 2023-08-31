@@ -1,0 +1,40 @@
+.flexbutton {
+	display: flex;
+	padding: 0;
+	align-self: start;
+	flex-direction: row;
+	height: 30px;
+	width: 175px;
+	position: absolute;
+	top: 20px;
+	right: 140px;
+}
+
+.button-showall {
+	border: none;
+	color: #ffcc33;
+	background-color: transparent;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: 300;
+	line-height: 30px;
+	width: 145px;
+	align-self: center;
+}
+
+.arrowright {
+	margin: 0;
+	width: 20px;
+	height: 20px;
+	align-self: center;
+}
+
+.button-showall:disabled {
+	color: #fff;
+	background-color: #9ca3af;
+	cursor: not-allowed;
+}
+
+.flexbutton:hover {
+	opacity: 0.3;
+}

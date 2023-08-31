@@ -40,7 +40,6 @@ const ResetPasswordPage = () => {
 
 		if (tokenStartIndex !== -1) {
 			const token = url.substring(tokenStartIndex).replace('/', '');
-			console.log('token token token', token);
 			return token;
 		}
 
@@ -48,11 +47,11 @@ const ResetPasswordPage = () => {
 	};
 
 	const onSubmit: SubmitHandler<IResetPasswordFields> = (data) => {
-		console.log(
-			'data onSubmit resetPassword:',
-			data.password,
-			data.repeatPassword
-		);
+		// console.log(
+		// 	'data onSubmit resetPassword:',
+		// 	data.password,
+		// 	data.repeatPassword
+		// );
 
 		const tokenFromURL = getTokenFromURL();
 		const newPassword = getValues('password');

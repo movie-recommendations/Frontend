@@ -2,7 +2,10 @@ import './FirstScreenCompilation.css';
 import { RatedElement } from '../RatedElement/RatedElement';
 import { IMoviesOfDay } from 'src/types/moviesoftheday.types';
 import { useNavigate } from 'react-router-dom';
-import { getMoviebyidApi, getMoviebyidTokenApi } from 'src/services/redux/slices/moviebyid/moviebyid';
+import {
+	getMoviebyidApi,
+	getMoviebyidTokenApi,
+} from 'src/services/redux/slices/moviebyid/moviebyid';
 import { ButtonTypes } from 'src/types/Rating.types';
 import MovieButton from '../MovieButton/MovieButton';
 import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
@@ -20,9 +23,6 @@ export default function FirstScreenCompilation({
 	const handleImgClick = () => {
 		if (user.token) {
 			dispatch(getMoviebyidTokenApi({ filmId: film.id, token: user.token }));
-			console.log(123)
-			console.log(film.id)
-			console.log(user.token)
 		} else {
 			dispatch(getMoviebyidApi(film.id));
 		}

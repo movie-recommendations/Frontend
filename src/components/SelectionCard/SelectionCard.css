@@ -62,11 +62,12 @@
 }
 
 .selections_description {
-	margin: 0;
+	margin: 10px 0 0 0;
 	font-size: 12px;
 	font-weight: 500;
 	line-height: 12px;
 	overflow: hidden;
-	white-space: nowrap;
+	white-space: wrap;
 	text-overflow: ellipsis;
+	max-height: 24px;
 }

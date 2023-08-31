@@ -5,6 +5,7 @@
 
 .search_img-container {
 	margin-right: 30px;
+	position: relative;
 }
 
 .search_img {
@@ -12,6 +13,13 @@
 	height: 213px;
 	object-fit: cover;
 	border-radius: 6px;
+	cursor: pointer;
+}
+
+.button__container {
+	position: absolute;
+	top: 10px;
+	right: 10px;
 }
 
 .search_profile {
