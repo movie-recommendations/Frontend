@@ -118,3 +118,28 @@
 	border: none;
 	cursor: pointer;
 }
+
+.searchExtended__form-directors {
+	position: absolute;
+	margin: 0;
+	padding: 10px 15px;
+	box-sizing: border-box;
+	list-style: none;
+	top: 263px;
+	background-color: #fff;
+	max-height: 175px;
+	max-width: 495px;
+	width: 100%;
+	margin: 0 auto;
+	overflow: scroll;
+	border: 1px solid #9ca3af;
+	border-radius: 10px;
+}
+
+.searchExtended__form-director {
+	margin: 0 0 10px;
+	display: block;
+	background-color: inherit;
+	border: none;
+	cursor: pointer;
+}

@@ -45,9 +45,6 @@ const Account: FC = () => {
 						<ul className="account__list" onMouseOver={setProfileOpen}>
 							<p className="account__content-nik">{nickname}</p>
 							<p className="account__content-email">{email}</p>
-							<Link to="/movie-page" className="account__content-link">
-								Страница фильма
-							</Link>
 							<Link to="/favorites" className="account__content-link">
 								Избранное
 							</Link>

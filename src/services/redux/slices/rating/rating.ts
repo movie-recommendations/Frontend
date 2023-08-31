@@ -1,49 +1,83 @@
-import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { IRating, IRatingState } from 'src/types/Rating.types';
-// import { postRating } from './ratingApi';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { IRatingState } from 'src/types/Rating.types';
+import { fetchSetRating, fetchUpdateRating, getRatedMovies } from './ratingApi';
 
-export const getMoviesRating = createAsyncThunk(
-	'@@movie_rating/postRating',
-	async ({ id, rate }: { id: any; rate: any }) => {
-		return { id, rate };
-	}
-);
-
-/*async ({id,rate}: {id: any, rate: any}, { fulfillWithValue, rejectWithValue }) => {
+export const getRatedMoviesApi = createAsyncThunk(
+	'@@rate/getRated',
+	async (token: string, { fulfillWithValue, rejectWithValue }) => {
 		try {
-			
-			const response = await postRating(id,rate);
-			
-			//const json = await response.json();
-			return fulfillWithValue(response);
-			
+			const response = await getRatedMovies(token);
+			const json = await response.json();
+			return fulfillWithValue(json);
 		} catch (error: unknown) {
 			return rejectWithValue(error);
 		}
 	}
-);*/
+);
+
+export const setRatingApi = createAsyncThunk(
+	'@@rate/setRate',
+	async (
+		arg: { id: number; rate: object; token: string },
+		{ fulfillWithValue, rejectWithValue }
+	) => {
+		const { id, rate, token } = arg;
+		try {
+			const response = await fetchSetRating(id, rate, token);
+			const responseData = { status: response.status, ok: response.ok };
+			return fulfillWithValue(responseData);
+		} catch (error: unknown) {
+			return rejectWithValue(error);
+		}
+	}
+);
+
+export const updateRatingApi = createAsyncThunk(
+	'@@rate/updateRate',
+	async (
+		arg: { id: number; rate: object; token: string },
+		{ fulfillWithValue, rejectWithValue }
+	) => {
+		const { id, rate, token } = arg;
+		try {
+			const response = await fetchUpdateRating(id, rate, token);
+			const responseData = { status: response.status, ok: response.ok };
+			return fulfillWithValue(responseData);
+		} catch (error: unknown) {
+			return rejectWithValue(error);
+		}
+	}
+);
 
 const initialState: IRatingState = {
 	status: 'idle',
 	error: '',
-	movie_rating: [],
-};
+	movie_rating: {
+		id: 0,
+	},
+	ratedMovies: [],
+}
 
 export const ratingSlice = createSlice({
-	name: '@@movie_rating',
+	name: '@@rate',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		builder.addCase(getMoviesRating.fulfilled, (state, action) => {
-			console.log(1);
-			state.status = 'success';
-			//state.movie_rating = [...state.movie_rating, action.payload];
-			//const { id, rate } = action.payload;
-			//state.movie_rating = state.movie_rating.map((movie_rate) =>
-			//movie_rate.id === id ? { ...movie_rate, rate: rate } : movie_rate
-			//);
-		});
+		builder
+			.addCase(getRatedMoviesApi.fulfilled, (state, action) => {
+				state.status = 'success';
+				state.ratedMovies = action.payload
+			}
+			)
+			.addCase(setRatingApi.fulfilled, (state) => {
+				state.status = 'success';
+			}
+			)
+			.addCase(updateRatingApi.fulfilled, (state) => {
+				state.status = 'success';
+			})
 	},
 });
 
 export const ratingReducer = ratingSlice.reducer;
+// export { postRating };

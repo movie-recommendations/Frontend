@@ -2,25 +2,26 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	height: 118px;
+	height: 203px;
 	background-color: #4b556333;
 	max-width: 1440px;
 	margin: 0 auto;
 }
 
 .footer__desc {
+	width: 500px;
 	font-weight: 500;
 	font-size: 18px;
 	line-height: 22.59px;
-	text-align: center;
+	text-align: left;
 	color: #fff;
 	margin-left: 120px;
 }
 
 .footer__scroll {
 	position: fixed;
-	bottom: 100px;
-	left: 78%;
+	bottom: 60px;
+	left: calc(50% + 580px);
 	z-index: 1000;
 	background: transparent;
 	border: 0;

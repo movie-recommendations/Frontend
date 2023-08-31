@@ -7,7 +7,7 @@ const PopupTrailer: FC<PopupTrailerProps> = ({
 	isPopupOpen,
 	switchPopupTrailer,
 }) => {
-	const link = useAppSelector((state) => state.movie.movie.trailer_link);
+	const link = useAppSelector((state) => state.moviebyid.movie.trailer_link);
 	const [iframeKey, setIframeKey] = useState(0);
 
 	useEffect(() => {

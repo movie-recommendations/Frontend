@@ -2,10 +2,11 @@ import './FirstScreenCompilation.css';
 import { RatedElement } from '../RatedElement/RatedElement';
 import { IMoviesOfDay } from 'src/types/moviesoftheday.types';
 import { useNavigate } from 'react-router-dom';
-import { getMoviebyidApi } from 'src/services/redux/slices/moviebyid/moviebyid';
-import { useAppDispatch } from '../../services/typeHooks';
+import { getMoviebyidApi, getMoviebyidTokenApi } from 'src/services/redux/slices/moviebyid/moviebyid';
 import { ButtonTypes } from 'src/types/Rating.types';
 import MovieButton from '../MovieButton/MovieButton';
+import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
+import { selectUser } from 'src/services/redux/slices/user/user';
 
 export default function FirstScreenCompilation({
 	film,
@@ -14,12 +15,21 @@ export default function FirstScreenCompilation({
 }) {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
+	const user = useAppSelector(selectUser);
 
-	const handleImgClick = (filmId: number) => {
-		dispatch(getMoviebyidApi(filmId));
+	const handleImgClick = () => {
+		if (user.token) {
+			dispatch(getMoviebyidTokenApi({ filmId: film.id, token: user.token }));
+			console.log(123)
+			console.log(film.id)
+			console.log(user.token)
+		} else {
+			dispatch(getMoviebyidApi(film.id));
+		}
 		navigate('/movie-page');
 		window.scrollTo(0, 0);
 	};
+
 	return (
 		<section className="first-screen-compilation">
 			<img className="movie__img" src={film.h_picture} alt={film.title} />
@@ -35,7 +45,7 @@ export default function FirstScreenCompilation({
 				<div className="button-wraper">
 					<div
 						className="movie__more-detailed"
-						onClick={() => handleImgClick(film.id)}
+						onClick={() => handleImgClick()}
 					>
 						Подробнее
 					</div>

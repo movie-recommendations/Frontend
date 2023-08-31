@@ -69,11 +69,9 @@ export const fetchPasswordRecovery = (data: string): Promise<Response> => {
 export const fetchResetPassword = (
 	data: IResetPasswordData
 ): Promise<Response> => {
-	return fetchData(
-		`http://kinotochka.acceleratorpracticum.ru/reset-password/`,
-		'PUT',
-		data
-	).then((res) => checkRes(res));
+	return fetchData(`${API_AUTH_URL}/reset-password/`, 'PUT', data).then((res) =>
+		checkRes(res)
+	);
 };
 
 export const fetchGetUserInfo = (token: string): Promise<Response> => {

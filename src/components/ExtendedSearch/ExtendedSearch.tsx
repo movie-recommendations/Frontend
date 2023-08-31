@@ -5,17 +5,25 @@ import {
 	getActorsApi,
 	selectActor,
 } from 'src/services/redux/slices/actors/actors';
+import {
+	getDirectorsApi,
+	selectDirector,
+} from 'src/services/redux/slices/director/directors';
 import { IActors } from 'src/types/Actors.types';
+import { IDirectors } from 'src/types/Directors.types';
 
 const ExtendedSearch = ({ isOpenExtended }: { isOpenExtended: boolean }) => {
 	const dispatch = useAppDispatch();
 	const actors = useAppSelector(selectActor);
-	const [inputValue, setInputValue] = useState('');
+	const [inputValueActors, setInputValueActors] = useState('');
+	const [inputValueDirectors, setInputValueDirectors] = useState('');
 	const [filteredActors, setFilteredActors] = useState<IActors[]>([]);
+	const directors = useAppSelector(selectDirector);
+	const [filteredDirectors, setFilteredDirectors] = useState<IDirectors[]>([]);
 
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChangeActors = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;
-		setInputValue(value);
+		setInputValueActors(value);
 
 		if (value.trim() === '') {
 			setFilteredActors([]);
@@ -31,12 +39,36 @@ const ExtendedSearch = ({ isOpenExtended }: { isOpenExtended: boolean }) => {
 	};
 
 	const handleActorClick = (actorName: string) => {
-		setInputValue(actorName);
+		setInputValueActors(actorName);
 		setFilteredActors([]);
 	};
 
+	const handleChangeDirectors = (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => {
+		const value = event.target.value;
+		setInputValueDirectors(value);
+
+		if (value.trim() === '') {
+			setFilteredDirectors([]);
+			return;
+		}
+
+		const filtered = directors.filter((director) =>
+			`${director.name} ${director.last_name}`
+				.toLowerCase()
+				.includes(value.toLowerCase())
+		);
+		setFilteredDirectors(filtered);
+	};
+
+	const handleDirectorClick = (directorName: string) => {
+		setInputValueDirectors(directorName);
+		setFilteredDirectors([]);
+	};
+
 	useEffect(() => {
-		dispatch(getActorsApi());
+		dispatch(getDirectorsApi());
 	}, []);
 
 	return (
@@ -105,11 +137,11 @@ const ExtendedSearch = ({ isOpenExtended }: { isOpenExtended: boolean }) => {
 				name="actorName"
 				type="text"
 				placeholder="Актер"
-				onChange={handleChange}
-				onBlur={() => setFilteredActors([])}
-				onFocus={handleChange}
+				onChange={handleChangeActors}
+				// onBlur={() => setFilteredActors([])}
+				onFocus={handleChangeActors}
 				autoComplete="off"
-				value={inputValue}
+				value={inputValueActors}
 			/>
 			{filteredActors.length > 0 && (
 				<ul className="searchExtended__form-actors">
@@ -132,10 +164,27 @@ const ExtendedSearch = ({ isOpenExtended }: { isOpenExtended: boolean }) => {
 				name="directorName"
 				type="text"
 				placeholder="Режиссер"
-				// onChange={handleChange}
-				// onBlur={setSearchClose}
+				onChange={handleChangeDirectors}
+				// onBlur={() => setFilteredDirectors([])}
+				onFocus={handleChangeDirectors}
 				autoComplete="off"
+				value={inputValueDirectors}
 			/>
+			{filteredDirectors.length > 0 && (
+				<ul className="searchExtended__form-directors">
+					{filteredDirectors.map((director) => (
+						<button
+							className="searchExtended__form-director"
+							key={director.id}
+							onClick={() =>
+								handleDirectorClick(`${director.name} ${director.last_name}`)
+							}
+						>
+							{director.name} {director.last_name}
+						</button>
+					))}
+				</ul>
+			)}
 			<div className="searchExtended__row">
 				<p className="searchExtended__row-title">Год</p>
 				<select id="yearFrom" name="yearFrom" className="searchExtended__form">

@@ -5,8 +5,9 @@ import { RatedElement } from '../RatedElement/RatedElement';
 import { useState, useEffect } from 'react';
 import { IMovieCard } from 'src/types/MovieCard.types';
 import { useNavigate } from 'react-router-dom';
-import { getMoviebyidApi } from 'src/services/redux/slices/moviebyid/moviebyid';
+import { getMoviebyidApi, getMoviebyidTokenApi } from 'src/services/redux/slices/moviebyid/moviebyid';
 import { useAppDispatch } from '../../services/typeHooks';
+import { selectUser } from 'src/services/redux/slices/user/user';
 
 const Search = ({
 	isOpenSearch,
@@ -37,9 +38,14 @@ const Search = ({
 
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
+	const user = useAppSelector(selectUser);
 
-	const handleImgClick = (filmId: number) => {
-		dispatch(getMoviebyidApi(filmId));
+	const handleImgClick = (filmId: number, token: string) => {
+		if (user.token) {
+			dispatch(getMoviebyidTokenApi({ filmId: filmId, token: token }));
+		} else {
+			dispatch(getMoviebyidApi(filmId));
+		}
 		navigate('/movie-page');
 		window.scrollTo(0, 0);
 	};
@@ -53,7 +59,7 @@ const Search = ({
 					filteredFilms.slice(0, 5).map((film: IMovieCard) => (
 						<a
 							key={film.id}
-							onClick={() => handleImgClick(film.id)}
+							onClick={() => handleImgClick(film.id, user.token)}
 							className="searchGeneral__film"
 						>
 							<img

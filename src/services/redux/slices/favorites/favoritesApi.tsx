@@ -8,11 +8,7 @@ const checkRes = (res: Response) => {
 	}
 };
 
-export const fetchData = (
-	url: string,
-	method: string,
-	token?: string
-) => {
+export const fetchData = (url: string, method: string, token?: string) => {
 	return fetch(url, {
 		method,
 		headers: {
@@ -22,26 +18,38 @@ export const fetchData = (
 	}).then((res) => checkRes(res));
 };
 
-export const fetchAddToFavorites = (id: number, token: string): Promise<Response> => {
-	return fetchData(`${API_BASE_URL}/movies/${id}/favorite/`, 'POST', token)
+export const fetchAddToFavorites = (
+	id: number,
+	token: string
+): Promise<Response> => {
+	return fetchData(`${API_BASE_URL}/movies/${id}/favorite/`, 'POST', token);
 };
 
-export const fetchDeleteFromFavorites = (id: number, token: string): Promise<Response> => {
-	return fetchData(`${API_BASE_URL}/movies/${id}/favorite/`, 'DELETE', token)
+export const fetchDeleteFromFavorites = (
+	id: number,
+	token: string
+): Promise<Response> => {
+	return fetchData(`${API_BASE_URL}/movies/${id}/favorite/`, 'DELETE', token);
 };
 
 export const getFavoriteMovies = (token: string): Promise<Response> => {
-	return fetchData(`${API_BASE_URL}/movies/favorites`, 'GET', token)
+	return fetchData(`${API_BASE_URL}/movies/favorites`, 'GET', token);
 };
 
-export const fetchAddToWatch = (id: number, token: string): Promise<Response> => {
-	return fetchData(`${API_BASE_URL}/movies/${id}/setwatch/`, 'POST', token)
+export const fetchAddToWatch = (
+	id: number,
+	token: string
+): Promise<Response> => {
+	return fetchData(`${API_BASE_URL}/movies/${id}/setwatch/`, 'POST', token);
 };
 
-export const fetchDeleteFromWatch = (id: number, token: string): Promise<Response> => {
-	return fetchData(`${API_BASE_URL}/movies/${id}/setwatch/`, 'DELETE', token)
+export const fetchDeleteFromWatch = (
+	id: number,
+	token: string
+): Promise<Response> => {
+	return fetchData(`${API_BASE_URL}/movies/${id}/setwatch/`, 'DELETE', token);
 };
 
 export const getWatchList = (token: string): Promise<Response> => {
-	return fetchData(`${API_BASE_URL}/movies/watchlist`, 'GET', token)
+	return fetchData(`${API_BASE_URL}/movies/watchlist`, 'GET', token);
 };

@@ -1,13 +1,15 @@
 import { FC } from 'react';
 import { useState, useEffect } from 'react';
 import './Header.css';
-import logo from '../../images/logo.svg';
+import logo1 from '../../images/logo.svg';
+import logo2 from '../../images/Logo2.svg';
 import adjustments from '../../images/adjustments.svg';
 import search from '../../images/search.svg';
 import Account from '../Account/Account';
 import Search from '../Search/Search';
 import ExtendedSearch from '../ExtendedSearch/ExtendedSearch';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Header: FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -39,6 +41,14 @@ const Header: FC = () => {
 
 	const [isOpenSearch, setIsOpenSearch] = useState(false);
 
+	const navigate = useNavigate();
+
+	const onLinkclick = (event: any) => {
+		event.preventDefault();
+		navigate(`/search-result?name=${values}`);
+		setValues('');
+	};
+
 	useEffect(() => {
 		if (values.length > 0) {
 			setIsOpenSearch(true);
@@ -48,18 +58,28 @@ const Header: FC = () => {
 		}
 	}, [values]);
 
-	// const setSearchClose = () => {
-	// 	setIsOpenSearch(false);
-	// };
+	const setSearchClose = () => {
+		setIsOpenSearch(false);
+	};
 
 	return (
 		<header className="header" id="header">
-			<img
-				className="header__logo"
-				alt="лого"
-				src={logo}
-				onMouseOver={setNavOpen}
-			/>
+			<div className="header__logo">
+				<img
+					className="header__logo1"
+					alt="лого"
+					src={logo1}
+					onMouseOver={setNavOpen}
+				/>
+				<Link to="/">
+					<img
+						className="header__logo2"
+						alt="лого"
+						src={logo2}
+						onMouseOver={setNavOpen}
+					/>
+				</Link>
+			</div>
 			<nav
 				className={`header__content ${isOpen && 'header__content_open'}`}
 				onMouseOver={setNavOpen}
@@ -81,6 +101,7 @@ const Header: FC = () => {
 				<form className="header__search">
 					<input
 						className="header__search-input"
+						value={values}
 						id="name"
 						name="name"
 						type="text"
@@ -100,13 +121,14 @@ const Header: FC = () => {
 							alt="Кнопка расширенного поиска"
 						/>
 					</button>
-					<Link to="/search-result" className="header__search-button">
+					<button onClick={onLinkclick} className="header__search-button">
 						<img
 							className="header__search-button_search"
 							src={search}
 							alt="Кнопка поиска"
+							onClick={setSearchClose}
 						/>
-					</Link>
+					</button>
 				</form>
 				<Search isOpenSearch={isOpenSearch} values={values} />
 				<ExtendedSearch isOpenExtended={isOpenExtended} />

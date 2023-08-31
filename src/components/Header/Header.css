@@ -13,11 +13,15 @@
 }
 
 .header__logo {
+	display: flex;
 	margin: 0 77px 0 120px;
 	z-index: 6;
 	position: relative;
+	justify-content: center;
 }
-
+.header__logo2 {
+	margin-left: 13px;
+}
 .header__container {
 	display: flex;
 	flex-direction: column;
