@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import { getMoviesByGenre } from './moviesByGenreApi';
 import { IFilmsbyGenreState } from 'src/types/FilmsByGenre.types';
 
@@ -16,6 +16,8 @@ export const onegenre = createAsyncThunk(
 		return genres;
 	}
 );
+
+export const clearMovieData = createAction('@@moviesbygenre/clearMovieData');
 
 const initialState: IFilmsbyGenreState = {
 	status: 'idle',
@@ -155,11 +157,14 @@ const initialState: IFilmsbyGenreState = {
 export const moviesByGenreSlice = createSlice({
 	name: '@@moviesbygenre',
 	initialState,
-	reducers: {},
+	reducers: {
+		clearMovieData: () => initialState,
+	},
 	extraReducers: (builder) => {
-		builder.addCase(getMoviesByGenreApi.fulfilled, (state, action) => {
-			state.films = action.payload;
-		});
+		builder
+			.addCase(getMoviesByGenreApi.fulfilled, (state, action) => {
+				state.films = action.payload;
+			});
 	},
 });
 

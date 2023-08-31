@@ -11,20 +11,18 @@ import RatingElement from 'src/components/RatingElement/RatingElement';
 import FilmAbout from 'src/components/FilmAbout/FilmAbout';
 import FilmDescription from 'src/components/FilmDescription/FilmDescription';
 import { Loader } from 'src/components/Loader/Loader';
-import { SlickSliderMini } from 'src/components/SlickSliderMini/SlickSliderMini';
-import { selectUser } from 'src/services/redux/slices/user/user';
-import { getMoviebyidTokenApi } from 'src/services/redux/slices/moviebyid/moviebyid';
+import { SlickSlider } from 'src/components/SlickSlider/SlickSlider';
+import { getMoviesByGenreApi } from 'src/services/redux/slices/movieByGenre/moviesByGenre';
 
 const MoviePage: FC = () => {
 	const movie = useAppSelector((state) => state.moviebyid.movie);
-	const loading = useAppSelector((state) => state.moviebyid.status)
-	const films = useAppSelector((state) => state.movies.movies);
+	const loading = useAppSelector((state) => state.moviebyid.status);
+	const movieByGenre = useAppSelector((state) => state.moviesbygenre.films);
 	const dispatch = useAppDispatch();
-	const user = useAppSelector(selectUser);
 
 	useEffect(() => {
-		dispatch(getMoviebyidTokenApi({ filmId: movie.id, token: user.token }));
-	}, [])
+		dispatch(getMoviesByGenreApi({ genres: movie.genres[0].slug }));
+	}, []);
 
 	return (
 		<>
@@ -70,7 +68,7 @@ const MoviePage: FC = () => {
 							<FilmAbout movie={movie} />
 						</div>
 						<div className="moviepage-cards__container">
-							<SlickSliderMini title={`Подборки`} movies={films} />
+							<SlickSlider title={`Похожие фильмы`} movies={movieByGenre} />
 						</div>
 					</div>
 				</section>
