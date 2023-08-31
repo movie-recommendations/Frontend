@@ -1,4 +1,5 @@
-import { useAppSelector } from '../../services/typeHooks';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
 import './MoviePage.css';
 import ActorsList from '../../components/Actors/ActorsList';
 import { RatedElement } from '../../components/RatedElement/RatedElement';
@@ -11,13 +12,20 @@ import FilmAbout from 'src/components/FilmAbout/FilmAbout';
 import FilmDescription from 'src/components/FilmDescription/FilmDescription';
 import { Loader } from 'src/components/Loader/Loader';
 import { SlickSliderMini } from 'src/components/SlickSliderMini/SlickSliderMini';
-
+import { selectUser } from 'src/services/redux/slices/user/user';
+import { getMoviebyidTokenApi } from 'src/services/redux/slices/moviebyid/moviebyid';
 
 const MoviePage: FC = () => {
 	const movie = useAppSelector((state) => state.moviebyid.movie);
 	const loading = useAppSelector((state) => state.moviebyid.status)
 	const films = useAppSelector((state) => state.movies.movies);
-	
+	const dispatch = useAppDispatch();
+	const user = useAppSelector(selectUser);
+
+	useEffect(() => {
+		dispatch(getMoviebyidTokenApi({ filmId: movie.id, token: user.token }));
+	}, [])
+
 	return (
 		<>
 			{loading === 'loading' ? (
@@ -47,7 +55,7 @@ const MoviePage: FC = () => {
 									/>
 									<MovieButton buttonName={ButtonTypes.willSee} id={movie.id} />
 								</div>
-								<RatingElement id={movie.id}/>
+								<RatingElement id={movie.id} />
 							</div>
 						</div>
 						<div className="description__container">
