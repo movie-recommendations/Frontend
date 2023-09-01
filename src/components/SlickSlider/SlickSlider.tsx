@@ -11,12 +11,16 @@ import BackButton from '../BackButton/BackButton';
 import { MoreButton } from '../MoreBtn/MoreButton';
 
 export const SlickSlider: FC<ICompilationsTwo> = ({ title, movies }) => {
+
+	const slidesToShow = movies.length < 4 ? movies.length : 4;
+	const slidesToScroll = slidesToShow;
+
 	const settings = {
 		dots: false,
 		infinite: true,
 		speed: 500,
-		slidesToShow: 4,
-		slidesToScroll: 4,
+		slidesToShow: slidesToShow,
+		slidesToScroll: slidesToScroll,
 		arrows: true,
 	};
 

@@ -7,9 +7,10 @@ import { useLocation } from 'react-router-dom';
 import { IMovieAdvancedCard } from 'src/types/MovieByAdvancedSearch.types';
 import { clearState } from 'src/services/redux/slices/movieByAdvancedSearch/movieByAdvancedSearch';
 import { Loader } from 'src/components/Loader/Loader';
-import { useAppSelector } from 'src/services/typeHooks';
+import { useAppSelector, useAppDispatch } from 'src/services/typeHooks';
 
 export const SearchResultPage = () => {
+	const dispatch = useAppDispatch();
 	const location = useLocation();
 	const props: IMovieAdvancedCard[] = location.state;
 	const [values] = useState('');
@@ -17,17 +18,15 @@ export const SearchResultPage = () => {
 	const [isMoreButton, setIsMoreButton] = useState(false);
 	const [screenSize, setScreenSize] = useState<number>(0);
 	const [pageMore, setPageMore] = useState(screenSize);
-	const loading = useAppSelector((state) => state.movieByAdvancedSearc.status)
-	// const loading = props.status
 
 	const filteredFilms = props;
+	// useEffect(() => {
+	// 	return () => {
+	// 		dispatch(clearState())
+	// 	}
+	// },[])
 	useEffect(() => {
-		return () => {
-			clearState()
-		}
-	})
-	useEffect(() => {
-		if (filteredFilms?.length === 0) {
+		if (filteredFilms.length === 0) {
 			setIsFilteredFilms(true);
 		} else {
 			setIsFilteredFilms(false);
@@ -61,7 +60,7 @@ export const SearchResultPage = () => {
 	}, [screenSize]);
 
 	useEffect(() => {
-		if (props?.length > pageMore) {
+		if (props.length > pageMore) {
 			setIsMoreButton(true);
 		} else {
 			setIsMoreButton(false);
@@ -73,7 +72,6 @@ export const SearchResultPage = () => {
 	};
 
 	return (
-		<>{loading === 'loading' ? (<Loader />) : (
 			<section className="search-result">
 				<h1 className="search-result_title">Результаты поиска</h1>
 				{/* {
@@ -83,7 +81,7 @@ export const SearchResultPage = () => {
 			} */}
 				<div className="search-page_container">
 					{!isFilteredFilms ? (
-						filteredFilms?.slice(0, pageMore)
+						filteredFilms.slice(0, pageMore)
 							.map((film) => <SeachResult film={film} key={film.id} />)
 					) : (
 						<p className="searchGeneral__film-none">
@@ -95,7 +93,5 @@ export const SearchResultPage = () => {
 					{isMoreButton ? <MoreButton onClick={handleMoreButtonClick} /> : null}
 				</div>
 			</section>
-		)}
-		</>
 	);
 };

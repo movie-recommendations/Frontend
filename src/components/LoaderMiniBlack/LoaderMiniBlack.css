@@ -1,0 +1,40 @@
+.loader-mini-black {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 129px;
+	overflow: hidden;
+	margin: auto;
+}
+
+.loader-mini-black__container {
+	overflow: hidden;
+}
+
+.loader-mini-black__img1 {
+	width: 36px;
+	height: 1000px;
+	background-image: url('../../images/loaderMiniBlack1.svg');
+	animation: slideDown 1s linear infinite;
+	fill: black;
+}
+
+.loader-mini-black__img_plus {
+	width: 100px;
+	height: 129px;
+	background-image: url('../../images/loaderMiniBlack2.svg');
+	background-size: cover;
+	position: relative;
+	overflow: hidden;
+	fill: black;
+}
+
+@keyframes slideDown {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(43%);
+	}
+}

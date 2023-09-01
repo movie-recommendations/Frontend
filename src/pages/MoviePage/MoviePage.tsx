@@ -17,17 +17,23 @@ import {
 	getMoviebyidTokenApi,
 } from 'src/services/redux/slices/moviebyid/moviebyid';
 import { SlickSlider } from 'src/components/SlickSlider/SlickSlider';
-import { getMoviesByGenreApi } from 'src/services/redux/slices/movieByGenre/moviesByGenre';
+import { clearMovieByGenreData, getMoviesByGenreApi } from 'src/services/redux/slices/movieByGenre/moviesByGenre';
 
 const MoviePage: FC = () => {
 	const movie = useAppSelector((state) => state.moviebyid.movie);
 	const loading = useAppSelector((state) => state.moviebyid.status);
+	const status = useAppSelector((state) => state.moviesbygenre.status)
 	const movieByGenre = useAppSelector((state) => state.moviesbygenre.films);
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
-		dispatch(getMoviesByGenreApi({ genres: movie.genres[0].slug }));
-	}, []);
+		if (loading === 'success') {
+			dispatch(getMoviesByGenreApi({ genres: movie.genres[0].slug }));
+		}
+		// return () => {
+		// 	dispatch(clearMovieByGenreData())
+		// }
+	}, [loading]);
 
 	return (
 		<>
@@ -71,10 +77,17 @@ const MoviePage: FC = () => {
 								)}
 							</div>
 							<FilmAbout movie={movie} />
-						</div>
-						<div className="moviepage-cards__container">
-							<SlickSlider title={`Похожие фильмы`} movies={movieByGenre} />
-						</div>
+						</div>{status === 'loading' ? (
+							<Loader />
+						) : (
+							<div className="moviepage-cards__container">
+								{movieByGenre && movieByGenre.length > 0 ? (
+									<SlickSlider title={`Похожие фильмы`} movies={movieByGenre} />
+								) : (
+									<p>Нет похожих фильмов</p>
+								)}
+							</div>
+						)}
 					</div>
 				</section>
 			)}

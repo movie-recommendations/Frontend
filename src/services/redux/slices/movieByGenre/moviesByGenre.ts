@@ -16,8 +16,6 @@ export const onegenre = createAsyncThunk(
 	}
 );
 
-export const clearMovieData = createAction('@@moviesbygenre/clearMovieData');
-
 const initialState: IFilmsbyGenreState = {
 	status: 'idle',
 	error: '',
@@ -53,117 +51,22 @@ const initialState: IFilmsbyGenreState = {
 			is_viewed: false,
 		},
 	],
-	favoriteFilms: [
-		{
-			id: '',
-			title: '',
-			rating: {
-				rate_kinopoisk: 0,
-				rate_imdb: 0,
-			},
-			shortDescription: '',
-			v_picture: '',
-			movieCardUrl: '',
-			index: 0,
-			year: 0,
-			genres: [''],
-			country: [''],
-			director: [
-				{
-					first_name: '',
-					last_name: '',
-				},
-			],
-			actor: [
-				{
-					first_name: '',
-					last_name: '',
-				},
-			],
-			is_favorite: false,
-			must_see: false,
-			is_viewed: false,
-		},
-	],
-	mustSeeFilms: [
-		{
-			id: '',
-			title: '',
-			rating: {
-				rate_kinopoisk: 0,
-				rate_imdb: 0,
-			},
-			shortDescription: '',
-			v_picture: '',
-			movieCardUrl: '',
-			index: 0,
-			year: 0,
-			genres: [''],
-			country: [''],
-			director: [
-				{
-					first_name: '',
-					last_name: '',
-				},
-			],
-			actor: [
-				{
-					first_name: '',
-					last_name: '',
-				},
-			],
-			is_favorite: false,
-			must_see: false,
-			is_viewed: false,
-		},
-	],
-	viewedFilms: [
-		{
-			id: '',
-			title: '',
-			rating: {
-				rate_kinopoisk: 0,
-				rate_imdb: 0,
-			},
-			shortDescription: '',
-			v_picture: '',
-			movieCardUrl: '',
-			index: 0,
-			year: 0,
-			genres: [''],
-			country: [''],
-			director: [
-				{
-					first_name: '',
-					last_name: '',
-				},
-			],
-			actor: [
-				{
-					first_name: '',
-					last_name: '',
-				},
-			],
-			is_favorite: false,
-			must_see: false,
-			is_viewed: false,
-		},
-	],
-	genres: undefined,
-	filmsbygenre: [],
 };
 
 export const moviesByGenreSlice = createSlice({
 	name: '@@moviesbygenre',
 	initialState,
 	reducers: {
-		clearMovieData: () => initialState,
+		clearMovieByGenreData: () => initialState,
 	},
 	extraReducers: (builder) => {
 		builder.addCase(getMoviesByGenreApi.fulfilled, (state, action) => {
+			state.status = 'success';
 			state.films = action.payload;
 		});
 	},
 });
+
+export const { clearMovieByGenreData } = moviesByGenreSlice.actions;
 
 export const moviesbygenreReducer = moviesByGenreSlice.reducer;

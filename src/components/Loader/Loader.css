@@ -17,6 +17,7 @@
 	height: 1000px;
 	background-image: url('../../images/loader1.svg');
 	animation: slideDown 1s linear infinite;
+	fill: white;
 }
 
 /* .loader__img {
@@ -36,6 +37,7 @@
 	background-size: cover;
 	position: relative;
 	overflow: hidden;
+	fill: white;
 }
 
 @keyframes slideDown {

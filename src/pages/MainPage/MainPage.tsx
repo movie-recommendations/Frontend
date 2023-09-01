@@ -19,7 +19,6 @@ import {
 
 import { getActorsApi } from 'src/services/redux/slices/actors/actors';
 import { useNavigate } from 'react-router';
-import { IMovieCard } from 'src/types/MovieCard.types';
 import { ButtonShowAll } from 'src/components/ButtonShowAll/ButtonShowAll';
 import { getMoviesOfDayApi } from 'src/services/redux/slices/moviesoftheday/moviesoftheday';
 import { getGenresIconsAPI } from 'src/services/redux/slices/genresIconsApi/genresIcons';

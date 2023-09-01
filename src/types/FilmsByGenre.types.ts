@@ -40,13 +40,8 @@ interface IRating {
 
 export interface IFilmsbyGenreState {
 	films: any;
-	genres: any;
 	status: 'idle' | 'success' | 'loading' | 'failed';
 	error: string | undefined;
-	filmsbygenre: Array<IFilmsbyGenre>;
-	favoriteFilms: Array<IFilmsbyGenre>;
-	mustSeeFilms: Array<IFilmsbyGenre>;
-	viewedFilms: Array<IFilmsbyGenre>;
 }
 
 export interface ISelectionState {

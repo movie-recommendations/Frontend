@@ -10,6 +10,7 @@ import { IDirectors } from 'src/types/Directors.types';
 import { selectCountries } from 'src/services/redux/slices/countries/countries';
 import { getMovieByAdvancedSearchApi } from 'src/services/redux/slices/movieByAdvancedSearch/movieByAdvancedSearch';
 import { selectUser } from 'src/services/redux/slices/user/user';
+import { getMovieByAdvancedSearch } from 'src/services/redux/slices/movieByAdvancedSearch/movieByAdvancedSearchApi';
 
 const ExtendedSearch = ({
 	isOpenExtended,
@@ -25,9 +26,6 @@ const ExtendedSearch = ({
 	const countries = useAppSelector(selectCountries);
 	const directors = useAppSelector(selectDirector);
 	const user = useAppSelector(selectUser);
-	const films = useAppSelector(
-		(state) => state.movieByAdvancedSearc.moviesAdvanced
-	);
 	const [inputValueActors, setInputValueActors] = useState('');
 	const [inputValueDirectors, setInputValueDirectors] = useState('');
 	const [filteredActors, setFilteredActors] = useState<IActors[]>([]);
@@ -92,20 +90,31 @@ const ExtendedSearch = ({
 	}
 
 	const Click = async () => {
-		dispatch(
-		  getMovieByAdvancedSearchApi({
-			data: {
-			  actor: selectedActorId,
-			  director: selectedDirectorId,
-			  genre: selectedGenreSlug,
-			  country: selectedCountrySlug,
-			},
-			token: user.token,
-		  })
-		);
-		navigate('/search-result', { state: films });
-		resetState();
-	  };
+		try {
+			const data = {
+				actor: selectedActorId,
+				director: selectedDirectorId,
+				genre: selectedGenreSlug,
+				country: selectedCountrySlug,
+			  };
+			const respons = await getMovieByAdvancedSearch(data, user.token,)
+			// await dispatch(
+			// 	getMovieByAdvancedSearchApi({
+			// 		data: {
+			// 			actor: selectedActorId,
+			// 			director: selectedDirectorId,
+			// 			genre: selectedGenreSlug,
+			// 			country: selectedCountrySlug,
+			// 		},
+			// 		token: user.token,
+			// 	})
+			// );
+			navigate('/search-result', { state: respons });
+			resetState();
+		} catch (error) {
+			console.error('An error occurred:', error);
+		}
+	};
 
 	return (
 		<section
@@ -116,7 +125,7 @@ const ExtendedSearch = ({
 				id="genre"
 				name="genre"
 				className="searchExtended__form"
-				defaultValue={''}
+				defaultValue={selectedGenreSlug}
 				onChange={(e) => setSelectedGenreSlug(e.target.value)}
 			>
 				<option value="" disabled>
@@ -132,7 +141,7 @@ const ExtendedSearch = ({
 				id="country"
 				name="country"
 				className="searchExtended__form"
-				defaultValue={''}
+				defaultValue={selectedCountrySlug}
 				onChange={(e) => setSelectedCountrySlug(e.target.value)}
 			>
 				<option value="" disabled>

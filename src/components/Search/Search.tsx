@@ -1,6 +1,5 @@
 import './Search.css';
 import { useAppSelector } from '../../services/typeHooks';
-// import { IFilms } from 'src/types/Film.types';
 import { RatedElement } from '../RatedElement/RatedElement';
 import { useState, useEffect } from 'react';
 import { IMovieCard } from 'src/types/MovieCard.types';
@@ -12,6 +11,7 @@ import {
 import { useAppDispatch } from '../../services/typeHooks';
 import { selectUser } from 'src/services/redux/slices/user/user';
 import { getMovieBySearchApi } from 'src/services/redux/slices/movieByAdvancedSearch/movieByAdvancedSearch';
+import { LoaderMiniBlack } from 'src/components/LoaderMiniBlack/LoaderMiniBlack';
 
 const Search = ({
 	isOpenSearch,
@@ -28,10 +28,13 @@ const Search = ({
 	const films = useAppSelector(
 		(state) => state.movieByAdvancedSearc.moviesSearch
 	);
+	const status = useAppSelector((state) => state.movieByAdvancedSearc.status)
 	const [isFilteredFilms, setIsFilteredFilms] = useState(false);
 
 	useEffect(() => {
-		dispatch(getMovieBySearchApi({ values, token: user.token }));
+		if (values) {
+			dispatch(getMovieBySearchApi({ values, token: user.token }));
+		}
 	}, [values]);
 
 	const filteredFilms = films;
@@ -60,7 +63,7 @@ const Search = ({
 			className={`searchGeneral ${isOpenSearch && 'searchGeneral_open'}`}
 		>
 			<div className="searchGeneral__films" id="searchGeneral__films">
-				{!isFilteredFilms ? (
+				{status === 'loading' ? (<LoaderMiniBlack />) : (!isFilteredFilms ? (
 					filteredFilms?.slice(0, 5).map((film: IMovieCard) => (
 						<a
 							key={film.id}
@@ -93,7 +96,9 @@ const Search = ({
 					<p className="searchGeneral__film-none">
 						По вашему запросу ничего не найдено
 					</p>
-				)}
+				)
+				)
+				}
 			</div>
 		</section>
 	);
