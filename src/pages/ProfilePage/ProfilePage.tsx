@@ -50,9 +50,7 @@ const ProfilePage = () => {
 		dispatch(
 			editUserInfo({
 				data: {
-					username: getValues('nickname')
-						? getValues('nickname')
-						: user.nickname,
+					username: getValues('nickname'),
 					date_of_birth: getValues('dateOfBirth')
 						? getValues('dateOfBirth')
 						: user.dateOfBirth,
@@ -64,6 +62,7 @@ const ProfilePage = () => {
 			.unwrap()
 			.then(() => {
 				setIsSavedPopupOpened(true);
+				console.log(user.nickname)
 				reset(values);
 			})
 			.catch((err: unknown) => console.log('editUserInfo err', err));
@@ -97,6 +96,8 @@ const ProfilePage = () => {
 				.catch((err: unknown) => console.log('getUserInfo err', err));
 		}
 	}, [dispatch]);
+
+	
 
 	return status === 'loading' ? (
 		<Loader />
