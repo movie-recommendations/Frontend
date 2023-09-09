@@ -28,7 +28,7 @@ const Search = ({
 	const films = useAppSelector(
 		(state) => state.movieByAdvancedSearc.moviesSearch
 	);
-	const status = useAppSelector((state) => state.movieByAdvancedSearc.status)
+	const status = useAppSelector((state) => state.movieByAdvancedSearc.status);
 	const [isFilteredFilms, setIsFilteredFilms] = useState(false);
 
 	useEffect(() => {
@@ -63,7 +63,9 @@ const Search = ({
 			className={`searchGeneral ${isOpenSearch && 'searchGeneral_open'}`}
 		>
 			<div className="searchGeneral__films" id="searchGeneral__films">
-				{status === 'loading' ? (<LoaderMiniBlack />) : (!isFilteredFilms ? (
+				{status === 'loading' ? (
+					<LoaderMiniBlack />
+				) : !isFilteredFilms ? (
 					filteredFilms?.slice(0, 5).map((film: IMovieCard) => (
 						<a
 							key={film.id}
@@ -96,9 +98,7 @@ const Search = ({
 					<p className="searchGeneral__film-none">
 						По вашему запросу ничего не найдено
 					</p>
-				)
-				)
-				}
+				)}
 			</div>
 		</section>
 	);

@@ -67,6 +67,7 @@ export default function MainPage() {
 	const redactionTwo = useAppSelector((state) => state.compilations.data[1]);
 	const redactionThree = useAppSelector((state) => state.compilations.data[2]);
 	const navigate = useNavigate();
+
 	const handleAllButtonFilmsClick = (movies: any, title: string) => {
 		localStorage.setItem('filmsBy', JSON.stringify({ movies }));
 		localStorage.setItem('title', JSON.stringify(title));
@@ -87,7 +88,7 @@ export default function MainPage() {
 					<div className="main-page_slick-slider">
 						<SlickSliderMini title={`Новинки`} movies={newmovies} />
 						<ButtonShowAll
-							onClick={() => handleAllButtonFilmsClick(films, `Новинки`)}
+							onClick={() => handleAllButtonFilmsClick(films, 'Новинки')}
 						/>
 					</div>
 					<div className="main-page_slick-slider">
@@ -100,7 +101,7 @@ export default function MainPage() {
 									/>
 									<ButtonShowAll
 										onClick={() =>
-											handleAllButtonFilmsClick(films, `Специально для вас`)
+											handleAllButtonFilmsClick(films, 'Специально для вас')
 										}
 									/>
 								</div>

@@ -15,8 +15,9 @@ export const Selections = () => {
 	const [screenSize, setScreenSize] = useState<number>(0);
 	const [pageMore, setPageMore] = useState(screenSize);
 	const films = JSON.parse(localStorage.getItem('filmsBy') || '');
+	
 	const title = JSON.parse(localStorage.getItem('title') || '');
-
+	console.log(title)
 	useEffect(() => {
 		if (screenSize >= 1280) {
 			const page = 12;
