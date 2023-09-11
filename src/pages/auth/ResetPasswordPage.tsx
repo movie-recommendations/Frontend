@@ -34,6 +34,13 @@ const ResetPasswordPage = () => {
 		getValues,
 	} = useForm<IResetPasswordFields>({ mode: 'onChange' });
 
+	const keyPress =  document.addEventListener("keydown", (e) => {
+		if (e.code == "Escape") {
+		  console.log("Closing window...");
+		}
+	  });
+
+
 	const getTokenFromURL = () => {
 		const url = window.location.href;
 		const tokenStartIndex = url.indexOf('eyJ');
@@ -106,6 +113,16 @@ const ResetPasswordPage = () => {
 		setStep(1);
 		reset();
 		setAuthError(false);
+		document.addEventListener("keydown", (e) => {
+			if (e.code == "Escape") {
+				navigate('/profile');
+			}
+		  });
+		  document.removeEventListener("keydown", (e) => {
+			if (e.code == "Escape") {
+				navigate('/profile');
+			}
+		  });
 	}, []);
 
 	return (
@@ -116,6 +133,7 @@ const ResetPasswordPage = () => {
 					<>
 						<p className="auth__hint">Введите новый пароль</p>
 						<form className="auth__form" onSubmit={handleSubmit(onSubmit)}>
+							<div>
 							<Input
 								inputType={InputTypes.password}
 								labelText="Новый пароль"
@@ -125,6 +143,11 @@ const ResetPasswordPage = () => {
 								}}
 								error={errors?.password?.message}
 							/>
+							<span className="input__span">
+									Минимум 8 символов (заглавные и строчные латинские буквы и
+									цифры)
+								</span>
+								</div>
 							<Input
 								inputType={InputTypes.repeatPassword}
 								labelText="Повторите новый пароль"

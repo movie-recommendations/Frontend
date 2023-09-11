@@ -81,7 +81,7 @@ export const movieByAdvancedSearcSlice = createSlice({
 	name: '@@movieByAdvancedSearch',
 	initialState,
 	reducers: {
-		clearState: () => initialState
+		clearState: () => initialState,
 	},
 	extraReducers: (builder) => {
 		builder

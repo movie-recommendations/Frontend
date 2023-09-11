@@ -87,7 +87,7 @@ const ExtendedSearch = ({
 		setSelectedDirectorId('');
 		setSelectedGenreSlug('');
 		setSelectedCountrySlug('');
-	}
+	};
 
 	const Click = async () => {
 		try {
@@ -96,8 +96,8 @@ const ExtendedSearch = ({
 				director: selectedDirectorId,
 				genre: selectedGenreSlug,
 				country: selectedCountrySlug,
-			  };
-			const respons = await getMovieByAdvancedSearch(data, user.token,)
+			};
+			const respons = await getMovieByAdvancedSearch(data, user.token);
 			// await dispatch(
 			// 	getMovieByAdvancedSearchApi({
 			// 		data: {

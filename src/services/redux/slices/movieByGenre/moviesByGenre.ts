@@ -61,8 +61,10 @@ export const moviesByGenreSlice = createSlice({
 	},
 	extraReducers: (builder) => {
 		builder.addCase(getMoviesByGenreApi.fulfilled, (state, action) => {
+			console.log(action);
 			state.status = 'success';
 			state.films = action.payload;
+			console.log(state.films.itemslug);
 		});
 	},
 });

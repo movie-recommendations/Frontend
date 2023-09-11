@@ -19,15 +19,19 @@
 }
 
 .footer__scroll {
+	width: 154px;
 	position: fixed;
 	bottom: 60px;
-	left: calc(50% + 580px);
+	left: calc(50% + 475px);
 	z-index: 1000;
 	background: transparent;
-	border: 0;
+	border: 1px solid;
+	border-radius: 20px;
+	height: 80px;
 	opacity: 0.4;
 	color: #9ca3af;
 	transition: all 1s;
+	margin-right: 165px;
 }
 
 .footer__scroll:hover {
@@ -36,7 +40,6 @@
 }
 
 .footer__scroll-button {
-	width: 125px;
 }
 
 .scroll-hidden {

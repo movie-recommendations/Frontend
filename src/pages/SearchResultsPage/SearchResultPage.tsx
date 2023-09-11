@@ -72,26 +72,27 @@ export const SearchResultPage = () => {
 	};
 
 	return (
-			<section className="search-result">
-				<h1 className="search-result_title">Результаты поиска</h1>
-				{/* {
+		<section className="search-result">
+			<h1 className="search-result_title">Результаты поиска</h1>
+			{/* {
 				props ? (
 					<p className="search-result_subtitle">По запросу: {props} </p>
 				) : (null)
 			} */}
-				<div className="search-page_container">
-					{!isFilteredFilms ? (
-						filteredFilms.slice(0, pageMore)
-							.map((film) => <SeachResult film={film} key={film.id} />)
-					) : (
-						<p className="searchGeneral__film-none">
-							По вашему запросу ничего не найдено
-						</p>
-					)}
-				</div>
-				<div className="flank_btn">
-					{isMoreButton ? <MoreButton onClick={handleMoreButtonClick} /> : null}
-				</div>
-			</section>
+			<div className="search-page_container">
+				{!isFilteredFilms ? (
+					filteredFilms
+						.slice(0, pageMore)
+						.map((film) => <SeachResult film={film} key={film.id} />)
+				) : (
+					<p className="searchGeneral__film-none">
+						По вашему запросу ничего не найдено
+					</p>
+				)}
+			</div>
+			<div className="flank_btn">
+				{isMoreButton ? <MoreButton onClick={handleMoreButtonClick} /> : null}
+			</div>
+		</section>
 	);
 };

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import './Footer.css';
-import scroll from '../../images/scroll.svg';
+import scroll from '../../images/ArrowUp.svg';
 
 const Footer: FC = () => {
 	const buttonUp = (event: React.MouseEvent<HTMLButtonElement>) => {
