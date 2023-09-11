@@ -29,6 +29,7 @@ import { actorsReducer } from './slices/actors/actors';
 import { directorsReducer } from './slices/director/directors';
 import { countriesReducer } from './slices/countries/countries';
 import { movieByAdvancedSearcReducer } from './slices/movieByAdvancedSearch/movieByAdvancedSearch';
+import { recomendationsReducer } from './slices/recomendations/recomendations';
 
 const rootReducer = combineReducers({
 	movieByAdvancedSearc: movieByAdvancedSearcReducer,
@@ -48,6 +49,7 @@ const rootReducer = combineReducers({
 	moviesbygenre: moviesbygenreReducer,
 	actors: actorsReducer,
 	directors: directorsReducer,
+	recomendations: recomendationsReducer,
 });
 
 const persistConfig = {

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IRatingState } from 'src/types/Rating.types';
-import { fetchSetRating, fetchUpdateRating, getRatedMovies } from './ratingApi';
+import { fetchDeleteRating, fetchSetRating, fetchUpdateRating, getRatedMovies } from './ratingApi';
 
 export const getRatedMoviesApi = createAsyncThunk(
 	'@@rate/getRated',
@@ -49,6 +49,23 @@ export const updateRatingApi = createAsyncThunk(
 	}
 );
 
+export const deleteRatingApi = createAsyncThunk(
+	'@@rate/deleteRate',
+	async (
+		arg: { id: number; token: string },
+		{ fulfillWithValue, rejectWithValue }
+	) => {
+		const { id, token } = arg;
+		try {
+			const response = await fetchDeleteRating(id, token);
+			const responseData = { status: response.status, ok: response.ok };
+			return fulfillWithValue(responseData);
+		} catch (error: unknown) {
+			return rejectWithValue(error);
+		}
+	}
+);
+
 const initialState: IRatingState = {
 	status: 'idle',
 	error: '',
@@ -73,9 +90,11 @@ export const ratingSlice = createSlice({
 			})
 			.addCase(updateRatingApi.fulfilled, (state) => {
 				state.status = 'success';
+			})
+			.addCase(deleteRatingApi.fulfilled, (state) => {
+				state.status = 'success';
 			});
 	},
 });
 
 export const ratingReducer = ratingSlice.reducer;
-// export { postRating };

@@ -6,8 +6,6 @@ const apiSuffix = "/api/v1";
 
 export const API_BASE_URL = window.location.origin + currentURL.substring(0, currentURL.lastIndexOf('/')) + apiSuffix;
 
-console.log(API_BASE_URL)
-
 export const GENRESv2 = [
 	'Комедия',
 	'Ужасы',

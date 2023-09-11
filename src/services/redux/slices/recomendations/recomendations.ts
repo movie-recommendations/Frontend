@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getMovies } from './moviesApi';
 import { IMovieCardState } from 'src/types/MovieCard.types';
+import { getRecomendedMovies } from './recomendationsAPI';
 
-export const getMoviesApi = createAsyncThunk('@@movies/getMovies', async () => {
-	return getMovies();
+export const getRecomendedMoviesApi = createAsyncThunk('@@recomendations/getRecomendedMovies', async (token: string) => {
+	return getRecomendedMovies(token);
 });
 
 const initialState: IMovieCardState = {
@@ -27,16 +27,16 @@ const initialState: IMovieCardState = {
 	],
 };
 
-export const moviesSlice = createSlice({
-	name: '@@movies',
+export const recomendationsSlice = createSlice({
+	name: '@@recomendations',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		builder.addCase(getMoviesApi.fulfilled, (state, action) => {
+		builder.addCase(getRecomendedMoviesApi.fulfilled, (state, action) => {
 			state.status = 'success';
 			state.movies = action.payload;
 		});
 	},
 });
 
-export const moviesReducer = moviesSlice.reducer;
+export const recomendationsReducer = recomendationsSlice.reducer;

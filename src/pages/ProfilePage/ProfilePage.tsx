@@ -50,9 +50,7 @@ const ProfilePage = () => {
 		dispatch(
 			editUserInfo({
 				data: {
-					username: getValues('nickname')
-						? getValues('nickname')
-						: user.nickname,
+					username: getValues('nickname'),
 					date_of_birth: getValues('dateOfBirth')
 						? getValues('dateOfBirth')
 						: user.dateOfBirth,

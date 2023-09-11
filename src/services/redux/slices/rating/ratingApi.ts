@@ -40,6 +40,13 @@ export const fetchUpdateRating = (
 	return fetchData(`${API_BASE_URL}/movies/${id}/rate/`, 'PUT', token, rate);
 };
 
+export const fetchDeleteRating = (
+	id: number,
+	token: string
+): Promise<Response> => {
+	return fetchData(`${API_BASE_URL}/movies/${id}/rate/`, 'DELETE', token);
+};
+
 export const getRatedMovies = (token: string): Promise<Response> => {
 	return fetchData(`${API_BASE_URL}/movies/rated`, 'GET', token);
 };
