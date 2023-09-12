@@ -1,6 +1,5 @@
 import { IGenresIcons } from 'src/types/GenresIcons.types';
-
-const API_URL = 'http://kinotochka.acceleratorpracticum.ru/api';
+import { API_BASE_URL } from 'src/utils/constants';
 
 const checkRes = (res: Response) => {
 	if (res.ok) {
@@ -20,5 +19,5 @@ const fetchData = (url: string) => {
 };
 
 export const getGenresIcons = (): Promise<Array<IGenresIcons>> => {
-	return fetchData(`${API_URL}/v1/genres`);
+	return fetchData(`${API_BASE_URL}/v1/genres`);
 };

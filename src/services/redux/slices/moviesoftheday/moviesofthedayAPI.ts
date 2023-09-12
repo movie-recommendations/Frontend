@@ -1,6 +1,5 @@
 import { IMoviesOfDay } from 'src/types/moviesoftheday.types';
-
-const API_URL = 'http://kinotochka.acceleratorpracticum.ru/api';
+import { API_BASE_URL } from 'src/utils/constants';
 
 const checkRes = (res: Response) => {
 	if (res.ok) {
@@ -20,5 +19,5 @@ const fetchData = (url: string) => {
 };
 
 export const getMoviesOfDay = (): Promise<Array<IMoviesOfDay>> => {
-	return fetchData(`${API_URL}/v1/movies/movies_of_the_day`);
+	return fetchData(`${API_BASE_URL}/v1/movies/movies_of_the_day`);
 };

@@ -10,7 +10,7 @@ export const SpecialForYou: FC = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 
-	const films = useAppSelector((state) => state.movies.movies[5]);
+	const films = useAppSelector((state) => state.movies.movies[0]);
 	const films2 = useAppSelector((state) => state.movies.movies[0]);
 
 	useEffect(() => {

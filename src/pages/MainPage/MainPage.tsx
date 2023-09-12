@@ -41,7 +41,6 @@ export default function MainPage() {
 			dispatch(getGenres()),
 			dispatch(getMoviesOfDayApi()),
 			dispatch(getGenresIconsAPI()),
-			dispatch(getRecomendedMoviesApi(user.token)),
 		])
 			.then(() => {
 				setIsLoading(false);

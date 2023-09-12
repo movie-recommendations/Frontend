@@ -100,13 +100,13 @@ export const movieByAdvancedSearcSlice = createSlice({
 					state.error = '';
 				}
 			)
-			.addMatcher(
-				(action) => action.type.endsWith('/rejected'),
-				(state, action) => {
-					state.status = 'failed';
-					state.error = action.payload.statusText;
-				}
-			);
+			// .addMatcher(
+			// 	(action) => action.type.endsWith('/rejected'),
+			// 	(state, action) => {
+			// 		state.status = 'failed';
+			// 		state.error = action.payload.statusText;
+			// 	}
+			// );
 	},
 });
 
