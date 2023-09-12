@@ -19,5 +19,5 @@ const fetchData = (url: string) => {
 };
 
 export const getGenresIcons = (): Promise<Array<IGenresIcons>> => {
-	return fetchData(`${API_BASE_URL}/v1/genres`);
+	return fetchData(`${API_BASE_URL}/genres`);
 };

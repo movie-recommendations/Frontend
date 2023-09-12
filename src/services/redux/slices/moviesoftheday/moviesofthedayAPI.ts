@@ -19,5 +19,5 @@ const fetchData = (url: string) => {
 };
 
 export const getMoviesOfDay = (): Promise<Array<IMoviesOfDay>> => {
-	return fetchData(`${API_BASE_URL}/v1/movies/movies_of_the_day`);
+	return fetchData(`${API_BASE_URL}/movies/movies_of_the_day`);
 };
