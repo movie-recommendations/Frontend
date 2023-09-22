@@ -5,6 +5,7 @@ import './BackButton.css';
 import { IButton } from 'src/types/Button.types';
 import left from '../../images/left.svg';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const BackButton: FC<IButton> = ({
 	buttonText,
@@ -16,10 +17,14 @@ const BackButton: FC<IButton> = ({
 	const handButtonBackClick = () => {
 		navigate('/onegenre');
 	};
-
+	const location = useLocation();
 	return (
 		<button
-			className="backbutton"
+			className={
+				location.pathname === '/preferences'
+					? 'backbutton backbutton_type_preferences'
+					: 'backbutton'
+			}
 			disabled={disabled}
 			type={type}
 			onClick={handleButtonClick}

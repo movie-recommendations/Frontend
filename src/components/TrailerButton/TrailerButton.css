@@ -1,5 +1,6 @@
 .trailer {
 	margin: 68px 0 130px 0;
+	grid-area: trailer;
 }
 
 .trailer__button {
@@ -35,4 +36,16 @@
 	font-weight: 700;
 	line-height: normal;
 	margin: 0 0 40px 0;
+}
+@media screen and (max-width: 1260px) {
+	.trailer {
+		margin: 15px 0 0 0;
+	}
+}
+@media screen and (max-width: 1100px) {
+	.trailer__text {
+		font-size: 14px;
+		font-weight: 600px;
+		margin: 0 0 30px 0;
+	}
 }

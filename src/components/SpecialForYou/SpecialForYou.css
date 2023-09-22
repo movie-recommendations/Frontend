@@ -5,7 +5,14 @@
 
 .specialforyou__container-text {
 	max-width: 475px;
+	/* height: 468px; */
 	margin: 0 90px 0 95px;
+}
+
+@media screen and (max-width: 1297px) {
+	.specialforyou__container-text {
+		/* max-width: 413px; */
+	}
 }
 
 .specialforyou__title {
@@ -31,9 +38,22 @@
 	padding: 0;
 }
 
+@media screen and (max-width: 1297px) {
+	.specialforyou__subtitle {
+		margin: 45px 0 60px 0;
+	}
+}
+
 .specialforyou__button {
 	width: 296px;
 	height: 55px;
+}
+
+@media screen and (max-width: 1297px) {
+	.specialforyou__button {
+		width: 200px;
+		height: 55px;
+	}
 }
 
 .specialforyou__container-img {
@@ -48,4 +68,12 @@
 	object-fit: cover;
 	border-radius: 10px;
 	margin: 0 20px 0 0;
+}
+
+@media screen and (max-width: 1297px) {
+	.specialforyou__image {
+		width: 180px;
+		height: 239px;
+		align-self: flex-end;
+	}
 }

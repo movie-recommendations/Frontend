@@ -3,6 +3,11 @@
 	position: relative;
 }
 
+@media screen and (max-width: 1297px) {
+	.bookmark_favorite {
+	}
+}
+
 .bookmark_fon {
 	width: 25px;
 	height: 25px;

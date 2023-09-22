@@ -14,6 +14,7 @@ import { MoreButton } from '../MoreBtn/MoreButton';
 import { IGenresIcons } from 'src/types/GenresIcons.types';
 import { getGenresIconsAPI } from 'src/services/redux/slices/genresIconsApi/genresIcons';
 import { FilmCardSmall } from '../FilmCardWidth180/FilmCardSmall';
+import { useResize } from '../../hooks/useResize';
 
 export const SlickSliderGenres = ({}) => {
 	const films = useAppSelector((state) => state.movies.movies);
@@ -36,11 +37,14 @@ export const SlickSliderGenres = ({}) => {
 		setData(genresicons);
 	}, []);
 
+	const { width, isBreakpoint } = useResize();
+	const moviesQty = !isBreakpoint ? 5 : 6;
+
 	const settings = {
 		dots: false,
 		infinite: true,
 		speed: 500,
-		slidesToShow: 6,
+		slidesToShow: moviesQty,
 		slidesToScroll: 4,
 		arrows: true,
 	};

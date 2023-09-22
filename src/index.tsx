@@ -35,6 +35,7 @@ import { useAppSelector } from './services/typeHooks';
 import AllGenresPage from './pages/AllGenresPage/AllGenresPage';
 import OneGenrePage from './pages/OneGenrePage/OneGenrePage';
 import { Selections } from './pages/Selections/Selections';
+import ServerErrorPage from './pages/ServerErrorPage/ServerErrorPage';
 
 const Root: FC = () => {
 	const user = useAppSelector(selectUser);
@@ -160,6 +161,7 @@ const Root: FC = () => {
 					<Route path="/movie-page" element={<MoviePage />} />
 					<Route path="/search-result" element={<SearchResultPage />} />
 					<Route path="*" element={<ErrorPage />} />
+					<Route path="/500" element={<ServerErrorPage />} />
 				</Route>
 			</Routes>
 		</div>

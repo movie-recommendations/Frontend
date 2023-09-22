@@ -1,5 +1,5 @@
 .searchGeneral {
-	width: 525px;
+	width: 100%;
 	height: auto;
 	border-radius: 5px;
 	background-color: #fff;
@@ -36,7 +36,7 @@
 }
 
 .searchGeneral__film:hover {
-	opacity: 0.6;
+	background: var(--neutral-200, #f3f4f6);
 	cursor: pointer;
 }
 
@@ -106,6 +106,20 @@
 	color: #2b2f33;
 	text-align: center;
 	overflow: hidden;
+}
+@media screen and (max-width: 1330px) {
+	.searchGeneral__films {
+		margin-top: 20px;
+	}
+	.searchGeneral__film {
+		margin-bottom: 4px;
+	}
+	.searchGeneral__film-genres {
+		margin-top: 12px;
+	}
+	.searchGeneral__film-year {
+		margin-top: 12px;
+	}
 }
 
 /* ::-webkit-scrollbar {

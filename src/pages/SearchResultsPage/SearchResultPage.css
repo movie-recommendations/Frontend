@@ -11,7 +11,11 @@
 }
 
 .search-result_title {
+	font-family: 'Unbounded';
 	margin: 80px 165px 0;
+	font-size: 35px;
+	font-style: normal;
+	font-weight: 700;
 }
 
 .search-result_subtitle {
@@ -21,4 +25,29 @@
 .search-page_container {
 	max-width: 1110px;
 	margin: 20px 165px 80px;
+}
+@media screen and (max-width: 1440px) {
+	.search-page_container {
+		display: grid;
+		grid-template-columns: repeat(2, 540px);
+		margin-right: auto;
+		margin-left: auto;
+		margin-bottom: 50px;
+		justify-content: space-between;
+	}
+}
+@media screen and (max-width: 1280px) {
+	.search-page_container {
+		grid-template-columns: repeat(2, 480px);
+		margin-right: 50px;
+		margin-left: 50px;
+	}
+	.search-result_title {
+		margin-left: 50px;
+	}
+}
+@media screen and (max-width: 1070px) {
+	.search-page_container {
+		grid-template-columns: repeat(2, 447px);
+	}
 }

@@ -4,20 +4,22 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FC } from 'react';
 import { ICompilationsTwo } from 'src/types/Compilations.types';
-import { FilmCardSmall } from '../FilmCardWidth180/FilmCardSmall';
+import { FilmCardSpecial } from '../../components/FilmCardSpecial/FilmCardSpecial';
+import { useResize } from 'src/hooks/useResize';
 
-export const SlickSliderMini: FC<ICompilationsTwo> = ({
+export const SlickSliderSpecial: FC<ICompilationsTwo> = ({
 	title,
 	movies,
 	id,
 }) => {
-	const slidesToShow = window.innerWidth < 1280 && id ? 3 : 5;
+	const { width, isBreakpoint } = useResize();
+	const moviesQty = !isBreakpoint ? 3 : 5;
 
 	const settings = {
 		dots: false,
 		infinite: true,
 		speed: 500,
-		slidesToShow: slidesToShow,
+		slidesToShow: moviesQty,
 		slidesToScroll: 4,
 		arrows: true,
 	};
@@ -27,7 +29,7 @@ export const SlickSliderMini: FC<ICompilationsTwo> = ({
 			<h1 className="slick-slider_title">{title}</h1>
 			<Slider {...settings} className="slick-slider">
 				{movies.map((item) => (
-					<FilmCardSmall key={item.id} film={item} />
+					<FilmCardSpecial key={item.id} film={item} />
 				))}
 			</Slider>
 		</div>

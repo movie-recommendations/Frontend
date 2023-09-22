@@ -51,7 +51,7 @@ export const SearchResultPage = () => {
 			const page = 12;
 			setPageMore(page);
 		} else if (screenSize <= 1280 && screenSize > 800) {
-			const page = 9;
+			const page = 10;
 			setPageMore(page);
 		} else if (screenSize < 800) {
 			const page = 8;

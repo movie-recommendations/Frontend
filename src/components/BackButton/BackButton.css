@@ -4,7 +4,7 @@
 	font-size: 18px;
 	line-height: 30px;
 	font-weight: 300;
-	/* margin: 50px 0px 0px 165px; */
+	margin: 50px 0px 0px 155px;
 	cursor: pointer;
 	color: #ffcc33;
 	transition: background-color 0.2s;
@@ -32,4 +32,7 @@
 
 .backbutton:hover {
 	opacity: 0.3;
+}
+.backbutton_type_preferences {
+	margin-left: 50px;
 }

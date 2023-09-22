@@ -27,9 +27,7 @@ const RatingElement: FC<IRating> = ({ id }) => {
 				updateRatingApi({ id, rate: { rate: value }, token: user.token })
 			);
 		} else if (movierating === value) {
-			await dispatch(
-				deleteRatingApi({ id, token: user.token })
-			);
+			await dispatch(deleteRatingApi({ id, token: user.token }));
 		}
 		await dispatch(getMoviebyidTokenApi({ filmId: id, token: user.token }));
 	};
@@ -43,8 +41,9 @@ const RatingElement: FC<IRating> = ({ id }) => {
 						{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
 							<div
 								key={value}
-								className={`star__button ${movierating >= value ? 'star__button__filled' : ''
-									}`}
+								className={`star__button ${
+									movierating >= value ? 'star__button__filled' : ''
+								}`}
 								onClick={() => handleRatingClick(value)}
 							/>
 						))}

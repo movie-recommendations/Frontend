@@ -1,4 +1,5 @@
 .cards__button {
+	font-family: 'Unbounded';
 	border: none;
 	color: #ffcc33;
 	background-color: transparent;
@@ -7,4 +8,9 @@
 	font-weight: 300;
 	line-height: 30px;
 	cursor: pointer;
+	transition: 0.2s color ease-in-out;
+}
+
+.cards__button:hover {
+	color: #cc9900;
 }

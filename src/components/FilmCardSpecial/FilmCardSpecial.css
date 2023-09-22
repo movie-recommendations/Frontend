@@ -1,4 +1,4 @@
-.moviepage_card {
+.specialmovie_card {
 	max-width: 180px;
 	position: relative;
 	padding: 0 0 0 10px;
@@ -6,14 +6,14 @@
 }
 
 @media screen and (max-width: 1297px) {
-	.moviepage_card {
+	.specialmovie_card {
 		margin: 0px;
 		padding: 0 0 0 10px;
 		max-width: 137px;
 	}
 }
 
-.moviepage_card-img {
+.specialmovie_card-img {
 	width: 180px;
 	height: 240px;
 	background-repeat: no-repeat;
@@ -22,19 +22,27 @@
 }
 
 @media screen and (max-width: 1297px) {
-	.moviepage_card-img {
-		width: 137px;
-		height: 183px;
+	.specialmovie_card-img {
+		width: 235px;
+		height: 314px;
 	}
 }
 
-.bookmark-small {
+.bookmark_special {
 	position: absolute;
 	top: 10px;
 	right: 10px;
 }
 
-.moviepage_card-title {
+@media screen and (max-width: 1297px) {
+	.bookmark_special {
+		position: absolute;
+		top: 10px;
+		right: -90px;
+	}
+}
+
+.specialmovie_card-title {
 	color: white;
 	font-size: 17px;
 	font-weight: 600;
@@ -47,7 +55,7 @@
 	text-align: left;
 }
 
-.moviepage_card-subtitle {
+.specialmovie_card-subtitle {
 	color: white;
 	font-size: 12px;
 	font-weight: 500;
@@ -59,8 +67,16 @@
 	text-align: left;
 }
 
-@media screen and (max-width: 1260px) {
-	.bookmark-small {
-		right: 20px;
-	}
+.specialmovie__container-img {
+	display: flex;
+	flex-direction: row;
+	margin: 0 70px 0 0;
+}
+
+.specialmovie__image {
+	width: 265px;
+	height: 340px;
+	object-fit: cover;
+	border-radius: 10px;
+	margin: 0 20px 0 0;
 }

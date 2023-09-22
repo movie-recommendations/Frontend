@@ -6,6 +6,7 @@
 	gap: 30px;
 	background-color: #4b556333;
 	max-width: 1440px;
+	width: 100%;
 	margin: 0 auto;
 	position: relative;
 	/* margin-bottom: -118px; */
@@ -33,7 +34,8 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	min-width: 521px;
+	max-width: 521px;
+	width: 37.22vw;
 	height: 40px;
 	border: 2px solid #fff;
 	border-radius: 6px;
@@ -105,4 +107,17 @@
 
 .header__content-link:hover {
 	opacity: 0.6;
+}
+@media screen and (max-width: 1260px) {
+	.header__logo {
+		margin: 0 40px 0 60px;
+	}
+	.header__content {
+		left: 44px;
+	}
+}
+@media screen and (max-width: 1130px) {
+	.header {
+		height: 10vw;
+	}
 }

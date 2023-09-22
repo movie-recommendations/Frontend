@@ -87,10 +87,11 @@
 	text-align: center;
 	color: #0c0c0c;
 	margin-top: 10px;
+	transition: 0.2s background-color ease-in-out;
 }
 
 .searchExtended__submit:hover {
-	opacity: 0.6;
+	background-color: #c90;
 	cursor: pointer;
 }
 

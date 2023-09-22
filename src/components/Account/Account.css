@@ -53,7 +53,7 @@
 	display: none;
 	z-index: 5;
 	width: 270px;
-	height: 340px;
+	height: 280px;
 	background-color: #141414;
 	border-radius: 0 0 25px 25px;
 	margin-top: 45px;
@@ -123,4 +123,35 @@
 
 .account__content-button:hover {
 	opacity: 0.6;
+}
+@media screen and (max-width: 1330px) {
+	.account {
+		margin: 0 50px 0 auto;
+	}
+	.account__login-text {
+		font-size: 18px;
+		line-height: 25px;
+	}
+	.account__content {
+		width: 300px;
+		left: -230px;
+	}
+}
+@media screen and (max-width: 1260px) {
+	.account__content {
+		height: 330px;
+		width: 250px;
+		left: -200px;
+	}
+}
+@media screen and (max-width: 1150px) {
+	.account__content {
+		height: 315px;
+	}
+}
+@media screen and (max-width: 1060px) {
+	.account__content {
+		left: -190px;
+		height: 310px;
+	}
 }

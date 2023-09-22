@@ -2,9 +2,12 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { IMovieCardState } from 'src/types/MovieCard.types';
 import { getRecomendedMovies } from './recomendationsAPI';
 
-export const getRecomendedMoviesApi = createAsyncThunk('@@recomendations/getRecomendedMovies', async (token: string) => {
-	return getRecomendedMovies(token);
-});
+export const getRecomendedMoviesApi = createAsyncThunk(
+	'@@recomendations/getRecomendedMovies',
+	async (token: string) => {
+		return getRecomendedMovies(token);
+	}
+);
 
 const initialState: IMovieCardState = {
 	status: 'idle',

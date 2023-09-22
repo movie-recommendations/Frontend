@@ -23,3 +23,12 @@
 .star__button__filled {
 	background-image: url(../../images/star_click.svg);
 }
+@media screen and (max-width: 1330px) {
+	.star__button {
+		width: 15px;
+		height: 15px;
+	}
+	.rating-element__text {
+		font-size: 14px;
+	}
+}

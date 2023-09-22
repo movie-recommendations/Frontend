@@ -4,6 +4,7 @@
 	margin: 0 auto;
 	display: flex;
 	justify-content: center;
+	box-sizing: border-box;
 }
 
 .moviepage__container {
@@ -73,19 +74,85 @@
 	z-index: -2;
 	object-position: top;
 	object-fit: cover;
-	width: 1440px;
-	height: 400px;
+	max-width: 1440px;
+	width: 100%;
+	max-height: 400px;
+	height: calc(0.21875 * 100vw + 85px);
 	opacity: 0.6000000238418579;
 	margin: 0;
 }
 
 .description__container {
-	display: flex;
-	flex-direction: row;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas:
+		'description aboutlist'
+		'trailer aboutlist';
 }
-
+.description__newcontainer {
+	margin: 0;
+	padding: 0;
+}
 .moviepage__button__container_plus {
 	display: flex;
 	flex-direction: row;
 	gap: 20px;
+}
+@media screen and (max-width: 1350px) {
+	.moviepage__button__container_plus {
+		flex-direction: column;
+	}
+	.moviepage__container {
+		margin: 78px auto 0 130px;
+		padding-bottom: 120px;
+	}
+	.moviepage__button__container {
+		gap: 60px;
+		justify-content: flex-start;
+		margin: 0;
+	}
+	.movie-block__text {
+		justify-content: flex-start;
+		gap: 61px;
+	}
+}
+@media screen and (max-width: 1320px) {
+	.moviepage-cards__container {
+		width: 100%;
+		margin: 0 auto 0 -80px;
+		padding: 0;
+	}
+}
+@media screen and (max-width: 1260px) {
+	.moviepage-cards__container {
+		margin: 0 -100px 0 -65px;
+	}
+	.movie-block__img {
+		width: 208px;
+		height: 277px;
+	}
+	.description__container {
+		padding-right: 129px;
+		grid-template-columns: auto auto;
+		gap: 30px;
+		grid-template-areas:
+			'aboutlist description '
+			'trailer trailer';
+	}
+}
+@media screen and (max-width: 1150px) {
+	.movie-block__text {
+		max-width: 367px;
+	}
+	.movie-block {
+		gap: 30px;
+	}
+	.moviepage__button__container {
+		gap: 25px;
+	}
+}
+@media screen and (max-width: 1130px) {
+	.moviepage__button__container_plus {
+		margin-right: 20px;
+	}
 }

@@ -28,3 +28,22 @@
 .button:disabled:hover {
 	opacity: 1;
 }
+
+@media screen and (max-width: 1260px) {
+	.button {
+		width: 288px;
+		align-self: end;
+	}
+
+	/* .button_type_toMain {
+		width: 540px;
+	} */
+
+	.button_type_preferences {
+		margin-right: 50px;
+	}
+}
+
+.button_type_preferences {
+	margin-right: 50px;
+}

@@ -26,3 +26,12 @@
 	line-height: normal;
 	margin: 0;
 }
+@media screen and (max-width: 1100px) {
+	.actorslist__title {
+		font-size: 14px;
+		font-weight: 600;
+	}
+	.actorslist__text {
+		font-size: 14px;
+	}
+}

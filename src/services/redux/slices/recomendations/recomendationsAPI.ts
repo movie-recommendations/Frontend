@@ -19,6 +19,8 @@ export const fetchData = (url: string, method: string, token?: string) => {
 	}).then((res) => checkRes(res));
 };
 
-export const getRecomendedMovies = (token: string): Promise<Array<IMovieCard>> => {
+export const getRecomendedMovies = (
+	token: string
+): Promise<Array<IMovieCard>> => {
 	return fetchData(`${API_BASE_URL}/movies/recomendations`, 'GET', token);
 };

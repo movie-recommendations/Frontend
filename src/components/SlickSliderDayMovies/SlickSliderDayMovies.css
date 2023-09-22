@@ -5,6 +5,13 @@
 	text-align: left;
 }
 
+@media screen and (max-width: 1297px) {
+	.slick-slider-main {
+		max-width: 1024px;
+		max-height: 576px;
+	}
+}
+
 .slick-numbers {
 	display: inline-block;
 	position: absolute;
@@ -15,6 +22,13 @@
 	margin: auto;
 	padding: 0;
 	list-style: none;
+}
+
+@media screen and (max-width: 1297px) {
+	.slick-numbers {
+		top: 388px;
+		left: 944px;
+	}
 }
 
 .slick-numbers li {

@@ -14,6 +14,7 @@
 }
 
 .error-page__message {
+	font-family: 'Unbounded';
 	font-size: 35px;
 	line-height: 43px;
 	color: white;
@@ -24,7 +25,7 @@
 .error-page__text {
 	font-size: 18px;
 	line-height: 25px;
-	color: white;
+	color: var(--neutral-400, #d1d5db);
 	margin-top: 20px;
 	margin-bottom: 65px;
 }
@@ -32,7 +33,7 @@
 .error-page__button {
 	width: 240px;
 	height: 50px;
-	padding: 15px 10px 15px 10px;
+	padding: 12px 10px 15px 10px;
 	border-radius: 10px;
 	gap: 10px;
 	background: transparent;
@@ -43,7 +44,30 @@
 	cursor: pointer;
 }
 
-.error-page__button a {
+.error-page__button-text {
+	font-size: 20px;
 	text-decoration: none;
 	color: white;
+}
+.error-page__button:hover .error-page__button-text {
+	color: #d1d5db;
+}
+.error-page__button:hover {
+	border: 1px solid #d1d5db;
+}
+@media screen and (max-width: 1024px) {
+	.error-page__img {
+		height: 546px;
+		width: 570px;
+		margin-top: -60px;
+	}
+	.error-page__status {
+		background-image: url('../../images/projector_for_1024.png');
+		height: 546px;
+		width: 570px;
+	}
+	.error-page__message {
+		font-weight: 700;
+		margin-top: -20px;
+	}
 }

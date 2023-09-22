@@ -1,4 +1,4 @@
-import './FilmCard.css';
+import './FilmCardSpecial.css';
 import { RatedElement } from 'src/components/RatedElement/RatedElement';
 import { BookmarkSmall } from 'src/components/Bookmark_small/Bookmark_small';
 import { IMovieCard } from 'src/types/MovieCard.types';
@@ -9,8 +9,9 @@ import {
 } from 'src/services/redux/slices/moviebyid/moviebyid';
 import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
 import { selectUser } from 'src/services/redux/slices/user/user';
+import { useResize } from '../../hooks/useResize';
 
-export const FilmCard = ({ film }: { film: IMovieCard }) => {
+export const FilmCardSpecial = ({ film }: { film: IMovieCard }) => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const user = useAppSelector(selectUser);
@@ -26,18 +27,16 @@ export const FilmCard = ({ film }: { film: IMovieCard }) => {
 	};
 
 	return (
-		<div key={film.id} className="flanks_card">
-			<div className="flanks-card__background">
-				<img
-					className="flanks_card-img"
-					src={film.h_picture}
-					alt=""
-					onClick={handleImgClick}
-				/>
-			</div>
-			<div className="bookmark-small">{<BookmarkSmall id={film.id} />}</div>
-			<h4 className="flanks_card-title">{film.title}</h4>
-			<p className="flanks_card-subtitle">{`${film.genres.join(', ')} • ${
+		<article key={film.id} className="specialmovie_card">
+			<img
+				className="specialmovie_card-img"
+				src={film.v_picture}
+				alt=""
+				onClick={handleImgClick}
+			/>
+			<div className="bookmark_special">{<BookmarkSmall id={film.id} />}</div>
+			<h4 className="specialmovie_card-title">{film.title}</h4>
+			<p className="specialmovie_card-subtitle">{`${film.genres.join(', ')} • ${
 				film.year
 			}`}</p>
 			<RatedElement
@@ -45,6 +44,6 @@ export const FilmCard = ({ film }: { film: IMovieCard }) => {
 				kinopoisk={film.rating.rate_kinopoisk}
 				isSearch={false}
 			/>
-		</div>
+		</article>
 	);
 };

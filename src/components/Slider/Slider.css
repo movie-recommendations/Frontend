@@ -24,10 +24,22 @@
 	gap: 30px;
 }
 
+@media screen and (max-width: 1297px) {
+	.slider__items-list_type_block {
+		gap: 20px;
+	}
+}
+
 .slider_type_row {
 	display: flex;
 	align-items: center;
 	gap: 25px;
+}
+
+@media screen and (max-width: 1297px) {
+	.slider_type_row {
+		gap: 20px;
+	}
 }
 
 .slider__items-list::-webkit-scrollbar {

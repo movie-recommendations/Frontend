@@ -6,7 +6,7 @@ import { ActorsListProps } from 'src/types/Rating.types';
 const ActorsList: FC<ActorsListProps> = ({ actors }) => {
 	return (
 		<section className="actorslist">
-			<h1 className="actorslist__title">Актеры</h1>
+			<h1 className="actorslist__title">В главных ролях</h1>
 			<div className="actorslist__container">
 				<p className="actorslist__text">
 					{actors.map((item) => item).join(', ')}

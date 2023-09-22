@@ -5,6 +5,7 @@ import { SlickSlider } from 'src/components/SlickSlider/SlickSlider';
 import { SpecialForYou } from 'src/components/SpecialForYou/SpecialForYou';
 import { SlickSliderDayMovies } from 'src/components/SlickSliderDayMovies/SlickSliderDayMovies';
 import { SlickSliderGenres } from 'src/components/SlickSliderGenres/SlickSliderGenres';
+import { SlickSliderSpecial } from 'src/components/SlickSliderSpecial/SlickSliderSpecial';
 import { getNewMovieCardsApi } from 'src/services/redux/slices/newmoviecards/newmoviecards';
 import { getMoviesApi } from 'src/services/redux/slices/movies/movies';
 import { getCompilationsApi } from 'src/services/redux/slices/compilations/compilations';
@@ -66,7 +67,6 @@ export default function MainPage() {
 	const films = useAppSelector((state) => state.movies.movies);
 	const newmovies = useAppSelector((state) => state.newmoviecards.movies);
 	const recomendations = useAppSelector((state) => state.recomendations.movies);
-
 	// const compilations = useAppSelector((state) => state.compilations.data);
 	const redactionOne = useAppSelector((state) => state.compilations.data[0]);
 	const redactionTwo = useAppSelector((state) => state.compilations.data[1]);
@@ -96,23 +96,28 @@ export default function MainPage() {
 						/>
 					</div>
 					<div className="main-page_slick-slider">
-						<div className="main-page_slick-slider_specialforyou">
-							{user.token ? (
-								<div className="main-page__relative">
-									<SlickSliderMini
-										title={`Специально для вас`}
-										movies={recomendations}
-									/>
-									<ButtonShowAll
-										onClick={() =>
-											handleAllButtonFilmsClick(recomendations, 'Специально для вас')
-										}
-									/>
-								</div>
-							) : (
-								<SpecialForYou />
-							)}
-						</div>
+						{
+							<div className="main-page_slick-slider_specialforyou">
+								{user.token ? (
+									<div className="main-page__relative">
+										<SlickSliderSpecial
+											title={`Специально для вас`}
+											movies={films}
+										/>
+										<ButtonShowAll
+											onClick={() =>
+												handleAllButtonFilmsClick(
+													recomendations,
+													'Специально для вас'
+												)
+											}
+										/>
+									</div>
+								) : (
+									<SpecialForYou />
+								)}
+							</div>
+						}
 					</div>
 					<div className="main-page_slick-slider">
 						{redactionOne && (
@@ -155,6 +160,9 @@ export default function MainPage() {
 					</div>
 					<div className="main-page_slick-slider">
 						<SlickSliderGenres />
+						<ButtonShowAll
+							onClick={() => handleAllButtonFilmsClick(films, 'Новинки')}
+						/>
 					</div>
 				</main>
 			)}

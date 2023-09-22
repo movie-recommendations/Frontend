@@ -27,6 +27,7 @@ export default function ErrorPage() {
 			<div className="error-page__status">
 				{' '}
 				<img
+					className="error-page__img"
 					src={img404}
 					alt="404"
 					style={{
@@ -40,7 +41,9 @@ export default function ErrorPage() {
 			</span>
 			<button className="error-page__button">
 				{' '}
-				<a href="#/">На главную</a>
+				<a className="error-page__button-text" href="#/">
+					На главную
+				</a>
 			</button>
 		</main>
 	);

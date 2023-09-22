@@ -1,6 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IRatingState } from 'src/types/Rating.types';
-import { fetchDeleteRating, fetchSetRating, fetchUpdateRating, getRatedMovies } from './ratingApi';
+import {
+	fetchDeleteRating,
+	fetchSetRating,
+	fetchUpdateRating,
+	getRatedMovies,
+} from './ratingApi';
 
 export const getRatedMoviesApi = createAsyncThunk(
 	'@@rate/getRated',

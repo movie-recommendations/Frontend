@@ -98,3 +98,8 @@
 .input__field_type_date {
 	text-transform: uppercase;
 }
+@media screen and (max-width: 1260px) {
+	.input__field {
+		padding: 11px 12px;
+	}
+}

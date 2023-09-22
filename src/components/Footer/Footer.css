@@ -46,3 +46,24 @@
 	opacity: 0;
 	transition: all 2s;
 }
+@media screen and (max-width: 1320px) {
+	.footer__scroll {
+		left: calc(50% + 430px);
+	}
+}
+@media screen and (max-width: 1260px) {
+	.footer__desc {
+		margin-left: 50px;
+	}
+}
+@media screen and (max-width: 1230px) {
+	.footer__scroll {
+		left: calc(50% + 370px);
+	}
+}
+@media screen and (max-width: 1100px) {
+	.footer__scroll {
+		left: calc(50% + 307px);
+		bottom: 75px;
+	}
+}

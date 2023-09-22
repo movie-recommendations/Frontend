@@ -3,6 +3,13 @@
 	margin: 0 165px 45px;
 }
 
+@media screen and (max-width: 1297px) {
+	.slick-slider-genres_container {
+		max-width: 1110px;
+		margin: 0 130px 45px;
+	}
+}
+
 .slick-next:before {
 	content: url('../../images/ArrowNext.svg');
 }
@@ -20,4 +27,19 @@
 
 .slick-prev {
 	margin-right: 25px;
+}
+
+.slick-next {
+	display: flex;
+	padding: 0;
+	position: absolute;
+	top: calc(10vh - 10px);
+}
+
+.slick-prev {
+	display: flex;
+	padding: 0;
+	position: absolute;
+	top: calc(10vh - 10px);
+	margin-left: -25px;
 }

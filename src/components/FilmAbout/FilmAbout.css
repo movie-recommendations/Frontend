@@ -2,6 +2,7 @@
 	display: flex;
 	flex-direction: row;
 	margin: 65px 0 0 0;
+	grid-area: description;
 }
 
 .moviepage-description__about {
@@ -37,4 +38,28 @@
 	line-height: normal;
 	white-space: pre-line;
 	text-align: end;
+}
+@media screen and (max-width: 1350px) {
+	.moviepage-description__about {
+		margin: 0;
+	}
+}
+@media screen and (max-width: 1260px) {
+	.moviepage-description__about__container {
+		flex-direction: column;
+		align-items: flex-start;
+		width: 209px;
+	}
+	.moviepage-description {
+		margin: 28px 0 0 0;
+	}
+	.moviepage-description__about__text {
+		font-size: 14px;
+		white-space: normal;
+		text-align: start;
+		padding-top: 5px;
+	}
+	.moviepage-description__about__text_add {
+		font-size: 14px;
+	}
 }

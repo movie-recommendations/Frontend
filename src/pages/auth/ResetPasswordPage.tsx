@@ -34,12 +34,11 @@ const ResetPasswordPage = () => {
 		getValues,
 	} = useForm<IResetPasswordFields>({ mode: 'onChange' });
 
-	const keyPress =  document.addEventListener("keydown", (e) => {
-		if (e.code == "Escape") {
-		  console.log("Closing window...");
+	const keyPress = document.addEventListener('keydown', (e) => {
+		if (e.code == 'Escape') {
+			console.log('Closing window...');
 		}
-	  });
-
+	});
 
 	const getTokenFromURL = () => {
 		const url = window.location.href;
@@ -113,16 +112,16 @@ const ResetPasswordPage = () => {
 		setStep(1);
 		reset();
 		setAuthError(false);
-		document.addEventListener("keydown", (e) => {
-			if (e.code == "Escape") {
+		document.addEventListener('keydown', (e) => {
+			if (e.code == 'Escape') {
 				navigate('/profile');
 			}
-		  });
-		  document.removeEventListener("keydown", (e) => {
-			if (e.code == "Escape") {
+		});
+		document.removeEventListener('keydown', (e) => {
+			if (e.code == 'Escape') {
 				navigate('/profile');
 			}
-		  });
+		});
 	}, []);
 
 	return (
@@ -134,20 +133,20 @@ const ResetPasswordPage = () => {
 						<p className="auth__hint">Введите новый пароль</p>
 						<form className="auth__form" onSubmit={handleSubmit(onSubmit)}>
 							<div>
-							<Input
-								inputType={InputTypes.password}
-								labelText="Новый пароль"
-								showPasswordButton={true}
-								validation={{
-									...register('password', PASSWORD_VALIDATION_CONFIG),
-								}}
-								error={errors?.password?.message}
-							/>
-							<span className="input__span">
+								<Input
+									inputType={InputTypes.password}
+									labelText="Новый пароль"
+									showPasswordButton={true}
+									validation={{
+										...register('password', PASSWORD_VALIDATION_CONFIG),
+									}}
+									error={errors?.password?.message}
+								/>
+								<span className="input__span">
 									Минимум 8 символов (заглавные и строчные латинские буквы и
 									цифры)
 								</span>
-								</div>
+							</div>
 							<Input
 								inputType={InputTypes.repeatPassword}
 								labelText="Повторите новый пароль"
