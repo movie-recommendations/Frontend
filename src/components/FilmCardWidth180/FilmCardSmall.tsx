@@ -27,12 +27,9 @@ export const FilmCardSmall = ({ film }: { film: IMovieCard }) => {
 
 	return (
 		<article key={film.id} className="moviepage_card">
-			<img
-				className="moviepage_card-img"
-				src={film.v_picture}
-				alt=""
-				onClick={handleImgClick}
-			/>
+			<div className="moviepage-card-img__background" onClick={handleImgClick}>
+				<img className="moviepage_card-img" src={film.v_picture} alt="" />
+			</div>
 			<div className="bookmark-small">{<BookmarkSmall id={film.id} />}</div>
 			<h4 className="moviepage_card-title">{film.title}</h4>
 			<p className="moviepage_card-subtitle">{`${film.genres.join(', ')} • ${

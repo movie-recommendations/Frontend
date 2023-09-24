@@ -22,7 +22,25 @@
 	position: relative;
 	z-index: 0;
 }
-
+.selections-card__background {
+	display: block;
+	position: relative;
+}
+.selections-card__background::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(43, 47, 51, 0.4);
+	opacity: 0;
+	transition: 0.2s opacity ease-in-out;
+}
+.selections-card__background:hover:after {
+	opacity: 1;
+	cursor: pointer;
+}
 .selections_img {
 	width: 155px;
 	height: 235px;

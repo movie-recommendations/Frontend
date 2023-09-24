@@ -20,6 +20,24 @@
 	object-fit: cover;
 	border-radius: 10px;
 }
+.specialmovie-card-img__background {
+	display: block;
+	position: relative;
+}
+.specialmovie-card-img__background::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(43, 47, 51, 0.4);
+	opacity: 0;
+	transition: 0.2s opacity ease-in-out;
+}
+.specialmovie-card-img__background:hover:after {
+	opacity: 1;
+}
 
 @media screen and (max-width: 1297px) {
 	.specialmovie_card-img {

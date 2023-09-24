@@ -27,13 +27,8 @@ export const FilmCard = ({ film }: { film: IMovieCard }) => {
 
 	return (
 		<div key={film.id} className="flanks_card">
-			<div className="flanks-card__background">
-				<img
-					className="flanks_card-img"
-					src={film.h_picture}
-					alt=""
-					onClick={handleImgClick}
-				/>
+			<div className="flanks-card__background" onClick={handleImgClick}>
+				<img className="flanks_card-img" src={film.h_picture} alt="" />
 			</div>
 			<div className="bookmark-small">{<BookmarkSmall id={film.id} />}</div>
 			<h4 className="flanks_card-title">{film.title}</h4>

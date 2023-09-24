@@ -27,15 +27,17 @@ export const SelectionCard = ({
 					className="selections_cards"
 					onClick={() => handleAllButtonClick(item)}
 				>
-					<div className="selections_card">
-						{item.movies.slice(0, 3).map((film) => (
-							<img
-								className="selections_img"
-								key={film.id}
-								src={film.v_picture}
-								alt={film.title}
-							/>
-						))}
+					<div className="selections-card__background">
+						<div className="selections_card">
+							{item.movies.slice(0, 3).map((film) => (
+								<img
+									className="selections_img"
+									key={film.id}
+									src={film.v_picture}
+									alt={film.title}
+								/>
+							))}
+						</div>
 					</div>
 					<h2 className="selections_title">{item.title}</h2>
 					<p className="selections_description">{item.description}</p>
