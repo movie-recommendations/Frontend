@@ -35,12 +35,14 @@
 		align-self: end;
 	}
 
-	/* .button_type_toMain {
+	.button_type_toMain {
 		width: 540px;
-	} */
+		align-self: center;
+	}
 
 	.button_type_preferences {
 		margin-right: 50px;
+
 	}
 }
 

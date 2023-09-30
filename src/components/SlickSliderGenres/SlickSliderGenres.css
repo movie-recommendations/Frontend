@@ -10,6 +10,23 @@
 	}
 }
 
+.flank_container_genres {
+	max-width: 1110px;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 50px 165px 0;
+	padding-bottom: 83px;
+	gap: 53px 28px;
+}
+
+@media screen and (max-width: 1297px) {
+	.flank_container_genres {
+		max-width: 1024px;
+		margin: 50px 120px 0;
+		gap: 45px 10px;
+	}
+}
+
 .slick-next:before {
 	content: url('../../images/ArrowNext.svg');
 }
@@ -22,8 +39,7 @@
 	color: white;
 }
 
-.slick-next {
-}
+.slick-next {}
 
 .slick-prev {
 	margin-right: 25px;

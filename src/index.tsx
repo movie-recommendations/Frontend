@@ -160,7 +160,7 @@ const Root: FC = () => {
 					/>
 					<Route path="/movie-page" element={<MoviePage />} />
 					<Route path="/search-result" element={<SearchResultPage />} />
-					{/* <Route path="*" element={<ErrorPage />} /> */}
+					<Route path="*" element={<ErrorPage />} />
 					<Route path="/500" element={<ServerErrorPage />} />
 				</Route>
 			</Routes>

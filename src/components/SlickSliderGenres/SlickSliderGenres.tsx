@@ -16,7 +16,7 @@ import { getGenresIconsAPI } from 'src/services/redux/slices/genresIconsApi/genr
 import { FilmCardSmall } from '../FilmCardWidth180/FilmCardSmall';
 import { useResize } from '../../hooks/useResize';
 
-export const SlickSliderGenres = ({}) => {
+export const SlickSliderGenres = ({ }) => {
 	const films = useAppSelector((state) => state.movies.movies);
 	const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
 	const [isMoreButton, setIsMoreButton] = useState(false);
@@ -60,8 +60,8 @@ export const SlickSliderGenres = ({}) => {
 	const filteredFilms =
 		selectedGenres.length > 0
 			? films.filter((film) => {
-					return selectedGenres.some((genre) => film.genres.includes(genre));
-			  })
+				return selectedGenres.some((genre) => film.genres.includes(genre));
+			})
 			: films;
 
 	const handleResize = useCallback(() => {
@@ -118,7 +118,7 @@ export const SlickSliderGenres = ({}) => {
 					))}
 				</Slider>
 			</div>
-			<div className="flank_container">
+			<div className="flank_container_genres">
 				{filteredFilms.slice(0, pageMore).map((film) => (
 					<FilmCardSmall key={film.id} film={film} />
 				))}

@@ -6,6 +6,7 @@
 	text-align: center;
 	/* height: 70vh; */
 	margin-top: -118px;
+	max-width: 1440px;
 }
 
 .main-page_slick-slider {
@@ -16,9 +17,9 @@
 	position: relative;
 }
 
-@media screen and (max-width: 1297px) {
+@media screen and (max-width: 1279px) {
 	.main-page_slick-slider {
-		max-width: 1024px;
+		max-width: 1279px;
 		margin-bottom: 80px;
 	}
 }

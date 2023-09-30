@@ -89,33 +89,40 @@
 		'description aboutlist'
 		'trailer aboutlist';
 }
+
 .description__newcontainer {
 	margin: 0;
 	padding: 0;
 }
+
 .moviepage__button__container_plus {
 	display: flex;
 	flex-direction: row;
 	gap: 20px;
 }
+
 @media screen and (max-width: 1350px) {
 	.moviepage__button__container_plus {
 		flex-direction: column;
 	}
+
 	.moviepage__container {
 		margin: 78px auto 0 130px;
 		padding-bottom: 120px;
 	}
+
 	.moviepage__button__container {
 		gap: 60px;
 		justify-content: flex-start;
 		margin: 0;
 	}
+
 	.movie-block__text {
 		justify-content: flex-start;
 		gap: 61px;
 	}
 }
+
 @media screen and (max-width: 1320px) {
 	.moviepage-cards__container {
 		width: 100%;
@@ -123,16 +130,20 @@
 		padding: 0;
 	}
 }
+
 @media screen and (max-width: 1260px) {
 	.moviepage-cards__container {
 		margin: 0 -100px 0 -65px;
 	}
+
 	.movie-block__img {
 		width: 208px;
 		height: 277px;
 	}
+
 	.description__container {
 		padding-right: 129px;
+		margin-bottom: 40px;
 		grid-template-columns: auto auto;
 		gap: 30px;
 		grid-template-areas:
@@ -140,17 +151,21 @@
 			'trailer trailer';
 	}
 }
+
 @media screen and (max-width: 1150px) {
 	.movie-block__text {
 		max-width: 367px;
 	}
+
 	.movie-block {
 		gap: 30px;
 	}
+
 	.moviepage__button__container {
 		gap: 25px;
 	}
 }
+
 @media screen and (max-width: 1130px) {
 	.moviepage__button__container_plus {
 		margin-right: 20px;

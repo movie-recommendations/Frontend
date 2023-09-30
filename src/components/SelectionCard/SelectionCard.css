@@ -12,6 +12,12 @@
 	max-width: 255px;
 }
 
+@media screen and (max-width: 1297px) {
+	.selections_cards {
+		max-width: 288px;
+	}
+}
+
 .selections_cards:hover {
 	cursor: pointer;
 }
@@ -22,10 +28,20 @@
 	position: relative;
 	z-index: 0;
 }
+
+
+@media screen and (max-width: 1297px) {
+	.selections_card {
+		max-width: 288px;
+	}
+}
+
+
 .selections-card__background {
 	display: block;
 	position: relative;
 }
+
 .selections-card__background::after {
 	content: '';
 	position: absolute;
@@ -37,10 +53,12 @@
 	opacity: 0;
 	transition: 0.2s opacity ease-in-out;
 }
+
 .selections-card__background:hover:after {
 	opacity: 1;
 	cursor: pointer;
 }
+
 .selections_img {
 	width: 155px;
 	height: 235px;

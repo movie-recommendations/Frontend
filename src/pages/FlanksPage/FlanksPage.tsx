@@ -15,6 +15,7 @@ import {
 	getWatchListApi,
 	// resetFavorites,
 } from 'src/services/redux/slices/favorites/favorites';
+import { SlickSliderSpecial } from 'src/components/SlickSliderSpecial/SlickSliderSpecial';
 import { selectUser } from 'src/services/redux/slices/user/user';
 import { getRatedMoviesApi } from 'src/services/redux/slices/rating/rating';
 import { SlickSliderMini } from 'src/components/SlickSliderMini/SlickSliderMini';
@@ -41,10 +42,10 @@ const FlanksPage: FC<IFlanks> = ({ formName }) => {
 		formName === 'ratedFilms'
 			? 'Оцененное'
 			: formName === 'willSee'
-			? 'Буду смотреть'
-			: formName === 'favorites'
-			? 'Избранное'
-			: 'Все подборки';
+				? 'Буду смотреть'
+				: formName === 'favorites'
+					? 'Избранное'
+					: 'Все подборки';
 
 	// Отвечает за определение какой масив показывать
 	useEffect(() => {
@@ -143,7 +144,7 @@ const FlanksPage: FC<IFlanks> = ({ formName }) => {
 					<div className="main-page_slick-slider">
 						<div className="main-page_slick-slider_specialforyou">
 							<div className="main-page__relative">
-								<SlickSliderMini title={`Специально для вас`} movies={films} />
+								<SlickSliderSpecial title={`Специально для вас`} movies={films} />
 								<ButtonShowAll
 									onClick={() =>
 										handleAllButtonFilmsClick(

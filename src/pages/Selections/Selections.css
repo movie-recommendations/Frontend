@@ -26,6 +26,12 @@
 	padding-top: 20px;
 }
 
+@media screen and (max-width: 1297px) {
+	.flank_title {
+		margin: 0 60px;
+	}
+}
+
 .flank_description {
 	color: white;
 	font-size: 20px;
@@ -33,6 +39,12 @@
 	line-height: 43.4px;
 	margin: 0 165px;
 	padding-top: 20px;
+}
+
+@media screen and (max-width: 1297px) {
+	.flank_description {
+		margin: 0 60px;
+	}
 }
 
 .flank_container {
@@ -47,7 +59,7 @@
 @media screen and (max-width: 1297px) {
 	.flank_container {
 		max-width: 1024px;
-		margin: 50px 120px 0;
+		margin: 120px 50px 0;
 		gap: 45px 10px;
 	}
 }

@@ -39,6 +39,13 @@
 	margin: 0;
 }
 
+@media screen and (max-width: 1297px) {
+	.flank__text__container {
+		margin: 20px 0 100px 60px;
+
+	}
+}
+
 .flank__image {
 	width: 45px;
 	height: 45px;

@@ -17,6 +17,12 @@
 	display: flex;
 }
 
+@media screen and (max-width: 1297px) {
+	.backbutton {
+		margin: 50px 0px 0px 50px;
+	}
+}
+
 .arrow {
 	align-self: center;
 	width: 20px;
@@ -33,6 +39,7 @@
 .backbutton:hover {
 	opacity: 0.3;
 }
+
 .backbutton_type_preferences {
 	margin-left: 50px;
 }

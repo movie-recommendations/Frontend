@@ -16,6 +16,16 @@
 	margin: 0 auto 100px;
 }
 
+@media screen and (max-width: 1297px) {
+	.allgenrespage__container {
+		max-width: 1024px;
+		margin: 50px 120px;
+		grid-template-columns: repeat(auto-fill, minmax(137px, 1fr));
+		grid-template-rows: repeat(auto-fill, minmax(137px, 1fr));
+		gap: 20px;
+	}
+}
+
 .allgenrespage__link {
 	display: flex;
 	border-radius: 50%;
@@ -45,10 +55,33 @@
 	background-color: #0c0c0c;
 }
 
+@media screen and (max-width: 1297px) {
+	.allgenrespage__link {
+		width: 137px;
+		height: 137px;
+	}
+}
+
+
+
+@media screen and (max-width: 1297px) {
+	.allgenrespage__img {
+		width: 40px;
+		height: 40px;
+	}
+}
+
+
 .allgenrespage__title {
 	font-size: 20px;
 	line-height: 25px;
 	width: 500;
 	color: white;
 	font-family: Mulish;
+}
+
+@media screen and (max-width: 1297px) {
+	.allgenrespage__title {
+		font-size: 16px;
+	}
 }
