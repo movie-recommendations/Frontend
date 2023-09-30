@@ -34,6 +34,32 @@ const ExtendedSearch = ({
 	const [selectedDirectorId, setSelectedDirectorId] = useState<any>('');
 	const [selectedGenreSlug, setSelectedGenreSlug] = useState('');
 	const [selectedCountrySlug, setSelectedCountrySlug] = useState('');
+	const [selectedYearFrom, setSelectedYearFrom] = useState('');
+	const [selectedYearTo, setSelectedYearTo] = useState('');
+	const [selectedRatingFrom, setSelectedRatingFrom] = useState('');
+	const [selectedRatingTo, setSelectedRatingTo] = useState('');
+
+	const handleYearFromChange = (
+		event: React.ChangeEvent<HTMLSelectElement>
+	) => {
+		setSelectedYearFrom(event.target.value);
+	};
+
+	const handleYearToChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+		setSelectedYearTo(event.target.value);
+	};
+
+	const handleRatingFromChange = (
+		event: React.ChangeEvent<HTMLSelectElement>
+	) => {
+		setSelectedRatingFrom(event.target.value);
+	};
+
+	const handleRatingToChange = (
+		event: React.ChangeEvent<HTMLSelectElement>
+	) => {
+		setSelectedRatingTo(event.target.value);
+	};
 
 	const handleChangeActors = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;
@@ -96,23 +122,17 @@ const ExtendedSearch = ({
 				director: selectedDirectorId,
 				genre: selectedGenreSlug,
 				country: selectedCountrySlug,
+				yearFrom: selectedYearFrom,
+				yearTo: selectedYearTo,
+				ratingFrom: selectedRatingFrom,
+				ratingTo: selectedRatingTo,
 			};
+
 			const respons = await getMovieByAdvancedSearch(data, user.token);
-			// await dispatch(
-			// 	getMovieByAdvancedSearchApi({
-			// 		data: {
-			// 			actor: selectedActorId,
-			// 			director: selectedDirectorId,
-			// 			genre: selectedGenreSlug,
-			// 			country: selectedCountrySlug,
-			// 		},
-			// 		token: user.token,
-			// 	})
-			// );
 			navigate('/search-result', { state: respons });
 			resetState();
 		} catch (error) {
-			console.error('An error occurred:', error);
+			console.error('Произошла ошибка:', error);
 		}
 	};
 
@@ -209,12 +229,15 @@ const ExtendedSearch = ({
 					))}
 				</ul>
 			)}
-			{/* <div className="searchExtended__row">
+			<div className="searchExtended__row">
 				<p className="searchExtended__row-title">Год</p>
-				<select id="yearFrom" name="yearFrom" className="searchExtended__form">
-					<option value="" disabled>
-						c --
-					</option>
+				<select
+					id="yearFrom"
+					name="yearFrom"
+					className="searchExtended__form"
+					onChange={handleYearFromChange}
+				>
+					<option value="">c --</option>
 					<option>1950</option>
 					<option>1955</option>
 					<option>1960</option>
@@ -232,10 +255,13 @@ const ExtendedSearch = ({
 					<option>2020</option>
 					<option>2023</option>
 				</select>
-				<select id="yearTo" name="yearTo" className="searchExtended__form">
-					<option value="" disabled>
-						по --
-					</option>
+				<select
+					id="yearTo"
+					name="yearTo"
+					className="searchExtended__form"
+					onChange={handleYearToChange}
+				>
+					<option value="">по --</option>
 					<option>1950</option>
 					<option>1955</option>
 					<option>1960</option>
@@ -260,10 +286,9 @@ const ExtendedSearch = ({
 					id="ratingFrom"
 					name="ratingFrom"
 					className="searchExtended__form"
+					onChange={handleRatingFromChange}
 				>
-					<option value="" disabled>
-						c --
-					</option>
+					<option value="">от --</option>
 					<option>0.0</option>
 					<option>1.0</option>
 					<option>2.0</option>
@@ -275,10 +300,13 @@ const ExtendedSearch = ({
 					<option>8.0</option>
 					<option>9.0</option>
 				</select>
-				<select id="ratingTo" name="ratingTo" className="searchExtended__form">
-					<option value="" disabled>
-						по --
-					</option>
+				<select
+					id="ratingTo"
+					name="ratingTo"
+					className="searchExtended__form"
+					onChange={handleRatingToChange}
+				>
+					<option value="">до --</option>
 					<option>1.0</option>
 					<option>2.0</option>
 					<option>3.0</option>
@@ -290,7 +318,7 @@ const ExtendedSearch = ({
 					<option>9.0</option>
 					<option>10.0</option>
 				</select>
-			</div> */}
+			</div>
 			<button className="searchExtended__submit" onClick={Click}>
 				Найти
 			</button>

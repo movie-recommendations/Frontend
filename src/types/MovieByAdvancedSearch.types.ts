@@ -24,4 +24,8 @@ export interface IData {
 	director: any;
 	genre: string;
 	country: string;
+	yearFrom?: any;
+	yearTo?: any;
+	ratingFrom?: any;
+	ratingTo?: any;
 }
