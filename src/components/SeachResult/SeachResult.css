@@ -54,6 +54,7 @@
 	line-height: 25px;
 	margin: 0;
 	margin-bottom: 15px;
+	cursor: pointer;
 }
 
 .search_h3 {
@@ -68,20 +69,24 @@
 	/* white-space: nowrap; */
 	text-overflow: ellipsis;
 }
+
 @media screen and (max-width: 1440px) {
 	.search {
 		display: flex;
 		justify-content: space-between;
 	}
+
 	.search_profile {
 		width: 350px;
 	}
 }
+
 @media screen and (max-width: 1280px) {
 	.search_profile {
 		width: 290px;
 	}
 }
+
 @media screen and (max-width: 1070px) {
 	.search_profile {
 		width: 257px;

@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './Auth.css';
 import Input from 'src/components/Input/Input';
+import BackButton from 'src/components/BackButton/BackButton';
 import { InputTypes } from 'src/types/Input.types';
 import Button from 'src/components/Button/Button';
 import { useEffect, useState } from 'react';
@@ -58,6 +59,11 @@ const SignInPage = () => {
 
 	return (
 		<main className="auth" id="sign-in-page">
+			<BackButton
+				type={'button'}
+				buttonText={'Назад'}
+				handleButtonClick={() => navigate(-1)}
+			/>
 			<div className="auth__container">
 				<h1 className="auth__title">Войти</h1>
 				<p className="auth__link-text">
@@ -78,7 +84,7 @@ const SignInPage = () => {
 							...register('email', EMAIL_VALIDATION_CONFIG),
 						}}
 						error={errors?.email?.message}
-						// maxLength={VALIDATION_SETTINGS.email.maxLength}
+					// maxLength={VALIDATION_SETTINGS.email.maxLength}
 					/>
 					<Input
 						inputType={InputTypes.password}

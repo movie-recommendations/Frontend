@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import './Auth.css';
 import Input from 'src/components/Input/Input';
+import BackButton from 'src/components/BackButton/BackButton';
 import { InputTypes } from 'src/types/Input.types';
 import Button from '../../components/Button/Button';
 import Slider from 'src/components/Slider/Slider';
@@ -115,6 +116,11 @@ const SignUpPage = () => {
 
 	return (
 		<main className="auth" id="sign-up-page">
+			<BackButton
+				type={'button'}
+				buttonText={'Назад'}
+				handleButtonClick={() => navigate(-1)}
+			/>
 			<div className="auth__container">
 				{step === 1 ? (
 					<>

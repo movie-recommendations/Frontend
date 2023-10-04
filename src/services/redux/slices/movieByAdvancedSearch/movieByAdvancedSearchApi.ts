@@ -25,7 +25,7 @@ export const getMovieByAdvancedSearch = (
 	token: string
 ): Promise<IMovieAdvancedCard[]> => {
 	return fetchData(
-		`${API_BASE_URL}/movies/?actor=${data.actor}&director=${data.director}&genre=${data.genre}&country=${data.country}&year_gt=${data.yearFrom}&year_lt=${data.yearTo}&kinopoisk_rate_gt=${data.ratingFrom}`,
+		`${API_BASE_URL}/movies/?actor=${data.actor}&director=${data.director}&genre=${data.genre}&country=${data.country}&year_gt=${data.yearFrom}&year_lt=${data.yearTo}&imdb_rate_gt=${data.ratingFrom}&imdb_rate_lt=${data.ratingTo}`,
 		'GET',
 		token
 	);

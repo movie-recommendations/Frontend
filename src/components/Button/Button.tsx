@@ -17,15 +17,13 @@ const Button: FC<IButton> = ({
 			className={
 				className
 					? className
-					: `${
-							buttonText !== 'Сохранить'
-								? 'button button_type_toMain'
-								: `${
-										location.pathname === '/preferences'
-											? 'button button_type_preferences'
-											: 'button'
-								  }`
-					  }`
+					: `${buttonText !== 'Сохранить' && buttonText !== 'Войти'
+						? 'button button_type_toMain'
+						: `${location.pathname === '/preferences'
+							? 'button button_type_preferences'
+							: 'button'
+						}`
+					}`
 			}
 			disabled={disabled}
 			type={type}

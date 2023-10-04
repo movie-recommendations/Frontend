@@ -92,13 +92,13 @@
 	background-image: none;
 }
 
-.profile__radio-button[type='radio']:checked + .profile__radio-pseudo-item {
+.profile__radio-button[type='radio']:checked+.profile__radio-pseudo-item {
 	background-image: radial-gradient(circle, #ffcc33 47%, #0c0c0c 47%);
 	transition: background-image 0.3s;
 	border: 2px solid #ffcc33;
 }
 
-.profile__radio-button[type='radio']:hover + .profile__radio-pseudo-item {
+.profile__radio-button[type='radio']:hover+.profile__radio-pseudo-item {
 	color: #d1d5db;
 	opacity: 0.6;
 	cursor: pointer;
@@ -131,7 +131,6 @@
 .profile__user-first-letter {
 	margin: 0;
 	padding: 0;
-	font-family: 'Unbounded';
 	font-size: 60px;
 	font-weight: 700;
 	line-height: 74px;
@@ -227,6 +226,7 @@
 .profile__genres-link:hover {
 	color: #fff;
 }
+
 @media screen and (max-width: 1260px) {
 	.profile__genres {
 		column-gap: 20px;
@@ -235,18 +235,22 @@
 	.profile__container {
 		gap: 0;
 	}
+
 	.profile {
 		max-width: 924px;
 		gap: 90px;
 	}
+
 	.profile__delete-button {
 		margin-bottom: 4px;
 		align-self: flex-end;
 		margin-right: 67px;
 	}
+
 	.profile__radio-buttons {
 		gap: 60px;
 	}
+
 	.profile__genres-container {
 		padding-bottom: 90px;
 	}
