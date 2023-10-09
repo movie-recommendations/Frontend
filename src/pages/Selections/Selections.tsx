@@ -18,7 +18,7 @@ export const Selections = () => {
 	const [screenSize, setScreenSize] = useState<number>(0);
 	const [pageMore, setPageMore] = useState(screenSize);
 	const films = JSON.parse(localStorage.getItem('filmsBy') || '');
-	// const title = JSON.parse(localStorage.getItem('title') || '');
+	const title = JSON.parse(localStorage.getItem('title') || '');
 
 	useEffect(() => {
 		if (screenSize >= 1280) {
@@ -52,7 +52,7 @@ export const Selections = () => {
 				buttonText={'Назад'}
 				handleButtonClick={() => navigate(-1)}
 			/>
-			<h1 className="flank_title">{films.title ? films.title : 'title'}</h1>
+			<h1 className="flank_title">{title ? title : 'title'}</h1>
 			<p className="flank_description">{films.description}</p>
 			<section>
 				<div className="flank_container">
