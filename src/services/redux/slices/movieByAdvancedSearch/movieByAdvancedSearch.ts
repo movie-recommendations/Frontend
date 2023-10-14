@@ -55,6 +55,15 @@ const initialState: IMovieAdvancedCardState = {
 			},
 			year: 0,
 			genres: [''],
+			actors: [''],
+			directors: [''],
+			countries: [
+				{
+					id: 0,
+					slug: '',
+					title: '',
+				},
+			],
 			is_favorite: false,
 			is_need_see: false,
 		},
@@ -71,6 +80,15 @@ const initialState: IMovieAdvancedCardState = {
 			},
 			year: 0,
 			genres: [''],
+			actors: [''],
+			directors: [''],
+			countries: [
+				{
+					id: 0,
+					slug: '',
+					title: '',
+				},
+			],
 			is_favorite: false,
 			is_need_see: false,
 		},

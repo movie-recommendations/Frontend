@@ -32,6 +32,10 @@ export interface ISignUpData extends ISignInData {
 	fav_genres: number[];
 }
 
+export interface IAvatar {
+	avatar: number;
+}
+
 export interface IUser {
 	email: string;
 	fav_genres: number[];
@@ -39,6 +43,11 @@ export interface IUser {
 	nickname?: string;
 	dateOfBirth?: string;
 	sex?: 0 | 1;
+	// avatar: {
+	// 	id: number;
+	// 	avatar: string;
+	// };
+	avatar: number;
 }
 
 export interface IResetPasswordData {
@@ -50,4 +59,5 @@ export interface IEditProfileData {
 	username: string | undefined;
 	date_of_birth: string | undefined;
 	sex: number | null;
+	// avatar: number;
 }

@@ -31,31 +31,34 @@ const DeleteProfilePopup: FC<IDeleteProfilePopup> = ({
 
 	return (
 		<Popup isOpened={isOpened} setIsOpened={setIsOpened}>
-			<h4 className="popup__title">Удалить профиль</h4>
-			{step === 0 ? (
-				<>
-					<p className="popup__text">
-						Вы уверены, что хотите удалить профиль? Профиль нельзя восстановить.
-					</p>
-					<Button
-						buttonText={'Да, удалить'}
-						handleButtonClick={onDeleteClick}
-						type="button"
-					/>
-					<button className="popup__close" onClick={() => setIsOpened(false)}>
-						Нет, отменить удаление
-					</button>
-				</>
-			) : (
-				<>
-					<p>Ваш профиль удален</p>
-					<Button
-						buttonText={'На Главную'}
-						handleButtonClick={() => navigate('/')}
-						type="button"
-					/>
-				</>
-			)}
+			<div className="popup__container">
+				<h4 className="popup__title">Удалить профиль</h4>
+				{step === 0 ? (
+					<>
+						<p className="popup__text">
+							Вы уверены, что хотите удалить профиль? Профиль нельзя
+							восстановить.
+						</p>
+						<Button
+							buttonText={'Да, удалить'}
+							handleButtonClick={onDeleteClick}
+							type="button"
+						/>
+						<button className="popup__close" onClick={() => setIsOpened(false)}>
+							Нет, отменить удаление
+						</button>
+					</>
+				) : (
+					<>
+						<p>Ваш профиль удален</p>
+						<Button
+							buttonText={'На Главную'}
+							handleButtonClick={() => navigate('/')}
+							type="button"
+						/>
+					</>
+				)}
+			</div>
 		</Popup>
 	);
 };

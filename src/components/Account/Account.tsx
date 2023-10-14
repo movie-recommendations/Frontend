@@ -10,6 +10,11 @@ const Account: FC = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const user = useAppSelector(selectUser);
+	const avatars = useAppSelector((state) => state.avatars.images);
+
+	const avatarObject = avatars.find((avatar) => avatar.id === user.avatar);
+	const avatarUrl = avatarObject ? avatarObject.avatar : '';
+
 	const [isOpen, setIsOpen] = useState(false);
 
 	const setProfileOpen = () => {
@@ -32,9 +37,16 @@ const Account: FC = () => {
 				<>
 					<div className="account__profile-icon" onMouseOver={setProfileOpen}>
 						<Link to="/profile" className="account__profile-link">
-							<p className="account__profile-word">
-								{nickname ? nickname[0] : email[0]}
-							</p>
+							{user.avatar && user.avatar !== 0 ? (
+								<img
+									className="account__avatar-img"
+									src={avatarUrl}
+								/>
+							) : (
+								<p className="account__profile-word">
+									{user.nickname ? user.nickname[0] : user.email[0]}
+								</p>
+							)}
 						</Link>
 					</div>
 					<nav

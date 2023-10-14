@@ -84,7 +84,7 @@ const SignInPage = () => {
 							...register('email', EMAIL_VALIDATION_CONFIG),
 						}}
 						error={errors?.email?.message}
-					// maxLength={VALIDATION_SETTINGS.email.maxLength}
+						// maxLength={VALIDATION_SETTINGS.email.maxLength}
 					/>
 					<Input
 						inputType={InputTypes.password}
@@ -107,7 +107,10 @@ const SignInPage = () => {
 				<Link to="/recover-password" className="auth__link auth__recover-link">
 					Забыли пароль?
 				</Link>
-				<Link to="/oauth/login/google-oauth2/" className="auth__link auth__recover-link">
+				<Link
+					to="/oauth/login/google-oauth2/"
+					className="auth__link auth__recover-link"
+				>
 					Google
 				</Link>
 			</div>

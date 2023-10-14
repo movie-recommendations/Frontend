@@ -92,13 +92,13 @@
 	background-image: none;
 }
 
-.profile__radio-button[type='radio']:checked+.profile__radio-pseudo-item {
+.profile__radio-button[type='radio']:checked + .profile__radio-pseudo-item {
 	background-image: radial-gradient(circle, #ffcc33 47%, #0c0c0c 47%);
 	transition: background-image 0.3s;
 	border: 2px solid #ffcc33;
 }
 
-.profile__radio-button[type='radio']:hover+.profile__radio-pseudo-item {
+.profile__radio-button[type='radio']:hover + .profile__radio-pseudo-item {
 	color: #d1d5db;
 	opacity: 0.6;
 	cursor: pointer;
@@ -117,7 +117,10 @@
 }
 
 .profile__avatar {
-	background-color: #9ca3af;
+	background-color: transparent;
+	border-radius: 100px;
+	border: 3px solid white;
+	/* background-color: #9ca3af; */
 	border-radius: 100px;
 	max-width: 200px;
 	max-height: 200px;
@@ -126,6 +129,32 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
+}
+.profile__avatar_type_letter {
+	background-color: #9ca3af;
+}
+.profile__avatar-img {
+	width: 60px;
+	height: 60px;
+	object-fit: contain;
+}
+
+.profile__avatar-btn {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	background: url('../../images/avatar/pencil.svg') #e5e7eb no-repeat center;
+	border: none;
+	border-radius: 40px;
+	transition: background-color 0.5s;
+}
+
+.profile__avatar-btn:hover {
+	background-color: #9ca3af;
+	cursor: pointer;
 }
 
 .profile__user-first-letter {

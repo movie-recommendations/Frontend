@@ -23,7 +23,12 @@ const BackButton: FC<IButton> = ({
 			className={
 				location.pathname === '/preferences'
 					? 'backbutton backbutton_type_preferences'
-					: 'backbutton'
+					: `${
+							location.pathname === '/sign-in' ||
+							location.pathname === '/sign-up'
+								? 'backbutton backbutton_type_signin'
+								: 'backbutton'
+					  }`
 			}
 			disabled={disabled}
 			type={type}

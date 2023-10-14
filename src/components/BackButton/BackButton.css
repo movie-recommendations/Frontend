@@ -1,10 +1,11 @@
 .backbutton {
+	font-family: 'Unbounded';
 	width: 70px;
 	height: 30px;
 	font-size: 18px;
 	line-height: 30px;
 	font-weight: 300;
-	margin: 50px 0px 0px 155px;
+	margin: 0 0px 0px 155px;
 	cursor: pointer;
 	color: #ffcc33;
 	transition: background-color 0.2s;
@@ -15,14 +16,21 @@
 	cursor: pointer;
 	transition: background-color 0.2s;
 	display: flex;
-	position: absolute;
 	left: -42px;
 	top: 130px;
+}
+
+.backbutton_type_signin {
+	position: absolute;
 }
 
 @media screen and (max-width: 1297px) {
 	.backbutton {
 		margin: 50px 0px 0px 50px;
+	}
+	.backbutton_type_signin {
+		left: 50px;
+		margin: 10px 0 0 0;
 	}
 }
 
@@ -45,4 +53,14 @@
 
 .backbutton_type_preferences {
 	margin-left: 50px;
+}
+
+.backbutton_type_preferences {
+	margin-left: 0;
+}
+
+@media screen and (max-width: 1300px) {
+	.backbutton_type_preferences {
+		margin-left: 50px;
+	}
 }

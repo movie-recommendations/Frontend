@@ -27,8 +27,8 @@
 	justify-content: center;
 }
 
-.header__logo2 {
-	margin-left: 13px;
+.header__logo1 {
+	padding-right: 13px;
 }
 
 .header__container {

@@ -29,7 +29,8 @@ export const fetchData = (
 		| { email: string }
 		| IResetPasswordData
 		| { fav_genres: number[] }
-		| IEditProfileData,
+		| IEditProfileData
+		| { avatar: number },
 	token?: string
 ) => {
 	return fetch(url, {
@@ -85,6 +86,15 @@ export const fetchEditUserInfo = (
 	token: string
 ): Promise<Response> => {
 	return fetchData(API_USERS_ME_URL, 'PUT', data, token).then((res) =>
+		checkRes(res)
+	);
+};
+
+export const fetchEditAvatar = (
+	data: { avatar: number },
+	token: string
+): Promise<Response> => {
+	return fetchData(API_USERS_ME_URL, 'PATCH', data, token).then((res) =>
 		checkRes(res)
 	);
 };

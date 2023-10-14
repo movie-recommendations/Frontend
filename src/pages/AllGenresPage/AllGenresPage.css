@@ -62,15 +62,12 @@
 	}
 }
 
-
-
 @media screen and (max-width: 1297px) {
 	.allgenrespage__img {
 		width: 40px;
 		height: 40px;
 	}
 }
-
 
 .allgenrespage__title {
 	font-size: 20px;

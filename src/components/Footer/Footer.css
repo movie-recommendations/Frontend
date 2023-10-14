@@ -38,7 +38,8 @@
 	cursor: pointer;
 }
 
-.footer__scroll-button {}
+.footer__scroll-button {
+}
 
 .scroll-hidden {
 	visibility: hidden;

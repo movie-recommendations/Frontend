@@ -8,8 +8,11 @@ import { getSelectionsApi } from 'src/services/redux/slices/selections/selection
 import { FilmCardSmall } from 'src/components/FilmCardWidth180/FilmCardSmall';
 import { MoreButton } from 'src/components/MoreBtn/MoreButton';
 import { IMovieCard } from 'src/types/MovieCard.types';
+import BackButton from 'src/components/BackButton/BackButton';
+import { useNavigate } from 'react-router-dom';
 
 export const Selections = () => {
+	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const [isMoreButton, setIsMoreButton] = useState(false);
 	const [screenSize, setScreenSize] = useState<number>(0);
@@ -44,6 +47,11 @@ export const Selections = () => {
 	console.log(1);
 	return (
 		<section className="flank">
+			<BackButton
+				type={'button'}
+				buttonText={'Назад'}
+				handleButtonClick={() => navigate(-1)}
+			/>
 			<h1 className="flank_title">{films.title ? films.title : 'title'}</h1>
 			<p className="flank_description">{films.description}</p>
 			<section>

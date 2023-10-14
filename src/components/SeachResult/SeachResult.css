@@ -27,7 +27,6 @@
 	bottom: 0;
 	background: rgba(43, 47, 51, 0.4);
 	opacity: 0;
-	transition: 0.2s opacity ease-in-out;
 }
 .search-img-background:hover:after {
 	opacity: 1;
@@ -55,6 +54,14 @@
 	margin: 0;
 	margin-bottom: 15px;
 	cursor: pointer;
+}
+
+.search_title:hover {
+	color: #ffcc33;
+}
+
+.search_title_type_hover {
+	color: #ffcc33;
 }
 
 .search_h3 {

@@ -29,13 +29,11 @@
 	z-index: 0;
 }
 
-
 @media screen and (max-width: 1297px) {
 	.selections_card {
 		max-width: 288px;
 	}
 }
-
 
 .selections-card__background {
 	display: block;

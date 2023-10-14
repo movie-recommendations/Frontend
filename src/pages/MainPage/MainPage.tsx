@@ -27,6 +27,7 @@ import { getCountriesApi } from 'src/services/redux/slices/countries/countries';
 import { getDirectorsApi } from 'src/services/redux/slices/director/directors';
 import { getRecomendedMoviesApi } from 'src/services/redux/slices/recomendations/recomendations';
 import { getRatedMoviesApi } from 'src/services/redux/slices/rating/rating';
+import { getAvatarsApi } from 'src/services/redux/slices/avatars/avatars';
 
 export default function MainPage() {
 	const [isLoading, setIsLoading] = useState(true);
@@ -58,6 +59,7 @@ export default function MainPage() {
 			dispatch(getWatchListApi(user.token));
 			dispatch(getRatedMoviesApi(user.token));
 			dispatch(getRecomendedMoviesApi(user.token));
+			dispatch(getAvatarsApi(user.token));
 		}
 		dispatch(getCountriesApi());
 		dispatch(getActorsApi());
@@ -90,7 +92,7 @@ export default function MainPage() {
 					<SlickSliderDayMovies />
 
 					<div className="main-page_slick-slider">
-						<SlickSliderMini title={`Новинки`} movies={newmovies} />
+						<SlickSliderMini title={`Новинки`} movies={newmovies} /> //
 						<ButtonShowAll
 							onClick={() => handleAllButtonFilmsClick(films, 'Новинки')}
 						/>
