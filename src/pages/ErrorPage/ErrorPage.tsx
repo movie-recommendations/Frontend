@@ -35,13 +35,13 @@ export default function ErrorPage() {
 					}}
 				/>
 			</div>
-			<h1 className="error-page__message">Страница не найдена</h1>
+			<h1 className="error-page__message">Страница не&nbsp;найдена</h1>
 			<span className="error-page__text">
 				К сожалению, мы не смогли найти запрашиваемую вами страницу.
 			</span>
 			<button className="error-page__button">
 				{' '}
-				<a className="error-page__button-text" href="#/">
+				<a className="error-page__button-text" href="/">
 					На главную
 				</a>
 			</button>

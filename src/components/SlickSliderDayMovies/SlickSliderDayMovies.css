@@ -72,3 +72,10 @@ li button {
 	background-repeat: no-repeat;
 	background-position: left;
 }
+
+@media screen and (max-width: 360px) {
+	.slick-slider-main {
+		max-width: 360px;
+		max-height: 661px;
+	}
+}

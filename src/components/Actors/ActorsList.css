@@ -35,3 +35,9 @@
 		font-size: 14px;
 	}
 }
+
+@media screen and (max-width: 360px) {
+	.actorslist__title {
+		font-size: 18px;
+	}
+}

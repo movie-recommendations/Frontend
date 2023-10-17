@@ -126,3 +126,65 @@
 	margin: 0;
 	padding: 20px 0 30px;
 }
+
+.auth__form-list-preferences {
+	list-style: none;
+	margin: 0;
+	padding: 0 0 40px 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 280px);
+	gap: 10px;
+	justify-content: center;
+}
+@media screen and (max-width: 1000px) {
+	.auth__form {
+		max-height: 100%;
+	}
+	.auth__container {
+		margin-top: 127px;
+		max-width: 88.89%;
+		padding: 20px;
+		border-radius: 20px;
+	}
+	.auth__title {
+		font-size: 24px;
+		line-height: 27px;
+	}
+	.auth__link-text {
+		font-size: 16px;
+		line-height: 18px;
+		padding-top: 15px;
+		align-self: center;
+	}
+	.auth__form_type_sign-in {
+		padding-top: 33px;
+		gap: 8px;
+	}
+	.auth__recover-link {
+		font-size: 16px;
+		text-decoration: none;
+		margin-top: 10px;
+		margin-bottom: 0;
+	}
+	.auth__title_type_sign-up {
+		font-size: 22px;
+	}
+	.auth__hint {
+		font-size: 16px;
+		line-height: 18px;
+		color: #4b5563;
+		padding-top: 15px;
+	}
+	.auth__container_type_auth {
+		padding: 15px 20px 40px 20px;
+	}
+	.auth__steps {
+		font-size: 14px;
+	}
+	.auth__form_type_sign-up {
+		gap: 0px;
+	}
+	.auth__form-error_type_login {
+		text-align: center;
+	}
+}

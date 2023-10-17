@@ -23,7 +23,6 @@
 	height: 160px;
 	border: 1px solid #2b2f33;
 	border-radius: 80px;
-	display: flex;
 	cursor: pointer;
 	box-sizing: border-box;
 	display: flex;
@@ -45,4 +44,19 @@
 	color: #d1d5db;
 	border: #d1d5db solid 1px;
 	cursor: pointer;
+}
+
+@media screen and (max-width: 360px) {
+	.genre-checkbox__img {
+		opacity: 0;
+	}
+
+	.genre-checkbox__appearance {
+		flex-direction: none;
+	}
+
+	.genre-checkbox__appearance-title {
+		position: absolute;
+		font-size: 16px;
+	}
 }

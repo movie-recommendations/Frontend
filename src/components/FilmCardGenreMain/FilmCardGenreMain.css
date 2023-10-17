@@ -1,4 +1,4 @@
-.specialmovie_card {
+.filmpage_card {
 	max-width: 180px;
 	position: relative;
 	padding: 0 0 0 10px;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 1297px) {
-	.specialmovie_card {
+	.filmpage_card {
 		margin: 0px;
 		padding: 0 0 0 10px;
 		max-width: 137px;
@@ -14,15 +14,20 @@
 }
 
 @media screen and (max-width: 360px) {
-	.specialmovie_card {
-		margin: 0px;
-		/* padding: 0 0 0 10px; */
+	.filmpage_card {
+		overflow: hidden;
+		max-width: 320px;
 		padding: 0;
-		max-width: 255px;
+		margin: 0;
+	}
+
+	.filmpage_card-img {
+		width: 320px;
+		height: 180px;
 	}
 }
 
-.specialmovie_card-img {
+.filmpage_card-img {
 	width: 180px;
 	height: 240px;
 	background-repeat: no-repeat;
@@ -30,12 +35,12 @@
 	border-radius: 10px;
 }
 
-.specialmovie-card-img__background {
+.filmpage-card-img__background {
 	display: block;
 	position: relative;
 }
 
-.specialmovie-card-img__background::after {
+.filmpage-card-img__background::after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -47,45 +52,31 @@
 	transition: 0.2s opacity ease-in-out;
 }
 
-.specialmovie-card-img__background:hover:after {
+.filmpage-card-img__background:hover:after {
 	opacity: 1;
 }
 
 @media screen and (max-width: 1297px) {
-	.specialmovie_card-img {
-		width: 235px;
-		height: 314px;
+	.filmpage_card-img {
+		width: 137px;
+		height: 183px;
 	}
 }
 
 @media screen and (max-width: 360px) {
-	.specialmovie_card-img {
-		width: 255px;
-		height: 340px;
+	.filmpage_card-img {
+		width: 320px;
+		height: 180px;
 	}
 }
 
-.bookmark_special {
+.bookmark-small {
 	position: absolute;
 	top: 10px;
 	right: 10px;
 }
 
-@media screen and (max-width: 1297px) {
-	.bookmark_special {
-		position: absolute;
-		top: 10px;
-		right: -90px;
-	}
-}
-
-@media screen and (max-width: 360px) {
-	.bookmark_special {
-		display: none;
-	}
-}
-
-.specialmovie_card-title {
+.filmpage_card-title {
 	color: white;
 	font-size: 17px;
 	font-weight: 600;
@@ -98,15 +89,7 @@
 	text-align: left;
 }
 
-@media screen and (max-width: 360px) {
-	.specialmovie_card-title {
-		font-size: 18px;
-		font-weight: 700;
-		line-height: 22px;
-	}
-}
-
-.specialmovie_card-subtitle {
+.filmpage_card-subtitle {
 	color: #9ca3af;
 	font-size: 12px;
 	font-weight: 500;
@@ -118,16 +101,8 @@
 	text-align: left;
 }
 
-.specialmovie__container-img {
-	display: flex;
-	flex-direction: row;
-	margin: 0 70px 0 0;
-}
-
-.specialmovie__image {
-	width: 265px;
-	height: 340px;
-	object-fit: cover;
-	border-radius: 10px;
-	margin: 0 20px 0 0;
-}
+/* @media screen and (max-width: 1260px) {
+	.bookmark-small {
+		right: 20px;
+	}
+} */

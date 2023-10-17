@@ -6,4 +6,5 @@ export interface IGenreCheckbox {
 	color?: 'black' | 'white' | 'yellow';
 	onChange?: (id: number, newChecked: boolean) => void;
 	defaultChecked?: boolean;
+	image?: string;
 }

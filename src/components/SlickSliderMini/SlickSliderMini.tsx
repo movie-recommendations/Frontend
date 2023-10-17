@@ -20,6 +20,17 @@ export const SlickSliderMini: FC<ICompilationsTwo> = ({
 		slidesToShow: slidesToShow,
 		slidesToScroll: 4,
 		arrows: true,
+		responsive: [
+			{
+				breakpoint: 460,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 2,
+					centerPadding: '40px',
+					centerMode: true,
+				},
+			},
+		],
 	};
 
 	return (

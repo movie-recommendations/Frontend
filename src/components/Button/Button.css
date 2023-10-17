@@ -29,13 +29,17 @@
 	opacity: 1;
 }
 
-@media screen and (max-width: 1260px) {
+@media screen and (max-width: 1300px) {
 	.button {
 		width: 288px;
 		align-self: end;
 	}
 
 	.button_type_toMain {
+		width: 540px;
+		align-self: center;
+	}
+	.button_type_toMain-sign-in {
 		width: 540px;
 		align-self: center;
 	}
@@ -47,4 +51,43 @@
 
 .button_type_preferences {
 	margin-right: 50px;
+}
+@media screen and (max-width: 1000px) {
+	.button_type_profile {
+		align-self: center;
+		max-width: 280px;
+		margin-top: 50px;
+	}
+	.button_type_preferences {
+		width: 100%;
+		margin: 0 auto;
+	}
+	.button_type_toMain-sign-in {
+		width: 100%;
+		font-size: 16px;
+		line-height: 18px;
+		margin-top: 15px;
+	}
+}
+@media screen and (max-width: 650px) {
+	.button_type_toMain {
+		width: 280px;
+		font-size: 16px;
+		line-height: 18px;
+	}
+	.button {
+		padding: 11px 0;
+	}
+}
+@media screen and (max-width: 600px) {
+	.button_type_profile {
+		font-size: 16px;
+		padding: 7px 0;
+	}
+	.button_type_preferences {
+		max-width: 280px;
+		font-size: 16px;
+		line-height: 18px;
+		padding: 11px 0;
+	}
 }

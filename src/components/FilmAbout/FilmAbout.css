@@ -44,6 +44,7 @@
 		margin: 0;
 	}
 }
+
 @media screen and (max-width: 1260px) {
 	.moviepage-description__about__container {
 		flex-direction: column;
@@ -61,5 +62,43 @@
 	}
 	.moviepage-description__about__text_add {
 		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	.moviepage-description__about__container {
+		flex-direction: row;
+		align-items: flex-start;
+		width: 320px;
+		justify-content: space-between;
+	}
+	.moviepage-description {
+		margin: 28px 0 0 0;
+	}
+	.moviepage-description__about {
+	}
+
+	.moviepage-description__about__text_add {
+		margin: 0;
+		padding: 0;
+		color: var(--neutral-500, #9ca3af);
+		font-size: 16px;
+		font-family: Mulish;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+	}
+
+	.moviepage-description__about__text {
+		margin: 0;
+		padding: 0;
+		color: var(--white, #fff);
+		font-size: 16px;
+		font-family: Mulish;
+		font-style: normal;
+		font-weight: 500;
+		line-height: normal;
+		white-space: pre-line;
+		text-align: end;
 	}
 }

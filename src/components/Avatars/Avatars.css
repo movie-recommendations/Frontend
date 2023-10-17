@@ -116,3 +116,37 @@
 .popup__avatar-input:checked ~ .popup__avatar-item {
 	filter: sepia(1) hue-rotate(0deg) saturate(10);
 }
+@media screen and (max-width: 1300px) {
+	.popup__avatar {
+		max-width: 368px;
+		min-height: 548px;
+	}
+	.popup__avatar-input {
+		width: 80px;
+		height: 80px;
+	}
+	.popup__avatar-list {
+		grid-template-columns: repeat(3, 80px);
+		grid-template-rows: 80px;
+		gap: 25px;
+	}
+	.popup__avatar-input {
+		border: 1.5px solid var(--White, #fff);
+	}
+	.popup__avatar-item {
+		width: 30px;
+		height: 30px;
+		top: calc(50% - 15px);
+		left: calc(50% - 15px);
+	}
+	.popup__title_type_avatar {
+		font-size: 22px;
+		text-align: center;
+	}
+}
+@media screen and (max-width: 450px) {
+	.popup__avatar {
+		max-width: 340px;
+		padding: 40px 25px 20px 25px;
+	}
+}

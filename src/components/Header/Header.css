@@ -132,3 +132,59 @@
 		height: 10vw;
 	}
 }
+
+@media screen and (max-width: 360px) {
+	.header {
+		max-width: 360px;
+	}
+
+	.header__search {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		width: 1.22vw;
+		height: 40px;
+		border: none;
+	}
+
+	.header__logo {
+		margin: 5px 10px 5px 10px;
+	}
+
+	.header__search-input {
+		display: none;
+		background-color: transparent;
+		border: none;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 20.08px;
+		color: #fff;
+		max-width: 750px;
+		width: 100%;
+		margin: 0 15px 0;
+		outline: none;
+	}
+
+	.header__search-input::placeholder {
+		display: none;
+		color: #fff;
+	}
+
+	.header__search-button {
+		margin: 0 15px 0 0;
+		padding: 0;
+		border: none;
+		background-color: transparent;
+		display: flex;
+		align-items: center;
+	}
+
+	.header__search-button:hover {
+		cursor: pointer;
+		opacity: 0.6;
+	}
+
+	.header__search-button:first-of-type {
+		display: none;
+	}
+}

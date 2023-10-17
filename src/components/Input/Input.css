@@ -1,7 +1,9 @@
 .input__container {
-	display: flex;
 	flex-direction: column;
 	position: relative;
+}
+.input__container_type_desktop {
+	display: flex;
 }
 
 .input__hints {
@@ -24,6 +26,8 @@
 	font-size: 12px;
 	font-weight: 400;
 	line-height: 12px;
+	display: inline-block;
+	height: 100%;
 }
 
 .input__field {
@@ -98,8 +102,37 @@
 .input__field_type_date {
 	text-transform: uppercase;
 }
+.input__container_type_mobile {
+	display: none;
+}
 @media screen and (max-width: 1260px) {
 	.input__field {
 		padding: 11px 12px;
+	}
+}
+@media screen and (max-width: 1000px) {
+	.input__container_type_desktop {
+		display: none;
+	}
+	.input__container_type_mobile {
+		display: flex;
+		justify-content: center;
+	}
+
+	.input__error-container {
+		height: 25px;
+	}
+	.input__span_type_password {
+		font-size: 12px;
+		line-height: 13px;
+		display: inline-block;
+	}
+}
+@media screen and (max-width: 600px) {
+	.input__hints_type_profile {
+		padding-bottom: 7px;
+	}
+	.input__field {
+		padding: 9px 11px;
 	}
 }

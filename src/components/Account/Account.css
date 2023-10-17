@@ -143,15 +143,18 @@
 	.account {
 		margin: 0 50px 0 auto;
 	}
+
 	.account__login-text {
 		font-size: 18px;
 		line-height: 25px;
 	}
+
 	.account__content {
 		width: 300px;
 		left: -230px;
 	}
 }
+
 @media screen and (max-width: 1260px) {
 	.account__content {
 		height: 330px;
@@ -159,14 +162,42 @@
 		left: -200px;
 	}
 }
+
 @media screen and (max-width: 1150px) {
 	.account__content {
 		height: 315px;
 	}
 }
+
 @media screen and (max-width: 1060px) {
 	.account__content {
 		left: -190px;
 		height: 310px;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	.account {
+		margin: 0 10px 0 0;
+	}
+	.account__profile-word {
+		width: 30px;
+		height: 30px;
+		border-radius: 20px;
+		background-color: #9ca3af;
+		font-size: 18px;
+		font-weight: 500;
+		line-height: 30px;
+		color: #0c0c0c;
+		margin: 0;
+		text-align: center;
+	}
+	.account__avatar-img {
+		width: 30px;
+		height: 30px;
+	}
+	.account__profile-icon {
+		width: 30px;
+		height: 30px;
 	}
 }

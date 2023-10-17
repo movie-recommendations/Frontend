@@ -42,10 +42,26 @@
 		margin: 15px 0 0 0;
 	}
 }
+
 @media screen and (max-width: 1100px) {
 	.trailer__text {
 		font-size: 14px;
 		font-weight: 600px;
 		margin: 0 0 30px 0;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	.trailer {
+		margin: 15px 0 0 0;
+	}
+
+	.trailer__text {
+		font-size: 18px;
+	}
+
+	.trailer__button {
+		width: 320px;
+		height: 180px;
 	}
 }

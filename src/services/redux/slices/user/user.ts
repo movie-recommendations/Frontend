@@ -5,6 +5,7 @@ import {
 	fetchEditAvatar,
 	fetchEditFavGenres,
 	fetchEditUserInfo,
+	fetchGetRecomendations,
 	fetchGetUserInfo,
 	fetchPasswordRecovery,
 	fetchResetPassword,
@@ -102,6 +103,19 @@ export const getUserInfo = createAsyncThunk(
 	}
 );
 
+export const getRecomendations = createAsyncThunk(
+	'@@user/getRecomendations',
+	async (token: string, { fulfillWithValue, rejectWithValue }) => {
+		try {
+			const response = await fetchGetRecomendations(token);
+			const json = await response.json();
+			return fulfillWithValue(json);
+		} catch (error: unknown) {
+			return rejectWithValue(error);
+		}
+	}
+);
+
 export const editUserInfo = createAsyncThunk(
 	'@@user/editUserInfo',
 	async (
@@ -180,6 +194,22 @@ const initialState: IUserState = {
 		dateOfBirth: undefined,
 		sex: undefined,
 		avatar: 0,
+		recomendations: [
+			{
+				id: 0,
+				title: '',
+				v_picture: '',
+				h_picture: '',
+				rating: {
+					rate_imdb: 0,
+					rate_kinopoisk: 0,
+				},
+				year: 0,
+				genres: [''],
+				is_favorite: false,
+				is_need_see: false,
+			},
+		],
 	},
 };
 
@@ -217,6 +247,10 @@ const userSlice = createSlice({
 				state.user.sex = action.payload.sex;
 				state.user.fav_genres = action.payload.fav_genres;
 				state.user.avatar = action.payload.avatar;
+			})
+			.addCase(getRecomendations.fulfilled, (state, action) => {
+				state.status = 'success';
+				state.user.recomendations = action.payload.recomendations;
 			})
 			.addCase(editUserInfo.fulfilled, (state, action) => {
 				state.status = 'success';

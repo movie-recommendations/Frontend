@@ -34,6 +34,12 @@ const ChangeAvatarPopup: FC<IChangesAvatarPopup> = ({
 	return (
 		<Popup isOpened={isOpened} setIsOpened={setIsOpened}>
 			<div className="popup__avatar">
+				<button
+					type="button"
+					className="popup__x-btn"
+					onClick={() => setIsOpened(false)}
+				></button>
+				{/* <div className="popup__avatar"> */}
 				<h4 className="popup__title popup__title_type_avatar">
 					Изменить аватарку
 				</h4>

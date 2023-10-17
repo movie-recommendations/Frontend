@@ -11,9 +11,9 @@
 	}
 }
 
-@media screen and (max-width: 1297px) {
+@media screen and (max-width: 767px) {
 	.flank {
-		max-width: 1024px;
+		max-width: 767px;
 	}
 }
 
@@ -29,6 +29,13 @@
 @media screen and (max-width: 1297px) {
 	.flank_title {
 		margin: 0 60px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.flank_title {
+		font-size: 26px;
+		margin: 40px 20px 0;
 	}
 }
 
@@ -61,6 +68,15 @@
 		max-width: 1024px;
 		margin: 120px 50px 0;
 		gap: 45px 10px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.flank_container {
+		max-width: 360px;
+		margin: 30px 20px 0;
+		/* margin: 120px 50px 0;
+		gap: 45px 10px; */
 	}
 }
 

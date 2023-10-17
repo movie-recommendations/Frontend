@@ -45,3 +45,15 @@
 		margin: 28px 0 0 0;
 	}
 }
+
+@media screen and (max-width: 360px) {
+	.moviepage-description-list {
+		order: 3;
+		max-width: 320px;
+		height: 429px;
+	}
+
+	.moviepage-description__title {
+		font-size: 18px;
+	}
+}

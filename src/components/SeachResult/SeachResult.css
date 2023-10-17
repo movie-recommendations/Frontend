@@ -99,3 +99,41 @@
 		width: 257px;
 	}
 }
+@media screen and (max-width: 1000px) {
+	.search {
+		justify-content: center;
+	}
+}
+@media screen and (max-width: 550px) {
+	.search {
+		max-height: 135px;
+		justify-content: center;
+		gap: 15px;
+	}
+	.search_img {
+		width: 100px;
+		height: 135px;
+		display: block;
+	}
+	.search_img-container {
+		margin-right: 0;
+	}
+	.search_h3 {
+		line-height: 16px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+		margin-bottom: 5px;
+	}
+	.search_title {
+		margin-bottom: 10px;
+		line-height: 20px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	.search_profile {
+		height: 135px;
+		width: 205px;
+	}
+}

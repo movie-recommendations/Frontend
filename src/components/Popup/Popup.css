@@ -33,6 +33,7 @@
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
+	position: relative;
 }
 .popup__avatar {
 	max-width: 620px;
@@ -160,4 +161,72 @@
 .body__scroll-lock {
 	height: 100%;
 	overflow: hidden;
+}
+.popup__x-btn {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background-color: transparent;
+	background: url('../../images/X.svg') center no-repeat;
+	border: none;
+	transition: opacity 0.5s;
+	display: none;
+}
+.popup__x-btn:hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
+@media screen and (max-width: 650px) {
+	.popup__container {
+		max-width: 320px;
+		border-radius: 20px;
+		padding-bottom: 20px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.profile__title_type_saved-changes {
+		display: none;
+	}
+	.profile__text_type_saved-changes {
+		text-align: center;
+		font-size: 16px;
+		padding-top: 0;
+		padding-bottom: 37px;
+	}
+	.popup__close_type_saved-changes {
+		display: none;
+	}
+	.popup__x-btn {
+		display: block;
+	}
+	.popup__title_type_delete-profile {
+		font-size: 22px;
+		text-align: center;
+		font-weight: 700;
+	}
+	.popup__text_type_delete-profile {
+		text-align: center;
+		font-size: 16px;
+		line-height: 19px;
+		padding-top: 10px;
+		padding-bottom: 40px;
+	}
+	.popup__close {
+		font-size: 16px;
+		text-decoration: none;
+		margin-top: 20px;
+		margin-bottom: 5px;
+	}
+	.popup__subtitle_type_profile-deleted {
+		text-align: center;
+	}
+	.popup__title_type_profile-deleted {
+		display: none;
+	}
+	.popup__subtitle_type_profile-deleted {
+		margin: 0;
+		padding-bottom: 40px;
+	}
 }

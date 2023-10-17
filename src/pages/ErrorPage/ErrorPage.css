@@ -65,9 +65,40 @@
 		background-image: url('../../images/projector_for_1024.png');
 		height: 546px;
 		width: 570px;
+		background-repeat: no-repeat;
 	}
 	.error-page__message {
 		font-weight: 700;
 		margin-top: -20px;
+	}
+}
+@media screen and (max-width: 800px) {
+	.error-page__message {
+		font-size: 26px;
+		line-height: 30px;
+		padding: 50px 20px 0 20px;
+	}
+	.error-page__text {
+		font-size: 16px;
+		line-height: 20px;
+		padding: 0 20px;
+		margin-top: 15px;
+		margin-bottom: 50px;
+	}
+	.error-page__button {
+		width: 280px;
+		height: 40px;
+	}
+	.error-page__button-text {
+		font-size: 16px;
+	}
+	.error-page__img {
+		width: 320px;
+		height: 450px;
+	}
+	.error-page__status {
+		background-image: url('../../images/projector_for_mobile.png');
+		width: 307px;
+		height: 342px;
 	}
 }

@@ -3,7 +3,13 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 50px 30px;
-	margin: 0;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 1297px) {
+	.selections {
+		gap: 40px;
+	}
 }
 
 .selections_cards {
@@ -15,6 +21,12 @@
 @media screen and (max-width: 1297px) {
 	.selections_cards {
 		max-width: 288px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.selections_cards {
+		max-width: 321px;
 	}
 }
 
@@ -32,6 +44,12 @@
 @media screen and (max-width: 1297px) {
 	.selections_card {
 		max-width: 288px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.selections_card {
+		max-width: 321px;
 	}
 }
 
@@ -70,6 +88,12 @@
 	border: 2px solid black;
 }
 
+@media screen and (max-width: 767px) {
+	.selections_img {
+		height: 207px;
+	}
+}
+
 .selections_img:nth-child(2) {
 	position: absolute;
 	left: 48px;
@@ -93,6 +117,12 @@
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 767px) {
+	.selections_title {
+		margin-top: 0px;
+	}
 }
 
 .selections_description {

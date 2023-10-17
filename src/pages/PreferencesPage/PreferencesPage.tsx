@@ -71,16 +71,25 @@ const PreferencesPage: FC = () => {
 								onChange={handleCheckboxChange}
 								id={genre.id}
 								checked={selectedGenres.includes(genre.id)}
+								image={genre.picture}
 							/>
 						</li>
 					))}
 				</ul>
-				<Button
+				{/* <Button
 					buttonText="Сохранить"
 					handleButtonClick={handleSubmit}
 					type={'button'}
 					disabled={renderButton()}
-				/>
+				/> */}
+				<div className="preferences-page__btn-container">
+					<Button
+						buttonText="Сохранить"
+						handleButtonClick={handleSubmit}
+						type={'button'}
+						disabled={renderButton()}
+					/>
+				</div>
 			</main>
 			<ChangesSavedPopup
 				isOpened={isSavedPopupOpened}

@@ -13,7 +13,7 @@ import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
 import { MoreButton } from '../MoreBtn/MoreButton';
 import { IGenresIcons } from 'src/types/GenresIcons.types';
 import { getGenresIconsAPI } from 'src/services/redux/slices/genresIconsApi/genresIcons';
-import { FilmCardSmall } from '../FilmCardWidth180/FilmCardSmall';
+import { FilmCardGenreMain } from '../FilmCardGenreMain/FilmCardGenreMain';
 
 export const SlickSliderGenres = ({}) => {
 	const films = useAppSelector((state) => state.movies.movies);
@@ -45,15 +45,22 @@ export const SlickSliderGenres = ({}) => {
 		arrows: true,
 		responsive: [
 			{
-			  breakpoint: 1320,
-			  settings: {
-				slidesToShow: 5,
-				slidesToScroll: 4,
-				infinite: true,
-				dots: true
-			  }
-			}
-		]
+				breakpoint: 1320,
+				settings: {
+					slidesToShow: 5,
+					slidesToScroll: 4,
+					infinite: true,
+					dots: true,
+				},
+			},
+			{
+				breakpoint: 460,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 3,
+				},
+			},
+		],
 	};
 
 	const handleCheckboxChange = (text: string) => {
@@ -94,6 +101,9 @@ export const SlickSliderGenres = ({}) => {
 		} else if (screenSize < 800) {
 			const page = 5;
 			setPageMore(page);
+		} else if (screenSize <= 360) {
+			const page = 3;
+			setPageMore(page);
 		}
 	}, [screenSize]);
 
@@ -110,7 +120,7 @@ export const SlickSliderGenres = ({}) => {
 	};
 
 	return (
-		<div>
+		<div className='slick-slider-genres'>
 			<div className="slick-slider-genres_container">
 				<h1 className="slick-slider_title">Фильмы по жанрам</h1>
 				<Slider {...settings} className="slick-slider">
@@ -127,7 +137,7 @@ export const SlickSliderGenres = ({}) => {
 			</div>
 			<div className="flank_container_genres">
 				{filteredFilms.slice(0, pageMore).map((film) => (
-					<FilmCardSmall key={film.id} film={film} />
+					<FilmCardGenreMain key={film.id} film={film} />
 				))}
 			</div>
 			<div className="flank_btn">

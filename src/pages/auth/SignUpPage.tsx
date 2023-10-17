@@ -17,7 +17,8 @@ import {
 } from 'src/utils/constants';
 import { checkEmail, signUpUser } from 'src/services/redux/slices/user/user';
 import { selectGenres } from 'src/services/redux/slices/genres/genres';
-
+import { useResize } from 'src/hooks/useResize';
+import GenreCheckbox from 'src/components/GenreCheckbox/GenreCheckbox';
 const SignUpPage = () => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
@@ -52,11 +53,17 @@ const SignUpPage = () => {
 		</div>
 	);
 
-	const formTitle = <h1 className="auth__title">Создать учетную запись</h1>;
-
+	const formTitle = (
+		<h1 className="auth__title auth__title_type_sign-up">
+			Создать учетную запись
+		</h1>
+	);
+	const { width } = useResize();
 	const formLink = (
 		<p className="auth__link-text">
-			У вас уже есть учетная запись?
+			{`${
+				width > 1000 ? `У вас уже есть учетная запись?` : 'Есть учетная запись?'
+			}`}
 			<Link to="/sign-in" className="auth__link">
 				Войти
 			</Link>
@@ -113,15 +120,23 @@ const SignUpPage = () => {
 		reset();
 		setAuthError(false);
 	}, []);
+	const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
 
+	const handleCheckboxChange = (id: number, checked: boolean) => {
+		const newSelectedGenres = checked
+			? [...selectedGenres, id]
+			: selectedGenres.filter((genreId) => genreId !== id);
+
+		setSelectedGenres(newSelectedGenres);
+	};
 	return (
 		<main className="auth" id="sign-up-page">
 			<BackButton
 				type={'button'}
-				buttonText={'Назад'}
+				buttonText={`${width <= 1000 ? '' : 'Назад'}`}
 				handleButtonClick={() => navigate(-1)}
 			/>
-			<div className="auth__container">
+			<div className="auth__container auth__container_type_auth">
 				{step === 1 ? (
 					<>
 						{formSteps}
@@ -129,7 +144,7 @@ const SignUpPage = () => {
 						<p className="auth__hint">
 							Зарегистрируйтесь с помощью электронной почты
 						</p>
-						{formLink}
+						{width > 1000 ? formLink : null}
 						<form
 							className="auth__form auth__form_type_sign-up"
 							onSubmit={handleSubmit(onSubmitFirstStep)}
@@ -153,7 +168,7 @@ const SignUpPage = () => {
 									}}
 									error={errors?.password?.message}
 								/>
-								<span className="input__span">
+								<span className="input__span input__span_type_password">
 									Минимум 8 символов (заглавные и строчные латинские буквы и
 									цифры)
 								</span>
@@ -181,22 +196,39 @@ const SignUpPage = () => {
 								disabled={!isDirty || !isValid}
 							/>
 						</form>
+						{width <= 1000 ? formLink : null}
 					</>
 				) : step === 2 ? (
 					<>
 						{formSteps}
 						{formTitle}
-						{formLink}
+						{width > 1000 ? formLink : null}
 						<p className="auth__hint">Выберите любимые жанры</p>
 						<form
 							className="auth__form auth__form_type_sign-up"
 							onSubmit={handleSubmit(onSubmitSecondStep)}
 						>
-							<Slider
-								contentType={SliderTypes.genresBlock}
-								content={genres}
-								onGenreSelection={handleGenreSelection}
-							/>
+							{' '}
+							{width > 1000 ? (
+								<Slider
+									contentType={SliderTypes.genresBlock}
+									content={genres}
+									onGenreSelection={handleGenreSelection}
+								/>
+							) : (
+								<ul className="auth__form-list-preferences">
+									{genres.map((genre) => (
+										<li key={genre.id} className="auth__form-item-preferences">
+											<GenreCheckbox
+												text={genre.title}
+												id={genre.id}
+												onChange={handleCheckboxChange}
+												image={genre.picture}
+											/>
+										</li>
+									))}
+								</ul>
+							)}
 							<Button buttonText={'Продолжить'} type="submit" />
 						</form>
 					</>

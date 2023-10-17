@@ -21,6 +21,7 @@ import DeleteProfilePopup from 'src/components/Popup/DeleteProfilePopup';
 import ChangesSavedPopup from 'src/components/Popup/ChangesSavedPopup';
 import ChangeAvatarPopup from 'src/components/Popup/ChangeAvatarPopup';
 import { Loader } from 'src/components/Loader/Loader';
+import arrow from '../../images/Chevron.svg';
 import comedy from 'src/images/avatar/comedy.svg';
 import { getAvatarsApi } from 'src/services/redux/slices/avatars/avatars';
 
@@ -118,7 +119,7 @@ const ProfilePage = () => {
 	) : (
 		<>
 			<main className="profile" id="profile-page">
-				<div className="profile__container">
+				<div className="profile__container profile__container_type_desktop">
 					<div className="profile__form-container">
 						<h1 className="profile__title">Профиль</h1>
 						<form className="profile__form" onSubmit={handleSubmit(onSubmit)}>
@@ -274,6 +275,186 @@ const ProfilePage = () => {
 								</p>
 							)}
 						</div>
+						<div className="profile__buttons">
+							<Button
+								buttonText={'Сохранить'}
+								type="submit"
+								handleButtonClick={handleSubmit(onSubmit)}
+								disabled={!isDirty || !isValid}
+							/>
+							<Button
+								className={'profile__delete-button'}
+								buttonText={'Удалить профиль'}
+								type={'button'}
+								handleButtonClick={() => setIsDeletePopupOpened(true)}
+							/>
+						</div>
+					</div>
+				</div>
+				<div className="profile__container profile__container_type_mobile">
+					<div className="profile__form-container">
+						<h1 className="profile__title">Профиль</h1>
+						<div
+							className={
+								user.avatar && user.avatar !== 0
+									? 'profile__avatar '
+									: 'profile__avatar  profile__avatar_type_letter'
+							}
+						>
+							<button
+								type="button"
+								className="profile__avatar-btn"
+								onClick={() => setIsAvatarPopupOpened(true)}
+							></button>
+							{user.avatar && user.avatar !== 0 ? (
+								<img className="profile__avatar-img" src={avatarUrl} />
+							) : (
+								<p className="profile__user-first-letter">
+									{user.nickname ? user.nickname[0] : user.email[0]}
+								</p>
+							)}
+						</div>
+						<form className="profile__form" onSubmit={handleSubmit(onSubmit)}>
+							<Input
+								inputType={InputTypes.email}
+								color={InputColors.black}
+								labelText="Электронная почта"
+								readOnly
+								value={user.email}
+							/>
+							<div className="profile__pseudo-input-container">
+								<Input
+									inputType={InputTypes.password}
+									color={InputColors.black}
+									labelText="Пароль"
+									readOnly
+									value=".........."
+								/>
+								<Link to={'/reset-password'} className="profile__input-link">
+									Изменить пароль
+								</Link>
+							</div>
+							<Controller
+								name="nickname"
+								control={control}
+								rules={{
+									required: false,
+									pattern: {
+										value: /^[A-Za-zА-Яа-яЁё]{1,32}$/,
+										message: 'Только кириллица или латинские буквы',
+									},
+									maxLength: {
+										value: 32,
+										message: 'Максимум 32 символа',
+									},
+								}}
+								render={({ field }) => (
+									<Input
+										inputType={InputTypes.text}
+										color={InputColors.black}
+										labelText="Никнейм"
+										defaultValue={user.nickname}
+										onChange={(e: BaseSyntheticEvent) => {
+											field.onChange(e);
+											setValue('nickname', e.target.value);
+										}}
+										error={
+											errors.nickname && errors.nickname.message?.toString()
+										}
+									/>
+								)}
+							/>
+							<Controller
+								name="dateOfBirth"
+								control={control}
+								defaultValue={user.dateOfBirth ? user.dateOfBirth : undefined}
+								rules={{
+									required: false,
+									pattern: {
+										value: /^\d{4}-\d{2}-\d{2}$/,
+										message: 'Некорректный формат даты',
+									},
+									min: {
+										value: '1923-01-01',
+										message: 'Неверный формат значения «Дата рождения»',
+									},
+									max: {
+										value: '2018-01-01',
+										message: 'Неверный формат значения «Дата рождения»',
+									},
+									validate: validateDate,
+								}}
+								render={({ field }) => (
+									<Input
+										inputType={InputTypes.date}
+										color={InputColors.black}
+										labelText="Дата рождения"
+										defaultValue={user.dateOfBirth}
+										value={
+											dirtyFields.dateOfBirth
+												? watch('dateOfBirth')
+												: user.dateOfBirth
+										}
+										onChange={(e: BaseSyntheticEvent) => {
+											field.onChange(e);
+											setValue('dateOfBirth', e.target.value, {
+												shouldDirty: true,
+											});
+										}}
+										max={'2018-08-03'}
+										error={
+											errors.dateOfBirth &&
+											errors.dateOfBirth.message?.toString()
+										}
+									/>
+								)}
+							/>
+							<div>
+								<p className="profile__radio-title">Пол</p>
+								<div className="profile__radio-buttons">
+									<label htmlFor="male" className="profile__radio-label">
+										<input
+											{...register('sex')}
+											type="radio"
+											className="profile__radio-button"
+											id="male"
+											value={0}
+											onChange={() => setValue('sex', 0, { shouldDirty: true })}
+											checked={
+												dirtyFields.sex ? watch('sex') === 0 : user.sex === 0
+											}
+										/>
+										<span className="profile__radio-pseudo-item"></span>
+										<span className="profile__radio-text">Мужской</span>
+									</label>
+									<label htmlFor="female" className="profile__radio-label">
+										<input
+											{...register('sex')}
+											type="radio"
+											className="profile__radio-button"
+											id="female"
+											value={1}
+											onChange={() => setValue('sex', 1, { shouldDirty: true })}
+											checked={
+												dirtyFields.sex ? watch('sex') === 1 : user.sex === 1
+											}
+										/>
+										<span className="profile__radio-pseudo-item"></span>
+										<span className="profile__radio-text">Женский</span>
+									</label>
+								</div>
+							</div>
+						</form>
+						<Link to="/preferences" className="profile__genres-btn">
+							<h2 className="profile__genres-btn-text">Избранные жанры</h2>
+							<img
+								className="profile__genres-btn-img"
+								alt="Стрелка"
+								src={arrow}
+							/>
+						</Link>
+					</div>
+					<div className="profile__avatar-container">
 						<div className="profile__buttons">
 							<Button
 								buttonText={'Сохранить'}

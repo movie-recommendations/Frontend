@@ -8,6 +8,12 @@
 	flex-direction: column;
 }
 
+@media screen and (max-width: 767px) {
+	.flank {
+		padding: 0;
+	}
+}
+
 .flank_title {
 	color: white;
 	font-family: Unbounded;

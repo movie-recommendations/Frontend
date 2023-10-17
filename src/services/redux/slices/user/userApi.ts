@@ -81,6 +81,15 @@ export const fetchGetUserInfo = (token: string): Promise<Response> => {
 	);
 };
 
+export const fetchGetRecomendations = (token: string): Promise<Response> => {
+	return fetchData(
+		`${API_USERS_URL}/special-for-you`,
+		'GET',
+		undefined,
+		token
+	).then((res) => checkRes(res));
+};
+
 export const fetchEditUserInfo = (
 	data: IEditProfileData,
 	token: string

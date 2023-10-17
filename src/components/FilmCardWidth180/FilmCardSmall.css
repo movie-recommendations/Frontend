@@ -13,6 +13,20 @@
 	}
 }
 
+@media screen and (max-width: 360px) {
+	.moviepage_card {
+		overflow: hidden;
+		max-width: 180px;
+		padding: 0;
+		margin: 0 0 0 -40px;
+	}
+
+	.moviepage_card-img {
+		width: 180px;
+		height: 240px;
+	}
+}
+
 .moviepage_card-img {
 	width: 180px;
 	height: 240px;
@@ -20,10 +34,12 @@
 	object-fit: cover;
 	border-radius: 10px;
 }
+
 .moviepage-card-img__background {
 	display: block;
 	position: relative;
 }
+
 .moviepage-card-img__background::after {
 	content: '';
 	position: absolute;
@@ -35,6 +51,7 @@
 	opacity: 0;
 	transition: 0.2s opacity ease-in-out;
 }
+
 .moviepage-card-img__background:hover:after {
 	opacity: 1;
 }
@@ -43,6 +60,13 @@
 	.moviepage_card-img {
 		width: 137px;
 		height: 183px;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	.moviepage_card-img {
+		width: 180px;
+		height: 240px;
 	}
 }
 

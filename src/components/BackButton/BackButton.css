@@ -24,6 +24,16 @@
 	position: absolute;
 }
 
+.backbutton_type_preferences {
+	margin-left: 0;
+}
+
+@media screen and (max-width: 1300px) {
+	.backbutton_type_preferences {
+		margin-left: 50px;
+	}
+}
+
 @media screen and (max-width: 1297px) {
 	.backbutton {
 		margin: 50px 0px 0px 50px;
@@ -54,13 +64,20 @@
 .backbutton_type_preferences {
 	margin-left: 50px;
 }
-
-.backbutton_type_preferences {
-	margin-left: 0;
+@media screen and (max-width: 1000px) {
+	.backbutton_type_signin {
+		margin-top: 0;
+		left: 4%;
+		background-color: transparent;
+	}
 }
-
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 650px) {
 	.backbutton_type_preferences {
-		margin-left: 50px;
+		align-self: flex-start;
+	}
+}
+@media screen and (max-width: 500px) {
+	.backbutton_type_preferences {
+		margin-left: 0;
 	}
 }

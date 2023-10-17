@@ -51,3 +51,21 @@
 		grid-template-columns: repeat(2, 447px);
 	}
 }
+@media screen and (max-width: 1000px) {
+	.search-result_title {
+		font-size: 26px;
+	}
+	.search-page_container {
+		grid-template-columns: 1fr;
+	}
+}
+@media screen and (max-width: 550px) {
+	.search-page_container {
+		margin-right: 20px;
+		margin-left: 20px;
+		row-gap: 30px;
+	}
+	.search-result_title {
+		margin: 40px 20px;
+	}
+}

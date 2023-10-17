@@ -12,6 +12,32 @@
 	display: flex;
 	gap: 220px;
 }
+.profile__container_type_mobile {
+	display: none;
+}
+
+.profile__genres-btn {
+	display: none;
+	width: 100%;
+	padding: 0;
+	margin: 30px 0 0 0;
+	align-items: center;
+	justify-content: space-between;
+	text-decoration: none;
+}
+
+.profile__genres-btn-text {
+	color: white;
+	font-size: 16px;
+	font-weight: 500;
+	margin: 0;
+	padding: 0;
+}
+
+.profile__genres-btn-img {
+	width: 25px;
+	height: 25px;
+}
 
 .profile__form-container {
 	flex-grow: 1;
@@ -256,7 +282,7 @@
 	color: #fff;
 }
 
-@media screen and (max-width: 1260px) {
+@media screen and (max-width: 1300px) {
 	.profile__genres {
 		column-gap: 20px;
 	}
@@ -284,3 +310,105 @@
 		padding-bottom: 90px;
 	}
 }
+
+@media screen and (max-width: 1000px) {
+	.profile {
+		width: 70%;
+	}
+	.profile__genres-btn {
+		display: flex;
+	}
+	.profile__genres-container {
+		display: none;
+	}
+	.profile__container_type_mobile {
+		display: block;
+	}
+	.profile__container_type_desktop {
+		display: none;
+	}
+	.profile__avatar {
+		width: 200px;
+		height: 200px;
+		align-self: center;
+		margin: 30px 0 42px 0;
+	}
+	.profile__form-container {
+		display: flex;
+		flex-direction: column;
+	}
+	.profile__title {
+		padding-bottom: 0;
+	}
+	.profile__form {
+		max-width: 100%;
+		gap: 8px;
+	}
+	.profile__avatar-container {
+		align-items: center;
+		justify-content: center;
+	}
+	.profile__buttons {
+		width: 100%;
+	}
+	.profile__delete-button {
+		align-self: center;
+		margin: 85px 0 35px 0;
+	}
+}
+@media screen and (max-width: 800px) {
+	.profile {
+		width: 88.89%;
+	}
+	.profile__avatar {
+		width: 170px;
+		height: 170px;
+	}
+	.profile__avatar-btn {
+		right: 5px;
+		bottom: 5px;
+	}
+}
+@media screen and (max-width: 600px) {
+	.profile__avatar {
+		width: 150px;
+		height: 150px;
+	}
+	.profile__title {
+		font-size: 26px;
+	}
+	.profile__radio-text {
+		font-size: 16px;
+		padding-left: 6px;
+	}
+	.profile__radio-buttons {
+		padding: 8px 0 0 8px;
+	}
+	.profile__pseudo-input-container {
+		position: relative;
+	}
+	.profile__input-link {
+		position: absolute;
+		bottom: -20px;
+		right: 0;
+	}
+}
+@media screen and (max-width: 450px) {
+	.profile__avatar {
+		width: 100px;
+		height: 100px;
+	}
+	.profile__avatar-img {
+		width: 30px;
+		height: 30px;
+	}
+	.profile__user-first-letter {
+		font-size: 30px;
+	}
+	.profile__avatar-btn {
+		width: 20px;
+		height: 20px;
+		background-size: 12px 12px;
+	}
+}
+/* до 670px, далее добавлять кнопку */

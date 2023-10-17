@@ -38,10 +38,7 @@ const Account: FC = () => {
 					<div className="account__profile-icon" onMouseOver={setProfileOpen}>
 						<Link to="/profile" className="account__profile-link">
 							{user.avatar && user.avatar !== 0 ? (
-								<img
-									className="account__avatar-img"
-									src={avatarUrl}
-								/>
+								<img className="account__avatar-img" src={avatarUrl} />
 							) : (
 								<p className="account__profile-word">
 									{user.nickname ? user.nickname[0] : user.email[0]}

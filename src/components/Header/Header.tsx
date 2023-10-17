@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import { useState, useEffect } from 'react';
 import './Header.css';
 import logo1 from '../../images/logo.svg';
 import logo2 from '../../images/Logo2.svg';
+import logo__small from '../../images/logo_small.svg';
 import adjustments from '../../images/adjustments.svg';
 import search from '../../images/search.svg';
 import Account from '../Account/Account';
@@ -18,6 +19,7 @@ const Header: FC = () => {
 	);
 	const [isOpen, setIsOpen] = useState(false);
 	const [isOpenExtended, setIsOpenExtended] = useState(false);
+	const [screenSize, setScreenSize] = useState<number>(0);
 
 	const handleOpenExtended = () => {
 		if (isOpenExtended === true) {
@@ -73,6 +75,35 @@ const Header: FC = () => {
 		setSearchClose();
 	};
 
+	const handleResize = useCallback(() => {
+		const windowWidth = window.innerWidth;
+		setScreenSize(windowWidth);
+	}, []);
+
+	useEffect(() => {
+		window.addEventListener('resize', handleResize);
+		handleResize();
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
+
+	// useEffect(() => {
+	// 	if (screenSize >= 1280) {
+	// 		const page = 10;
+	// 		setPageMore(page);
+	// 	} else if (screenSize <= 1280 && screenSize > 800) {
+	// 		const page = 10;
+	// 		setPageMore(page);
+	// 	} else if (screenSize < 800) {
+	// 		const page = 5;
+	// 		setPageMore(page);
+	// 	} else if (screenSize <= 360) {
+	// 		const page = 3;
+	// 		setPageMore(page);
+	// 	}
+	// }, [screenSize]);
+
 	return (
 		<header className="header" id="header">
 			<div className="header__logo">
@@ -83,12 +114,21 @@ const Header: FC = () => {
 					onMouseOver={setNavOpen}
 				/>
 				<Link to="/">
-					<img
-						className="header__logo2"
-						alt="лого"
-						src={logo2}
-						onMouseOver={setNavOpen}
-					/>
+					{screenSize === 360 ? (
+						<img
+							className="header__logo2"
+							alt="лого"
+							src={logo__small}
+							onMouseOver={setNavOpen}
+						/>
+					) : (
+						<img
+							className="header__logo2"
+							alt="лого"
+							src={logo2}
+							onMouseOver={setNavOpen}
+						/>
+					)}
 				</Link>
 			</div>
 			<nav

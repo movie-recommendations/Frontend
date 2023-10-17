@@ -17,6 +17,7 @@ import {
 	EMAIL_VALIDATION_CONFIG,
 	PASSWORD_VALIDATION_CONFIG,
 } from 'src/utils/constants';
+import { useResize } from 'src/hooks/useResize';
 
 const SignInPage = () => {
 	const navigate = useNavigate();
@@ -56,12 +57,12 @@ const SignInPage = () => {
 		reset();
 		setAuthError(false);
 	}, []);
-
+	const { width } = useResize();
 	return (
 		<main className="auth" id="sign-in-page">
 			<BackButton
 				type={'button'}
-				buttonText={'Назад'}
+				buttonText={`${width <= 1000 ? '' : 'Назад'}`}
 				handleButtonClick={() => navigate(-1)}
 			/>
 			<div className="auth__container">

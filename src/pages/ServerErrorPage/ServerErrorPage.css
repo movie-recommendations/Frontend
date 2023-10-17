@@ -59,3 +59,20 @@
 		margin-top: 65px;
 	}
 }
+@media screen and (max-width: 1000px) {
+	.server-error__container {
+		background-image: url('../../images/page_500_mobile.png');
+		margin: 80px 20px 0 20px;
+		padding: 200px 0 0 0;
+		background-position: right top;
+	}
+	.server-error__subtitle {
+		font-size: 26px;
+		margin-top: 70px;
+		margin-bottom: 15px;
+	}
+	.server-error__description {
+		font-size: 16px;
+		line-height: 19px;
+	}
+}

@@ -10,6 +10,13 @@
 	}
 }
 
+@media screen and (max-width: 360px) {
+	.slick-slider-genres_container {
+		max-width: 340px;
+		margin: 0 0 0 20px;
+	}
+}
+
 .flank_container_genres {
 	max-width: 1110px;
 	display: flex;
@@ -20,10 +27,21 @@
 }
 
 @media screen and (max-width: 1297px) {
+	.slick-slider-genres {
+		max-width: 1024px;
+	}
 	.flank_container_genres {
 		max-width: 1024px;
 		margin: 50px 120px 0;
 		gap: 45px 10px;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	.flank_container_genres {
+		min-width: 40px;
+		margin: 0 20px 0;
+		gap: 20px;
 	}
 }
 

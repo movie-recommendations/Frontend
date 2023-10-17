@@ -18,16 +18,22 @@ export default function GenresIconsFunc({
 	};
 
 	return (
-		<label className="genre-checkbox">
+		<label className="genre-checkbox genre-checkbox_type_main">
 			<input
-				className="genre-checkbox__input"
+				className="genre-checkbox__input genre-checkbox__input_type_main"
 				type="checkbox"
 				defaultChecked={checked}
 				onChange={handleChange}
 			/>
-			<div className="genre-checkbox__appearance">
-				<img src={genreapi.picture} alt={genreapi.title} />
-				{genreapi.title}
+			<div className="genre-checkbox__appearance genre-checkbox__appearance_type_main">
+				<img
+					className="genre-checkbox__img genre-checkbox__img_type_main"
+					src={genreapi.picture}
+					alt={genreapi.title}
+				/>
+				<p className="genre-checkbox__appearance-title genre-checkbox__appearance__title_type_main">
+					{genreapi.title}
+				</p>
 			</div>
 		</label>
 	);
