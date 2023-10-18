@@ -151,7 +151,7 @@ const FlanksPage: FC<IFlanks> = ({ formName }) => {
 							<div className="main-page__relative">
 								<SlickSliderSpecial
 									title={`Специально для вас`}
-									movies={films}
+									movies={recomendations}
 								/>
 								<ButtonShowAll
 									onClick={() =>
