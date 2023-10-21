@@ -9,6 +9,7 @@ import search from '../../images/search.svg';
 import Account from '../Account/Account';
 import Search from '../Search/Search';
 import ExtendedSearch from '../ExtendedSearch/ExtendedSearch';
+import NavigationPopup from '../NavigationPopup/NavigationPopup';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../services/typeHooks';
@@ -20,6 +21,11 @@ const Header: FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isOpenExtended, setIsOpenExtended] = useState(false);
 	const [screenSize, setScreenSize] = useState<number>(0);
+	const [menuIsOpened, setMenuIsOpened] = useState(false);
+
+	const handleMenuClick = () => {
+		setMenuIsOpened(!menuIsOpened)
+	}
 
 	const handleOpenExtended = () => {
 		if (isOpenExtended === true) {
@@ -108,12 +114,18 @@ const Header: FC = () => {
 	return (
 		<header className="header" id="header">
 			<div className="header__logo">
-				<img
+				{screenSize < 361 ? (<img
+					className="header__logo1"
+					alt="лого"
+					src={logo1}
+					onClick={handleMenuClick}
+				/>) : (<img
 					className="header__logo1"
 					alt="лого"
 					src={logo1}
 					onMouseOver={setNavOpen}
-				/>
+				/>)}
+				{menuIsOpened && <NavigationPopup />}
 				<Link to="/">
 					{screenSize === 360 ? (
 						<img
