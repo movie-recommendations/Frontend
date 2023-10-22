@@ -223,22 +223,31 @@ const Header: FC = () => {
 						/>
 					</button>
 
-					{screenSize < 361 ? (<button onClick={Click} className="header__search-button">
-						<img
-							className="header__search-button_search"
-							src={search}
-							alt="Кнопка поиска"
-							onClick={setSearchClose}
-						/>
-					</button>) : (<button onClick={Click} className="header__search-button">
-						<img
-							className="header__search-button_search"
-							src={search}
-							alt="Кнопка поиска"
-							onClick={setSearchClose}
-						/>
-					</button>)}
-
+					{screenSize < 361
+						?
+						// (<button onClick={Click} className="header__search-button">
+						// 	<img
+						// 		className="header__search-button_search"
+						// 		src={search}
+						// 		alt="Кнопка поиска"
+						// 		onClick={setSearchClose}
+						// 	/>
+						(<button onClick={handleSearchPopup} className="header__search-button">
+							<img
+								className="header__search-button_search"
+								src={search}
+								alt="Кнопка поиска"
+								onClick={setSearchClose}
+							/>
+						</button>) : (<button onClick={Click} className="header__search-button">
+							<img
+								className="header__search-button_search"
+								src={search}
+								alt="Кнопка поиска"
+								onClick={setSearchClose}
+							/>
+						</button>)}
+					{searchPopupisOpened && <SearchPopup />}
 				</form>
 				<Search
 					isOpenSearch={isOpenSearch}

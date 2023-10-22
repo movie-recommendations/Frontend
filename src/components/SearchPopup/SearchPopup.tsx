@@ -38,8 +38,8 @@ const SearchPopup = () => {
                         <input
                             className="search-popup__search-input"
                             value={value}
-                            id="name"
-                            name="name"
+                            id="name1"
+                            name="name1"
                             type="text"
                             placeholder="Какой фильм вы хотите найти?"
                             onChange={handleChange}
