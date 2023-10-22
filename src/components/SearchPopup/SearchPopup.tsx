@@ -6,10 +6,6 @@ import ExtendedSearch from "../ExtendedSearch/ExtendedSearch";
 import adjustments from '../../images/adjustments.svg';
 
 const SearchPopup = () => {
-    const activeStyle = { // Для стилей активной ссылки NavLink
-        borderBottom: '1px solid',
-        paddingBottom: '7px',
-    };
 
     const [isOpenSearch, setIsOpenSearch] = useState(false);
     const [value, setValue] = useState('');
