@@ -4,7 +4,9 @@ const currentURL = window.location.pathname;
 
 const apiSuffix = '/api/v1';
 
-export const API_BASE_URL = window.location.origin + currentURL.substring(0, currentURL.lastIndexOf('/')) + apiSuffix;
+// export const API_BASE_URL = window.location.origin + currentURL.substring(0, currentURL.lastIndexOf('/')) + apiSuffix;
+
+export const API_BASE_URL = 'http://vm-f7405346.na4u.ru/api/v1'
 
 export const GENRESv2 = [
 	'Комедия',

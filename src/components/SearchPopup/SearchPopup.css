@@ -1,0 +1,144 @@
+.search-popup {
+    display: block;
+
+}
+
+.search-popup__cover {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 36px;
+    opacity: 0.3;
+    position: fixed;
+    top: 0px;
+    right: 0;
+    z-index: 3;
+
+}
+
+.search-popup__container {
+    width: 100vw;
+    height: 100vh;
+    margin-top: 36px;
+    background-color: #0C0C0C;
+    opacity: 1;
+    z-index: 3;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+
+}
+
+@media screen and (max-width: 600px) {
+    .search-popup__container {
+        width: 100%;
+    }
+}
+
+.search-popup__close-button {
+    position: fixed;
+    left: 0px;
+
+    height: 30px;
+    background: transparent;
+    border: none;
+    background-image: url(../../images/X.svg);
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.search-popup__links-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 767) {
+    .search-popup__close-button {
+        right: 14px;
+        top: 14px;
+    }
+}
+
+.search__films_popup {
+    display: flex;
+    flex-direction: column;
+    padding-top: 38px;
+    margin-bottom: 0;
+    gap: 20px
+}
+
+.search-popup__homepage {
+    color: #FFF;
+    font-family: Mulish;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    padding-left: 20px;
+}
+
+.search-popup__list {}
+
+.search-popup__content-nik {}
+
+.search-popup__content-email {}
+
+.search-popup__search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 320px;
+
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 6px;
+}
+
+.search-popup__container {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* position: relative; */
+    /* height: 100%; */
+}
+
+.search-popup__search-input {
+    background-color: transparent;
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20.08px;
+    color: #fff;
+    max-width: 750px;
+    width: 100%;
+    margin: 0 15px 0;
+    outline: none;
+}
+
+.search-popup__search-input::placeholder {
+
+    color: #fff;
+}
+
+.search-popup__search-button {
+    margin: 0 15px 0 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.search-popup__search-button:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.search-popup__search-button:first-of-type {
+    display: none;
+}

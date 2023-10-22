@@ -13,6 +13,18 @@
 	display: block;
 }
 
+@media screen and (max-width: 361) {
+	.searchGeneral {
+		width: 100%;
+		height: auto;
+		border-radius: 5px;
+		background-color: #fff;
+		position: absolute;
+		z-index: 5;
+	}
+}
+
+
 .searchGeneral__films {
 	display: flex;
 	flex-direction: column;
@@ -107,16 +119,20 @@
 	text-align: center;
 	overflow: hidden;
 }
+
 @media screen and (max-width: 1330px) {
 	.searchGeneral__films {
 		margin-top: 20px;
 	}
+
 	.searchGeneral__film {
 		margin-bottom: 4px;
 	}
+
 	.searchGeneral__film-genres {
 		margin-top: 12px;
 	}
+
 	.searchGeneral__film-year {
 		margin-top: 12px;
 	}

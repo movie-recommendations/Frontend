@@ -1,9 +1,9 @@
-.navigation-popup {
+.profile-popup {
     display: block;
 
 }
 
-.navigation-popup__cover {
+.profile-popup__cover {
     background-color: black;
     width: 100vw;
     height: 100vh;
@@ -16,7 +16,7 @@
 
 }
 
-.navigation-popup__container {
+.profile-popup__container {
     width: 100vw;
     height: 100vh;
     margin-top: 36px;
@@ -33,12 +33,12 @@
 }
 
 @media screen and (max-width: 600px) {
-    .navigation-popup__container {
+    .profile-popup__container {
         width: 100%;
     }
 }
 
-.navigation-popup__close-button {
+.profile-popup__close-button {
     position: fixed;
     left: 0px;
 
@@ -51,28 +51,28 @@
     z-index: 5;
 }
 
-.navigation-popup__links-container {
+.profile-popup__links-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 @media screen and (max-width: 767) {
-    .navigation-popup__close-button {
+    .profile-popup__close-button {
         right: 14px;
         top: 14px;
     }
 }
 
-.navigation__films_popup {
+.profile__films_popup {
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
+    padding-top: 38px;
     margin-bottom: 0;
     gap: 20px
 }
 
-.navigation-popup__homepage {
+.profile-popup__homepage {
     color: #FFF;
     font-family: Mulish;
     font-size: 20px;
@@ -80,5 +80,44 @@
     font-weight: 500;
     line-height: normal;
     text-decoration: none;
+    padding-left: 20px;
+}
+
+.profile-popup__list {
+    margin: 0;
+    padding: 0;
+    padding-left: 20px;
+    margin-top: 50px
+}
+
+.profile-popup__content-nik {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+    color: #FFF;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-popup__content-email {
+    font-family: Mulish;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12px;
+    color: #6B7280;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-popup__exit {
+    font-family: Mulish;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 45px;
+    color: #FFF;
     padding-left: 20px;
 }

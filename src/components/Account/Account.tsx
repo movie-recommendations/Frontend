@@ -1,10 +1,11 @@
 import { FC } from 'react';
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import './Account.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
 import { selectUser, signOut } from 'src/services/redux/slices/user/user';
 import { resetFavorites } from 'src/services/redux/slices/favorites/favorites';
+import ProfilePopup from '../ProfilePopup/ProfilePopup';
 
 const Account: FC = () => {
 	const navigate = useNavigate();
@@ -16,6 +17,12 @@ const Account: FC = () => {
 	const avatarUrl = avatarObject ? avatarObject.avatar : '';
 
 	const [isOpen, setIsOpen] = useState(false);
+	const [screenSize, setScreenSize] = useState<number>(0);
+	const [profilePopupIsOpened, setProfilePopupIsOpened] = useState(false);
+
+	const handleMenuClick = () => {
+		setProfilePopupIsOpened(!profilePopupIsOpened)
+	}
 
 	const setProfileOpen = () => {
 		setIsOpen(true);
@@ -24,6 +31,19 @@ const Account: FC = () => {
 	const setProfileClose = () => {
 		setIsOpen(false);
 	};
+
+	const handleResize = useCallback(() => {
+		const windowWidth = window.innerWidth;
+		setScreenSize(windowWidth);
+	}, []);
+
+	useEffect(() => {
+		window.addEventListener('resize', handleResize);
+		handleResize();
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
 
 	const { email, nickname } = useAppSelector(selectUser);
 
@@ -35,7 +55,17 @@ const Account: FC = () => {
 				</Link>
 			) : (
 				<>
-					<div className="account__profile-icon" onMouseOver={setProfileOpen}>
+					{screenSize < 361 ? (<div className="account__profile-icon" >
+						<div className="account__profile-link" onClick={handleMenuClick}>
+							{user.avatar && user.avatar !== 0 ? (
+								<img className="account__avatar-img" src={avatarUrl} />
+							) : (
+								<p className="account__profile-word">
+									{user.nickname ? user.nickname[0] : user.email[0]}
+								</p>
+							)}
+						</div>
+					</div>) : (<div className="account__profile-icon" onMouseOver={setProfileOpen}>
 						<Link to="/profile" className="account__profile-link">
 							{user.avatar && user.avatar !== 0 ? (
 								<img className="account__avatar-img" src={avatarUrl} />
@@ -45,7 +75,8 @@ const Account: FC = () => {
 								</p>
 							)}
 						</Link>
-					</div>
+					</div>)}
+					{profilePopupIsOpened && <ProfilePopup />}
 					<nav
 						className={`account__content ${isOpen && 'account__content_open'}`}
 						onMouseOver={setProfileOpen}
