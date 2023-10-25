@@ -6,8 +6,9 @@ import { useAppDispatch, useAppSelector } from '../../services/typeHooks';
 import { selectUser, signOut } from 'src/services/redux/slices/user/user';
 import { resetFavorites } from 'src/services/redux/slices/favorites/favorites';
 import ProfilePopup from '../ProfilePopup/ProfilePopup';
+import { IAccount } from 'src/types/Account.types';
 
-const Account: FC = () => {
+const Account: FC<IAccount> = ({profilePopupIsOpened, setProfilePopupIsOpened}) => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const user = useAppSelector(selectUser);
@@ -18,7 +19,7 @@ const Account: FC = () => {
 
 	const [isOpen, setIsOpen] = useState(false);
 	const [screenSize, setScreenSize] = useState<number>(0);
-	const [profilePopupIsOpened, setProfilePopupIsOpened] = useState(false);
+	// const [profilePopupIsOpened, setProfilePopupIsOpened] = useState(false);
 
 	const handleMenuClick = () => {
 		setProfilePopupIsOpened(!profilePopupIsOpened)

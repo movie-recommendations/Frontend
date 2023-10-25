@@ -25,6 +25,7 @@ const Header: FC = () => {
 	const [screenSize, setScreenSize] = useState<number>(0);
 	const [menuIsOpened, setMenuIsOpened] = useState(false);
 	const [searchPopupisOpened, setSearchPopupIsOpened] = useState(false)
+	const [profilePopupIsOpened, setProfilePopupIsOpened] = useState(false);
 
 	const handleMenuClick = () => {
 		setMenuIsOpened(!menuIsOpened)
@@ -261,6 +262,8 @@ const Header: FC = () => {
 			</div>
 			<Account
 			// isLoggedIn={true}
+			profilePopupIsOpened={profilePopupIsOpened}
+			setProfilePopupIsOpened={setProfilePopupIsOpened}
 			/>
 		</header>
 	);
