@@ -1,0 +1,84 @@
+.navigation-popup {
+    display: block;
+
+}
+
+.navigation-popup__cover {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    margin-top: 36px;
+    opacity: 0.3;
+    position: fixed;
+    top: 0px;
+    right: 0;
+    z-index: 3;
+
+}
+
+.navigation-popup__container {
+    width: 100vw;
+    height: 100vh;
+    margin-top: 36px;
+    background-color: #0C0C0C;
+    opacity: 1;
+    z-index: 3;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+
+}
+
+@media screen and (max-width: 600px) {
+    .navigation-popup__container {
+        width: 100%;
+    }
+}
+
+.navigation-popup__close-button {
+    position: fixed;
+    left: 0px;
+
+    height: 30px;
+    background: transparent;
+    border: none;
+    background-image: url(../../images/X.svg);
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.navigation-popup__links-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 767) {
+    .navigation-popup__close-button {
+        right: 14px;
+        top: 14px;
+    }
+}
+
+.navigation__films_popup {
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    margin-bottom: 0;
+    gap: 20px
+}
+
+.navigation-popup__homepage {
+    color: #FFF;
+    font-family: Mulish;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    padding-left: 20px;
+}

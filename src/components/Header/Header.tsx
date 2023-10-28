@@ -3,12 +3,15 @@ import { useState, useEffect } from 'react';
 import './Header.css';
 import logo1 from '../../images/logo.svg';
 import logo2 from '../../images/Logo2.svg';
+import X from '../../images/X.svg'
 import logo__small from '../../images/logo_small.svg';
 import adjustments from '../../images/adjustments.svg';
 import search from '../../images/search.svg';
 import Account from '../Account/Account';
 import Search from '../Search/Search';
 import ExtendedSearch from '../ExtendedSearch/ExtendedSearch';
+import NavigationPopup from '../NavigationPopup/NavigationPopup';
+import SearchPopup from '../SearchPopup/SearchPopup';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../services/typeHooks';
@@ -20,6 +23,23 @@ const Header: FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isOpenExtended, setIsOpenExtended] = useState(false);
 	const [screenSize, setScreenSize] = useState<number>(0);
+	const [menuIsOpened, setMenuIsOpened] = useState(false);
+	const [searchPopupisOpened, setSearchPopupIsOpened] = useState(false)
+	const [profilePopupIsOpened, setProfilePopupIsOpened] = useState(false);
+
+
+	const handleMenuClick = () => {
+		setMenuIsOpened(!menuIsOpened)
+	}
+
+	const handleProfilePopupClick = () => {
+		setProfilePopupIsOpened(!profilePopupIsOpened)
+	}
+
+	const handleSearchPopup = (event: any) => {
+		event.preventDefault()
+		setSearchPopupIsOpened(!searchPopupisOpened)
+	}
 
 	const handleOpenExtended = () => {
 		if (isOpenExtended === true) {
@@ -105,21 +125,26 @@ const Header: FC = () => {
 	// }, [screenSize]);
 
 	return (
-		<header className="header" id="header">
-			<div className="header__logo">
-				<img
+		<header className={(menuIsOpened || profilePopupIsOpened) ? "header__black" : "header"} id="header">
+			{!menuIsOpened ? <div className="header__logo">
+				{screenSize < 361 ? (< img
+					className={menuIsOpened ? "header__logo_inactive" : "header__logo1"}
+					alt="лого"
+					src={logo1}
+					onClick={handleMenuClick}
+				/>) : (<img
 					className="header__logo1"
 					alt="лого"
 					src={logo1}
 					onMouseOver={setNavOpen}
-				/>
+				/>)}
+				{menuIsOpened && <NavigationPopup />}
 				<Link to="/">
-					{screenSize === 360 ? (
+					{screenSize < 361 ? (
 						<img
 							className="header__logo2"
 							alt="лого"
 							src={logo__small}
-							onMouseOver={setNavOpen}
 						/>
 					) : (
 						<img
@@ -131,6 +156,38 @@ const Header: FC = () => {
 					)}
 				</Link>
 			</div>
+				:
+				(<div className="header__logo">
+					{screenSize < 361 ? (< img
+						className="header__logo1"
+						alt="лого"
+						src={X}
+						onClick={handleMenuClick}
+					/>) : (<img
+						className="header__logo1"
+						alt="лого"
+						src={logo1}
+						onMouseOver={setNavOpen}
+					/>)}
+					{menuIsOpened && <NavigationPopup />}
+					<Link to="/">
+						{screenSize < 361 ? (
+							<img
+								className="header__logo2"
+								alt="лого"
+								src={logo__small}
+							/>
+						) : (
+							<img
+								className="header__logo2"
+								alt="лого"
+								src={logo2}
+								onMouseOver={setNavOpen}
+							/>
+						)}
+					</Link>
+				</div>)
+			}
 			<nav
 				className={`header__content ${isOpen && 'header__content_open'}`}
 				onMouseOver={setNavOpen}
@@ -171,14 +228,32 @@ const Header: FC = () => {
 							alt="Кнопка расширенного поиска"
 						/>
 					</button>
-					<button onClick={Click} className="header__search-button">
-						<img
-							className="header__search-button_search"
-							src={search}
-							alt="Кнопка поиска"
-							onClick={setSearchClose}
-						/>
-					</button>
+
+					{screenSize < 361
+						?
+						// (<button onClick={Click} className="header__search-button">
+						// 	<img
+						// 		className="header__search-button_search"
+						// 		src={search}
+						// 		alt="Кнопка поиска"
+						// 		onClick={setSearchClose}
+						// 	/>
+						(<button onClick={handleSearchPopup} className="header__search-button">
+							<img
+								className="header__search-button_search"
+								src={search}
+								alt="Кнопка поиска"
+								onClick={setSearchClose}
+							/>
+						</button>) : (<button onClick={Click} className="header__search-button">
+							<img
+								className="header__search-button_search"
+								src={search}
+								alt="Кнопка поиска"
+								onClick={setSearchClose}
+							/>
+						</button>)}
+					{searchPopupisOpened && <SearchPopup handleSearchPopup={handleSearchPopup} setSearchClose={setSearchClose} />}
 				</form>
 				<Search
 					isOpenSearch={isOpenSearch}
@@ -191,7 +266,9 @@ const Header: FC = () => {
 				/>
 			</div>
 			<Account
-			// isLoggedIn={true}
+				// isLoggedIn={true}
+				profilePopupIsOpened={profilePopupIsOpened}
+				setProfilePopupIsOpened={setProfilePopupIsOpened}
 			/>
 		</header>
 	);
