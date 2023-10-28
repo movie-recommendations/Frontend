@@ -8,7 +8,7 @@ import { resetFavorites } from 'src/services/redux/slices/favorites/favorites';
 import ProfilePopup from '../ProfilePopup/ProfilePopup';
 import { IAccount } from 'src/types/Account.types';
 
-const Account: FC<IAccount> = ({profilePopupIsOpened, setProfilePopupIsOpened}) => {
+const Account: FC<IAccount> = ({ profilePopupIsOpened, setProfilePopupIsOpened }) => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const user = useAppSelector(selectUser);

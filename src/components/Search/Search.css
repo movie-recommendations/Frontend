@@ -13,12 +13,13 @@
 	display: block;
 }
 
-@media screen and (max-width: 361) {
+@media screen and (max-width: 361px) {
 	.searchGeneral {
 		width: 100%;
 		height: auto;
 		border-radius: 5px;
-		background-color: #fff;
+		background-color: #000;
+		color: #fff;
 		position: absolute;
 		z-index: 5;
 	}
@@ -50,6 +51,13 @@
 .searchGeneral__film:hover {
 	background: var(--neutral-200, #f3f4f6);
 	cursor: pointer;
+}
+
+@media screen and (max-width: 361px) {
+	.searchGeneral__film:hover {
+		background: none;
+		opacity: 0.8;
+	}
 }
 
 .searchGeneral__film:last-child {
@@ -85,10 +93,29 @@
 	white-space: nowrap;
 }
 
+@media screen and (max-width: 361px) {
+	.searchGeneral__film-name {
+		font-family: Mulish;
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: normal;
+		color: #fff
+	}
+
+}
+
 .searchGeneral__film-rating {
 	margin: 0;
 	position: relative;
 	top: -5px;
+}
+
+@media screen and (max-width: 361px) {
+	.searchGeneral__film-rating {
+		color: #fff
+	}
+
 }
 
 .searchGeneral__film-genres {
@@ -103,12 +130,26 @@
 	white-space: nowrap;
 }
 
+@media screen and (max-width: 361px) {
+	.searchGeneral__film-genres {
+		color: #fff
+	}
+
+}
+
 .searchGeneral__film-year {
 	margin: 9px 0 0 8px;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 18px;
 	color: #2b2f33;
+}
+
+@media screen and (max-width: 361px) {
+	.searchGeneral__film-year {
+		color: #fff
+	}
+
 }
 
 .searchGeneral__film-none {

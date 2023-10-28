@@ -1,19 +1,29 @@
+import { FC } from 'react';
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./SearchPopup.css";
 import Search from "../Search/Search";
 import ExtendedSearch from "../ExtendedSearch/ExtendedSearch";
-import adjustments from '../../images/adjustments.svg';
+import Adjustments_Black from '../../images/Adjustments_Black.svg';
+import X_Grey from '../../images/X_Grey.svg';
+import search from '../../images/search.svg'
+import { ISearchPopup } from "src/types/SearchPopup.types";
 
-const SearchPopup = () => {
+const SearchPopup: FC<ISearchPopup> = ({ handleSearchPopup, setSearchClose }) => {
 
     const [isOpenSearch, setIsOpenSearch] = useState(false);
     const [value, setValue] = useState('');
     const [isOpenExtended, setIsOpenExtended] = useState(false);
-    const setSearchClose = () => {
-        setIsOpenSearch(true);
-        setIsOpenExtended(true);
-    };
+
+
+    useEffect(() => {
+        if (value.length > 0) {
+            setIsOpenSearch(true);
+        }
+        if (value.length < 1) {
+            setIsOpenSearch(false);
+        }
+    }, [value]);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const target = event.target;
@@ -48,12 +58,37 @@ const SearchPopup = () => {
                         <button
                             className="search-popup__search-button"
                             type="button"
-                            onClick={handleOpenExtended}
+                            onClick={setSearchClose}
+
                         >
                             <img
                                 className="search-popup__search-button_search"
-                                src={adjustments}
+                                src={Adjustments_Black}
                                 alt="Кнопка расширенного поиска"
+                            />
+                        </button>
+                        <button
+                            className="search-popup__search-button"
+                            type="button"
+                            onClick={handleOpenExtended}
+
+                        >
+                            <img
+                                className="search-popup__search-button_search"
+                                src={Adjustments_Black}
+                                alt="Кнопка расширенного поиска"
+                            />
+                        </button>
+                        <button
+                            className="search-popup__search-button"
+                            type="button"
+
+                        >
+                            <img
+                                className="search-popup__search-button_search"
+                                src={X_Grey}
+                                alt="Кнопка расширенного поиска"
+                                onClick={handleSearchPopup}
                             />
                         </button>
                     </form>

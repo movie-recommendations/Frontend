@@ -32,6 +32,10 @@ const Header: FC = () => {
 		setMenuIsOpened(!menuIsOpened)
 	}
 
+	const handleProfilePopupClick = () => {
+		setProfilePopupIsOpened(!profilePopupIsOpened)
+	}
+
 	const handleSearchPopup = (event: any) => {
 		event.preventDefault()
 		setSearchPopupIsOpened(!searchPopupisOpened)
@@ -121,7 +125,7 @@ const Header: FC = () => {
 	// }, [screenSize]);
 
 	return (
-		<header className={menuIsOpened ? "header__black" : "header"} id="header">
+		<header className={(menuIsOpened || profilePopupIsOpened) ? "header__black" : "header"} id="header">
 			{!menuIsOpened ? <div className="header__logo">
 				{screenSize < 361 ? (< img
 					className={menuIsOpened ? "header__logo_inactive" : "header__logo1"}
@@ -249,7 +253,7 @@ const Header: FC = () => {
 								onClick={setSearchClose}
 							/>
 						</button>)}
-					{searchPopupisOpened && <SearchPopup />}
+					{searchPopupisOpened && <SearchPopup handleSearchPopup={handleSearchPopup} setSearchClose={setSearchClose} />}
 				</form>
 				<Search
 					isOpenSearch={isOpenSearch}
@@ -262,9 +266,9 @@ const Header: FC = () => {
 				/>
 			</div>
 			<Account
-			// isLoggedIn={true}
-			// isOpen={profilePopupIsOpened}
-			// setIsOpen={searchPopupisOpened}
+				// isLoggedIn={true}
+				profilePopupIsOpened={profilePopupIsOpened}
+				setProfilePopupIsOpened={setProfilePopupIsOpened}
 			/>
 		</header>
 	);
