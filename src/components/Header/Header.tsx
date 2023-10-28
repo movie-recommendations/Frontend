@@ -27,6 +27,7 @@ const Header: FC = () => {
 	const [searchPopupisOpened, setSearchPopupIsOpened] = useState(false)
 	const [profilePopupIsOpened, setProfilePopupIsOpened] = useState(false);
 
+
 	const handleMenuClick = () => {
 		setMenuIsOpened(!menuIsOpened)
 	}
@@ -201,7 +202,7 @@ const Header: FC = () => {
 				</ul>
 			</nav>
 			<div className="header__container">
-				<form className={"header__search"}>
+				<form className="header__search">
 					<input
 						className="header__search-input"
 						value={values}
@@ -262,8 +263,8 @@ const Header: FC = () => {
 			</div>
 			<Account
 			// isLoggedIn={true}
-			profilePopupIsOpened={profilePopupIsOpened}
-			setProfilePopupIsOpened={setProfilePopupIsOpened}
+			// isOpen={profilePopupIsOpened}
+			// setIsOpen={searchPopupisOpened}
 			/>
 		</header>
 	);
